@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { UtmHook } from "../hooks/UtmHook"; // Ajuste o caminho conforme sua estrutura
+import { motion } from "framer-motion";
+import { fadeUp, inViewViewport, staggerContainer } from "@/utils/motion";
 
 const inputClass =
   "w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-slate-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition";
@@ -77,7 +79,13 @@ export default function ContactForm() {
   return (
     <section id="contato" className="py-24 bg-slate-50">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-14">
+        <motion.div
+          className="text-center mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           <span className="inline-block text-orange-500 text-sm font-semibold tracking-widest uppercase mb-3">
             Contato
           </span>
@@ -87,11 +95,17 @@ export default function ContactForm() {
           <p className="text-slate-500 text-lg max-w-xl mx-auto">
             Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
+        <motion.div
+          className="flex flex-col lg:flex-row gap-12 items-start"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={staggerContainer}
+        >
           {/* Info sidebar */}
-          <div className="lg:w-72 flex-shrink-0">
+          <motion.div className="lg:w-72 flex-shrink-0" variants={fadeUp}>
             <div className="bg-gradient-to-br from-blue-900 to-slate-800 rounded-2xl p-8 text-white">
               <h3 className="font-bold text-lg mb-6">Fale conosco</h3>
               <ul className="space-y-5">
@@ -133,10 +147,10 @@ export default function ContactForm() {
                 solicitações em até 24 horas úteis.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Form */}
-          <div className="flex-1">
+          <motion.div className="flex-1" variants={fadeUp}>
             {submitted ? (
               <div className="bg-white rounded-2xl p-12 shadow-sm border border-gray-100 text-center">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
@@ -268,8 +282,8 @@ export default function ContactForm() {
                 </div>
               </form>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

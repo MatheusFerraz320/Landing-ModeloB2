@@ -1,5 +1,7 @@
 import {useState} from "react"
 import ModalForm from "@/components/ModalForm";
+import { motion } from "framer-motion";
+import { fadeUp, fadeUpFast, inViewViewport, staggerContainer } from "@/utils/motion";
 export default function QualityBanner() {
   const [isModalOpen , setisModalOpen] = useState(false)
   const openModal = () => setisModalOpen(true)
@@ -16,7 +18,13 @@ export default function QualityBanner() {
       <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-orange-500 via-orange-400 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-14">
+        <motion.div
+          className="text-center mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           <span className="inline-block text-orange-400 text-sm font-semibold tracking-widest uppercase mb-3">
             Qualidade
           </span>
@@ -26,12 +34,18 @@ export default function QualityBanner() {
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             Nossos processos seguem rigorosos padrões internacionais para garantir a excelência dos nossos produtos.
           </p>
-        </div>
+        </motion.div>
 
         {/* Pillars grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={staggerContainer}
+        >
           {/* ISO 9001 */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300">
+          <motion.div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300" variants={fadeUpFast}>
             <div className="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 mx-auto mb-4">
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -39,10 +53,10 @@ export default function QualityBanner() {
             </div>
             <h3 className="text-white font-bold text-lg mb-2">ISO 9001</h3>
             <p className="text-slate-400 text-sm leading-relaxed">Certificação internacional de qualidade</p>
-          </div>
+          </motion.div>
 
           {/* Rastreabilidade */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300">
+          <motion.div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300" variants={fadeUpFast}>
             <div className="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 mx-auto mb-4">
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -50,10 +64,10 @@ export default function QualityBanner() {
             </div>
             <h3 className="text-white font-bold text-lg mb-2">Rastreabilidade</h3>
             <p className="text-slate-400 text-sm leading-relaxed">Controle total do processo produtivo</p>
-          </div>
+          </motion.div>
 
           {/* Prazo Garantido */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300">
+          <motion.div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300" variants={fadeUpFast}>
             <div className="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 mx-auto mb-4">
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -61,10 +75,10 @@ export default function QualityBanner() {
             </div>
             <h3 className="text-white font-bold text-lg mb-2">Prazo Garantido</h3>
             <p className="text-slate-400 text-sm leading-relaxed">Cumprimos rigorosamente os prazos acordados</p>
-          </div>
+          </motion.div>
 
           {/* Equipe Especializada */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300">
+          <motion.div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300" variants={fadeUpFast}>
             <div className="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 mx-auto mb-4">
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -72,11 +86,17 @@ export default function QualityBanner() {
             </div>
             <h3 className="text-white font-bold text-lg mb-2">Equipe Especializada</h3>
             <p className="text-slate-400 text-sm leading-relaxed">Profissionais altamente qualificados</p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* CTA */}
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           <button
             onClick={openModal}
             className="inline-block bg-orange-500 hover:bg-orange-400 text-white font-bold text-lg px-10 py-4 
@@ -84,7 +104,7 @@ export default function QualityBanner() {
           >
             Solicite uma Cotação
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
         <ModalForm

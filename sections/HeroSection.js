@@ -3,6 +3,8 @@
 import { useState } from "react"
 import ModalForm from "@/components/ModalForm"
 import ChatBot from "@/components/ChatBot"
+import { motion } from "framer-motion"
+import { fadeUp, inViewViewport } from "@/utils/motion"
 
 export default function HeroSection() {
 
@@ -27,7 +29,13 @@ return (
 <div className="flex flex-col lg:flex-row items-center gap-16">
 
 {/* TEXTO HERO */}
-<div className="flex-1 text-center lg:text-left">
+<motion.div
+className="flex-1 text-center lg:text-left"
+initial="hidden"
+whileInView="show"
+viewport={inViewViewport}
+variants={fadeUp}
+>
 
 <div className="mx-auto lg:mx-0 mb-6 w-20 h-20 rounded-2xl 
 bg-white/20 border-2 border-white/40 flex items-center justify-center backdrop-blur">
@@ -81,12 +89,18 @@ Há mais de 15 anos fornecendo produtos e serviços de qualidade para os maiores
   </a>
 </div>
 
-</div> {/* Fim da div do texto */}
+</motion.div> {/* Fim da div do texto */}
 
 {/* CHATBOT */}
-<div className="flex-1 w-full max-w-md">
+<motion.div
+className="flex-1 w-full max-w-md"
+initial="hidden"
+whileInView="show"
+viewport={inViewViewport}
+variants={fadeUp}
+>
 <ChatBot />
-</div>
+</motion.div>
 
 </div> {/* Fim da flex row */}
 

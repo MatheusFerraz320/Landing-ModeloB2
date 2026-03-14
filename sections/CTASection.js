@@ -1,5 +1,7 @@
 import ModalForm from "@/components/ModalForm";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { fadeUp, inViewViewport } from "@/utils/motion";
 
 export default function CTASection() {
   const [isModalOpen,setisModalOpen] = useState(false)
@@ -15,7 +17,13 @@ export default function CTASection() {
       <div className="absolute -bottom-16 -left-16 w-60 h-60 rounded-full bg-white/10 pointer-events-none" />
       <div className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-orange-400/40 pointer-events-none" />
 
-      <div className="relative max-w-4xl mx-auto px-4 text-center">
+      <motion.div
+        className="relative max-w-4xl mx-auto px-4 text-center"
+        initial="hidden"
+        whileInView="show"
+        viewport={inViewViewport}
+        variants={fadeUp}
+      >
         <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
           Pronto para elevar sua operação?
         </h2>
@@ -36,7 +44,7 @@ export default function CTASection() {
             Conhecer Produtos
           </a>
         </div>
-      </div>
+      </motion.div>
     </section>
     <ModalForm 
         isOpen={isModalOpen}

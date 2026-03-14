@@ -3,6 +3,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';  // ← Removido Pagination
 import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { fadeUp, inViewViewport } from '@/utils/motion';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -37,7 +39,13 @@ export default function PartnersCarousel() {
     <section id="parceiros" className="py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <motion.div
+          className="text-center max-w-2xl mx-auto mb-12"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           <span className="inline-block text-orange-500 text-sm font-semibold tracking-widest uppercase mb-3">
             Parceiros
           </span>
@@ -47,10 +55,16 @@ export default function PartnersCarousel() {
           <p className="text-slate-500 text-lg">
             Trabalhamos com as melhores empresas do setor
           </p>
-        </div>
+        </motion.div>
 
         {/* Carrossel com setas */}
-        <div className="relative">
+        <motion.div
+          className="relative"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           {/* Seta Esquerda */}
           <button
             onClick={handlePrev}
@@ -112,7 +126,7 @@ export default function PartnersCarousel() {
               ))}
             </Swiper>
           </div>
-        </div>      
+        </motion.div>      
       </div>
     </section>
   );

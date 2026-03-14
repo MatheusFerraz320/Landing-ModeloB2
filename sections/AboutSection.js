@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import { fadeUp, fadeUpFast, inViewViewport, staggerContainer } from "@/utils/motion";
+
 export default function AboutSection() {
   return (
     <section id="about" className="relative py-20 md:py-28 bg-white">
@@ -10,7 +13,13 @@ export default function AboutSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-100 to-orange-100 px-5 py-2 rounded-full mb-6 shadow-sm">
             <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
             <span className="text-sm font-semibold text-orange-700 tracking-wider">
@@ -26,12 +35,18 @@ export default function AboutSection() {
           <p className="text-slate-500 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
             Há mais de 15 anos entregando excelência e construindo parcerias sólidas com as maiores indústrias do país.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid de cards premium */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+        <motion.div
+          className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={staggerContainer}
+        >
           {/* Card 1 - Experiência */}
-          <div className="group relative bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(249,115,22,0.1)] transition-all duration-500 border border-gray-100/50">
+          <motion.div className="group relative bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(249,115,22,0.1)] transition-all duration-500 border border-gray-100/50" variants={fadeUpFast}>
             <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
             <div className="relative">
@@ -53,10 +68,10 @@ export default function AboutSection() {
                 </svg>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 2 - Certificações */}
-          <div className="group relative bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.1)] transition-all duration-500 border border-gray-100/50">
+          <motion.div className="group relative bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(37,99,235,0.1)] transition-all duration-500 border border-gray-100/50" variants={fadeUpFast}>
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
             <div className="relative">
@@ -77,10 +92,10 @@ export default function AboutSection() {
                 <span className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full">OHSAS</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 3 - Estrutura */}
-          <div className="group relative bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 border border-gray-100/50">
+          <motion.div className="group relative bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500 border border-gray-100/50" variants={fadeUpFast}>
             <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
             <div className="relative">
@@ -106,11 +121,17 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Banner de confiança */}
-        <div className="relative bg-gradient-to-r from-slate-900 to-blue-900 rounded-3xl overflow-hidden mb-16">
+        <motion.div
+          className="relative bg-gradient-to-r from-slate-900 to-blue-900 rounded-3xl overflow-hidden mb-16"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           {/* Elementos decorativos */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl" />
@@ -149,25 +170,31 @@ export default function AboutSection() {
             </div>
 
             {/* Lado direito - Números em destaque */}
-            <div className="grid grid-cols-2 gap-4">
+            <motion.div className="grid grid-cols-2 gap-4" variants={staggerContainer}>
               {[
                 { value: '500+', label: 'Clientes ativos', icon: '🏭' },
                 { value: '24h', label: 'Prazo de resposta', icon: '⚡' },
                 { value: '99,8%', label: 'Índice de qualidade', icon: '✨' },
                 { value: '15+', label: 'Anos de mercado', icon: '⭐' },
               ].map((stat, idx) => (
-                <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:bg-white/10 transition-colors">
+                <motion.div key={idx} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:bg-white/10 transition-colors" variants={fadeUpFast}>
                   <span className="text-3xl mb-2 block">{stat.icon}</span>
                   <div className="text-2xl md:text-3xl font-bold text-orange-400 mb-1">{stat.value}</div>
                   <div className="text-xs text-blue-200 uppercase tracking-wider">{stat.label}</div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* CTA final - Conheça mais */}
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           <a
             href="#contato"
             className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4 rounded-full shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300 group"
@@ -181,7 +208,7 @@ export default function AboutSection() {
           <p className="text-sm text-slate-400 mt-4">
             ✓ Atendimento personalizado  ✓ Orçamento em 24h  ✓ Suporte técnico
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

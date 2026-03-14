@@ -2,6 +2,8 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { motion } from 'framer-motion';
+import { fadeUp, inViewViewport } from '@/utils/motion';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -59,7 +61,13 @@ export default function ProductLines() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-12"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           <span className="inline-block text-orange-500 text-sm font-semibold tracking-widest uppercase mb-3 px-4 py-1.5 bg-orange-50 rounded-full">
             Portfólio
           </span>
@@ -69,10 +77,16 @@ export default function ProductLines() {
           <p className="text-slate-500 text-lg">
             Soluções completas para sua operação industrial, do projeto à entrega.
           </p>
-        </div>
+        </motion.div>
 
         {/* Carrossel */}
-        <div className="relative">
+        <motion.div
+          className="relative"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           {/* Setas personalizadas */}
           <button className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-slate-600 hover:text-orange-500 transition-all duration-300 hover:scale-110 -ml-6 product-prev">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,7 +169,7 @@ export default function ProductLines() {
 
           {/* Paginação */}
           <div className="product-pagination flex justify-center gap-2 mt-6" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

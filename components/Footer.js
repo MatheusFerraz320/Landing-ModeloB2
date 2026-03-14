@@ -1,12 +1,21 @@
+import { motion } from "framer-motion";
+import { fadeUp, inViewViewport, staggerContainer } from "@/utils/motion";
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="bg-slate-900 text-slate-400 pt-16 pb-8">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={staggerContainer}
+        >
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <motion.div className="lg:col-span-1" variants={fadeUp}>
             <div className="text-2xl font-black text-white mb-3">ModeloB2</div>
             <p className="text-sm leading-relaxed mb-6">
               Soluções industriais de alta performance para empresas que exigem o melhor.
@@ -45,10 +54,10 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Navegação */}
-          <div>
+          <motion.div variants={fadeUp}>
             <div className="text-white font-bold mb-4 text-sm tracking-wider uppercase">
               Navegação
             </div>
@@ -59,24 +68,24 @@ export default function Footer() {
               <li><a href="#qualidade" className="text-sm hover:text-orange-400 transition-colors">Qualidade</a></li>
               <li><a href="#contato" className="text-sm hover:text-orange-400 transition-colors">Contato</a></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Produtos */}
-          <div>
+          <motion.div variants={fadeUp}>
             <div className="text-white font-bold mb-4 text-sm tracking-wider uppercase">
               Produtos
             </div>
             <ul className="space-y-3">
-              <li><a href="#produtos" className="text-sm hover:text-orange-400 transition-colors">Componentes CNC</a></li>
-              <li><a href="#produtos" className="text-sm hover:text-orange-400 transition-colors">Tubulações</a></li>
-              <li><a href="#produtos" className="text-sm hover:text-orange-400 transition-colors">Painéis Elétricos</a></li>
-              <li><a href="#produtos" className="text-sm hover:text-orange-400 transition-colors">Reservatórios</a></li>
-              <li><a href="#produtos" className="text-sm hover:text-orange-400 transition-colors">Estruturas Metálicas</a></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Componentes CNC</p></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Tubulações</p></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Painéis Elétricos</p></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Reservatórios</p></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Estruturas Metálicas</p></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contato */}
-          <div>
+          <motion.div variants={fadeUp}>
             <div className="text-white font-bold mb-4 text-sm tracking-wider uppercase">
               Contato
             </div>
@@ -97,10 +106,16 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <motion.div
+          className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUp}
+        >
           <p className="text-sm">
             &copy; {year} ModeloB2. Todos os direitos reservados.
           </p>
@@ -112,7 +127,7 @@ export default function Footer() {
               Termos de Uso
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
