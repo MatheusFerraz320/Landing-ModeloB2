@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { UtmHook } from "../hooks/UtmHook"; // Ajuste o caminho conforme sua estrutura
 
 const inputClass =
   "w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-slate-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition";
 
 export default function ContactForm() {
+  // PEGA AS UTMs DO HOOK
+  const utmParams = UtmHook();
+  
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -11,14 +15,62 @@ export default function ContactForm() {
     company: "",
     subject: "",
     message: "",
+    // Campos UTM
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+    utm_term: "",
+    utm_content: ""
   });
+  
   const [submitted, setSubmitted] = useState(false);
+
+  // 2️⃣ ATUALIZA O FORM COM AS UTMs QUANDO O COMPONENTE MONTAR
+  useEffect(() => {
+    if (utmParams && Object.keys(utmParams).length > 0) {
+      setForm(prev => ({
+        ...prev,
+        utm_source: utmParams.utm_source || '',
+        utm_medium: utmParams.utm_medium || '',
+        utm_campaign: utmParams.utm_campaign || '',
+        utm_term: utmParams.utm_term || '',
+        utm_content: utmParams.utm_content || ''
+      }));
+    }
+  }, [utmParams]);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // 3️⃣ LOG PARA VER AS UTMs (opcional)
+    console.log("Formulário enviado com UTMs:", {
+      ...form,
+      utm_source: form.utm_source,
+      utm_medium: form.utm_medium,
+      utm_campaign: form.utm_campaign
+    });
+    
+    // 4️⃣ ENVIA PARA O GTM (opcional)
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: 'form_submit',
+        form_type: 'contato',
+        form_data: {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          company: form.company,
+          subject: form.subject,
+          utm_source: form.utm_source,
+          utm_medium: form.utm_medium,
+          utm_campaign: form.utm_campaign
+        }
+      });
+    }
+    
     setSubmitted(true);
   };
 
@@ -96,12 +148,28 @@ export default function ContactForm() {
                 <p className="text-slate-500">
                   Obrigado pelo contato, <strong>{form.name}</strong>. Nossa equipe retornará em breve.
                 </p>
+                {/* UTM TESTE */}
+                {process.env.NODE_ENV === 'development' && (
+                  <div className="mt-4 p-3 bg-gray-100 rounded-lg text-left text-xs">
+                    <p className="font-semibold">UTMs capturadas:</p>
+                    <p>Source: {form.utm_source || 'direto'}</p>
+                    <p>Medium: {form.utm_medium || 'direto'}</p>
+                    <p>Campaign: {form.utm_campaign || 'não definida'}</p>
+                  </div>
+                )}
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
                 className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-5"
               >
+                {/*  HIDDEN PARA UTMs */}
+                <input type="hidden" name="utm_source" value={form.utm_source} />
+                <input type="hidden" name="utm_medium" value={form.utm_medium} />
+                <input type="hidden" name="utm_campaign" value={form.utm_campaign} />
+                <input type="hidden" name="utm_term" value={form.utm_term} />
+                <input type="hidden" name="utm_content" value={form.utm_content} />
+                
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                     Nome completo <span className="text-orange-500">*</span>

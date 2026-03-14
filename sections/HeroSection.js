@@ -29,7 +29,9 @@ return (
 {/* TEXTO HERO */}
 <div className="flex-1 text-center lg:text-left">
 
-<div className="mx-auto lg:mx-0 mb-6 w-20 h-20 rounded-2xl bg-white/20 border-2 border-white/40 flex items-center justify-center backdrop-blur-sm">
+<div className="mx-auto lg:mx-0 mb-6 w-20 h-20 rounded-2xl 
+bg-white/20 border-2 border-white/40 flex items-center justify-center backdrop-blur">
+
 <span className="text-white font-black text-2xl tracking-widest">
 MB
 </span>
@@ -43,26 +45,52 @@ Soluções industriais de alta performance
 Há mais de 15 anos fornecendo produtos e serviços de qualidade para os maiores players do mercado.
 </p>
 
-<button
-onClick={openModal}
-className="bg-orange-500 hover:bg-orange-400 text-white font-bold text-lg px-10 py-4 rounded-full 
-shadow-2xl shadow-orange-500/50 
-hover:shadow-orange-400/60 hover:scale-105  
-transition-all duration-300"
->
-Solicitar Cotação
-</button>
-
+{/* ✅ BOTÕES */}
+<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center sm:justify-center lg:justify-start">
+  <button
+    onClick={openModal}
+    className="bg-orange-500 hover:bg-orange-400 text-white font-bold text-lg px-10 py-4 rounded-full 
+    shadow-2xl shadow-orange-500/50 
+    hover:shadow-orange-400/60 hover:scale-105  
+    transition-all duration-300"
+  >
+    Solicitar Cotação
+  </button>
+  
+  <a
+    href="#about"
+    className="group bg-orange-500 hover:bg-orange-400 text-white font-bold text-lg px-8 py-4 rounded-full 
+    shadow-2xl shadow-orange-500/50 hover:shadow-orange-400/60 
+    transition-all duration-300 hover:scale-105 
+    inline-flex items-center gap-4"
+  >
+    <span>Saber mais</span>
+    <svg 
+      className="w-5 h-5 animate-bounce group-hover:animate-none" 
+      fill="none" 
+      stroke="currentColor" 
+      viewBox="0 0 24 24"
+    >
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        strokeWidth={2.5} 
+        d="M19 9l-7 7-7-7" 
+      />
+    </svg>
+  </a>
 </div>
+
+</div> {/* Fim da div do texto */}
 
 {/* CHATBOT */}
 <div className="flex-1 w-full max-w-md">
 <ChatBot />
 </div>
 
-</div>
+</div> {/* Fim da flex row */}
 
-</div>
+</div> {/* Fim do container */}
 
 </header>
 
@@ -73,6 +101,4 @@ onClose={closeModal}
 
 </>
 
-)
-
-}
+)}

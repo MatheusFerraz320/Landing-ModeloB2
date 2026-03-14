@@ -1,16 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { UtmHook } from '../hooks/UtmHook'; 
+
 export default function ModalForm({ isOpen, onClose }) {
+  // PEGA AS UTMs DO HOOK
+  const utmParams = UtmHook();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     company: '',
     interest: '',
-    message: ''
+    message: '',
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: '',
+    utm_content: ''
   });
+  
   const [submitted, setSubmitted] = useState(false);
 
-  
+  //ATUALIZA O FORM QUANDO O MODAL ABRIR COM AS UTMs
+  useEffect(() => {
+    if (isOpen && utmParams) {
+      setFormData(prev => ({
+        ...prev,
+        utm_source: utmParams.utm_source || '',
+        utm_medium: utmParams.utm_medium || '',
+        utm_campaign: utmParams.utm_campaign || '',
+        utm_term: utmParams.utm_term || '',
+        utm_content: utmParams.utm_content || ''
+      }));
+    }
+  }, [isOpen, utmParams]);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,21 +43,47 @@ export default function ModalForm({ isOpen, onClose }) {
   };
 
   const handleSubmit = (e) => {
-    //lógica do modal
     e.preventDefault();
+
+    // 3️INCLUI AS UTMs NA MENSAGEM DO WHATSAPP(CONFIRMAR NECESSIDADE)
     const whatsMessage = `Cotação Personalizada -
-    Nome : ${formData.name}
-    Email : ${formData.email}
-    Empresa : ${formData.company}
-    Mensagem: ${formData.message}`
-    const whatsNumber = '5513991621955'
+Nome: ${formData.name}
+Email: ${formData.email}
+Empresa: ${formData.company}
+Mensagem: ${formData.message}
+
+📊 *DADOS DE ORIGEM*:
+UTM Source: ${formData.utm_source || 'direto'}
+UTM Medium: ${formData.utm_medium || 'direto'}
+UTM Campaign: ${formData.utm_campaign || 'não definida'}
+UTM Term: ${formData.utm_term || 'não definido'}
+UTM Content: ${formData.utm_content || 'não definido'}`;
+
+    const whatsNumber = '5513991621955';
     const whatsUrl = `https://wa.me/${whatsNumber}?text=${encodeURIComponent(whatsMessage)}`;
+    
+    // APLICAR O GTM 
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: 'form_submit',
+        form_type: 'cotacao',
+        form_data: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          utm_source: formData.utm_source,
+          utm_medium: formData.utm_medium,
+          utm_campaign: formData.utm_campaign
+        }
+      });
+    }
+    
     window.open(whatsUrl, '_blank');
-    console.log('Form enviado:', formData);
+    console.log('Form enviado com UTMs:', formData);
     setSubmitted(true);
 
-    
-    // Fecha o modal após 3 segundos
+    // Fechar modal
     setTimeout(() => {
       setSubmitted(false);
       setFormData({
@@ -43,7 +92,12 @@ export default function ModalForm({ isOpen, onClose }) {
         phone: '',
         company: '',
         interest: '',
-        message: ''
+        message: '',
+        utm_source: '',
+        utm_medium: '',
+        utm_campaign: '',
+        utm_term: '',
+        utm_content: ''
       });
       onClose();
     }, 3000);
@@ -59,11 +113,11 @@ export default function ModalForm({ isOpen, onClose }) {
         onClick={onClose}
       />
 
-      {/* Modal Container - Centralizado */}
+      {/* Modal Container */}
       <div className="flex min-h-full items-center justify-center p-4">
         <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-auto transform transition-all">
           
-          {/* Header com gradiente */}
+          {/* Header */}
           <div className="relative bg-gradient-to-r from-blue-900 to-slate-800 rounded-t-2xl p-6">
             <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-400/10 rounded-full blur-xl" />
@@ -114,6 +168,13 @@ export default function ModalForm({ isOpen, onClose }) {
             ) : (
               /* Formulário */
               <form onSubmit={handleSubmit} className="space-y-5">
+                
+                {/* CAMPOS HIDDEN PARA UTMs(testar antes) */}
+                <input type="hidden" name="utm_source" value={formData.utm_source} />
+                <input type="hidden" name="utm_medium" value={formData.utm_medium} />
+                <input type="hidden" name="utm_campaign" value={formData.utm_campaign} />
+                <input type="hidden" name="utm_term" value={formData.utm_term} />
+                <input type="hidden" name="utm_content" value={formData.utm_content} />
                 
                 {/* Grid 2 colunas no desktop */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -202,7 +263,7 @@ export default function ModalForm({ isOpen, onClose }) {
                     </select>
                   </div>
 
-                  {/* Mensagem */}
+                  {/* TextArea*/}
                   <div className="md:col-span-2">
                     <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                       Mensagem <span className="text-orange-500">*</span>
@@ -219,7 +280,7 @@ export default function ModalForm({ isOpen, onClose }) {
                   </div>
                 </div>
 
-                {/* Checkbox de consentimento */}
+                {/* Checkbox */}
                 <div className="flex items-start gap-2">
                   <input
                     type="checkbox"
@@ -255,7 +316,6 @@ export default function ModalForm({ isOpen, onClose }) {
             )}
           </div>
 
-          {/* Footer com info de segurança */}
           <div className="border-t border-gray-100 p-4 bg-gray-50 rounded-b-2xl">
             <p className="text-xs text-slate-400 text-center flex items-center justify-center gap-1">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -269,4 +329,3 @@ export default function ModalForm({ isOpen, onClose }) {
     </div>
   );
 }
-

@@ -1,7 +1,6 @@
 export default function AboutSection() {
   return (
     <section id="about" className="relative py-20 md:py-28 bg-white">
-      {/* Elementos de fundo premium */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-full h-full max-w-7xl mx-auto inset-0">
           <div className="absolute top-40 right-0 w-96 h-96 bg-orange-50 rounded-full blur-3xl opacity-60" />
@@ -12,7 +11,6 @@ export default function AboutSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          {/* Badge premium */}
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-100 to-orange-100 px-5 py-2 rounded-full mb-6 shadow-sm">
             <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
             <span className="text-sm font-semibold text-orange-700 tracking-wider">
