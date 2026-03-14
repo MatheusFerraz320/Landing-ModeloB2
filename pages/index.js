@@ -1,37 +1,50 @@
 import Head from "next/head";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
-import CTA from "@/components/CTA";
-import Contact from "@/components/Contact";
+import HeroSection from "@/components/HeroSection";
+import PartnersCarousel from "@/components/PartnersCarousel";
+import QualityBanner from "@/components/QualityBanner";
+import ProductLines from "@/components/ProductLines";
+import QualitySection from "@/components/QualitySection";
+import ContactForm from "@/components/ContactForm";
+import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>ModeloB2 — Soluções B2B Inovadoras</title>
+        <title>ModeloB2 — Soluções Industriais de Alta Performance</title>
         <meta
           name="description"
-          content="ModeloB2 oferece soluções modernas e inovadoras para impulsionar o crescimento do seu negócio B2B."
+          content="Soluções industriais certificadas. Componentes, tubulações, painéis elétricos e mais. Solicite sua cotação."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
-
       <main>
-        <Hero />
-        <Features />
-        <About />
-        <Testimonials />
-        <CTA />
-        <Contact />
+        {/* 1. Hero / Header */}
+        <HeroSection />
+
+        {/* 2. Marcas Parceiras — carrossel */}
+        <PartnersCarousel />
+
+        {/* 3. Tira de qualidade com CTA */}
+        <QualityBanner />
+
+        {/* 4. Linha de Produtos */}
+        <ProductLines />
+
+        {/* 5. Segunda validação de qualidade */}
+        <QualitySection />
+
+        {/* 6. Formulário de Contato / Cotação */}
+        <ContactForm />
+
+        {/* 7. CTA Final */}
+        <CTASection />
       </main>
 
+      {/* 8. Footer */}
       <Footer />
     </>
   );
