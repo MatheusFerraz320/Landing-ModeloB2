@@ -1,12 +1,13 @@
 import Head from "next/head";
-import HeroSection from "@/components/HeroSection";
-import PartnersCarousel from "@/components/PartnersCarousel";
-import QualityBanner from "@/components/QualityBanner";
-import ProductLines from "@/components/ProductLines";
-import QualitySection from "@/components/QualitySection";
-import ContactForm from "@/components/ContactForm";
-import CTASection from "@/components/CTASection";
+import HeroSection from "@/sections/HeroSection";
+import PartnersCarousel from "@/sections/PartnersCarousel";
+import QualityBanner from "@/sections/QualityBanner";
+import ProductLines from "@/sections/ProductLines";
+import AboutSection from "@/sections/AboutSection";
+import ContactForm from "@/sections/ContactForm";
+import CTASection from "@/sections/CTASection";
 import Footer from "@/components/Footer";
+import WhatsButton from "@/components/WhatsButton";
 
 export default function Home() {
   return (
@@ -24,18 +25,18 @@ export default function Home() {
       <main>
         {/* 1. Hero / Header */}
         <HeroSection />
+ 
+        {/* 2. Sobre / conheça mais */}
+        <AboutSection />
 
-        {/* 2. Marcas Parceiras — carrossel */}
+        {/* 3. Linha de Produtos */}
+        <ProductLines />
+        
+        {/* 4. Marcas Parceiras — carrossel */}
         <PartnersCarousel />
 
-        {/* 3. Tira de qualidade com CTA */}
+        {/* 5. Tira de qualidade com CTA */}
         <QualityBanner />
-
-        {/* 4. Linha de Produtos */}
-        <ProductLines />
-
-        {/* 5. Segunda validação de qualidade */}
-        <QualitySection />
 
         {/* 6. Formulário de Contato / Cotação */}
         <ContactForm />
@@ -46,6 +47,7 @@ export default function Home() {
 
       {/* 8. Footer */}
       <Footer />
+      <WhatsButton />
     </>
   );
 }

@@ -1,23 +1,14 @@
-/* ──────────────────────────────────────────────────────
-   CTASection — Seção de chamada para ação final
-   Personalize CTA_CONFIG abaixo.
-────────────────────────────────────────────────────── */
+import ModalForm from "@/components/ModalForm";
+import { useState } from "react";
 
-const CTA_CONFIG = {
-  headline: "Pronto para elevar sua operação?",
-  subheadline:
-    "Entre em contato agora e descubra como nossas soluções podem transformar seus resultados.",
-  primaryCta: { label: "Solicitar Cotação", href: "#contato" },
-  secondaryCta: { label: "Conhecer Produtos", href: "#produtos" },
-};
+export default function CTASection() {
+  const [isModalOpen,setisModalOpen] = useState(false)
+  const openModal = () => setisModalOpen(true)
+  const closeModal = () => setisModalOpen(false)
 
-export default function CTASection({
-  headline = CTA_CONFIG.headline,
-  subheadline = CTA_CONFIG.subheadline,
-  primaryCta = CTA_CONFIG.primaryCta,
-  secondaryCta = CTA_CONFIG.secondaryCta,
-}) {
+
   return (
+    <>
     <section className="py-24 bg-orange-500 relative overflow-hidden">
       {/* Decorative shapes */}
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-white/10 pointer-events-none" />
@@ -26,26 +17,32 @@ export default function CTASection({
 
       <div className="relative max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
-          {headline}
+          Pronto para elevar sua operação?
         </h2>
         <p className="text-orange-100 text-xl mb-10 max-w-2xl mx-auto">
-          {subheadline}
+          Entre em contato agora e descubra como nossas soluções podem transformar seus resultados.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href={primaryCta.href}
+          <button
+            onClick={openModal}
             className="bg-white text-orange-600 font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:bg-orange-50 transition-all duration-300 hover:scale-105"
           >
-            {primaryCta.label}
-          </a>
+            Solicitar Cotação
+          </button>
           <a
-            href={secondaryCta.href}
+            href="#produtos"
             className="border-2 border-white text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-white hover:text-orange-600 transition-all duration-300"
           >
-            {secondaryCta.label}
+            Conhecer Produtos
           </a>
         </div>
       </div>
     </section>
+    <ModalForm 
+        isOpen={isModalOpen}
+        onClose={closeModal} 
+        />
+    </>
+
   );
 }
