@@ -1,5 +1,3 @@
-// Primeiro instale: npm install swiper
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
@@ -13,57 +11,51 @@ import 'swiper/css/pagination';
 export default function ProductLines() {
   const products = [
     {
-      name: "Componentes CNC",
-      badge: "Alta Precisão",
-      description: "Peças usinadas com alta precisão dimensional para aplicações críticas.",
-      image: "/images/produtos/cnc.jpg", // Substitua pelos seus paths
-      alt: "Componentes CNC de alta precisão"
+      name: "Baby Booster",
+      badge: "Compacto",
+      description: "Compacto e econômico para aplicações pontuais.",
+      image: "/images/produtos/baby-booster.jpg",
+      alt: "Baby Booster - solução compacta"
     },
     {
-      name: "Tubulações Industriais",
-      badge: "Linha Completa",
-      description: "Linhas de tubulação para transporte de fluidos e gases industriais.",
-      image: "/images/produtos/tubulacoes.jpg",
-      alt: "Tubulações industriais"
+      name: "Booster Z",
+      badge: "Flexível",
+      description: "Flexível para operação e manutenção.",
+      image: "/images/produtos/booster-z.jpg",
+      alt: "Booster Z - flexível para operação e manutenção"
     },
     {
-      name: "Painéis Elétricos",
-      badge: "Normas ABNT",
-      description: "Painéis de comando e controle montados conforme normas ABNT/IEC.",
-      image: "/images/produtos/paineis.jpg",
-      alt: "Painéis elétricos industriais"
+      name: "Booster W",
+      badge: "Alta vazão",
+      description: "Indicado para maiores vazões e variações de demanda.",
+      image: "/images/produtos/booster-w.jpg",
+      alt: "Booster W - para altas vazões"
     },
     {
-      name: "Reservatórios",
-      badge: "Sob Medida",
-      description: "Tanques e reservatórios fabricados em aço inox e carbono.",
-      image: "/images/produtos/reservatorios.jpg",
-      alt: "Reservatórios industriais"
-    },
-    {
-      name: "Estruturas Metálicas",
-      badge: "Engenharia",
-      description: "Estruturas soldadas para suporte de equipamentos e edificações industriais.",
-      image: "/images/produtos/estruturas.jpg",
-      alt: "Estruturas metálicas"
-    },
-    {
-      name: "Ferramentas Especiais",
-      badge: "Customizado",
-      description: "Ferramental customizado para processos produtivos de alta exigência.",
-      image: "/images/produtos/ferramentas.jpg",
-      alt: "Ferramentas especiais"
+      name: "Booster Hércules",
+      badge: "Expansível",
+      description: "Preparado para expansão gradual do sistema.",
+      image: "/images/produtos/booster-hercules.jpg",
+      alt: "Booster Hércules - preparado para expansão"
     }
   ];
 
   return (
-    <section id="produtos" className="relative overflow-hidden py-24 bg-[linear-gradient(180deg,_#0e1728_0%,_#111827_100%)]">
+    <section id="solucoes" className="relative overflow-hidden py-24">
+      {/* Fundo principal com gradiente elegante na cor #0082ca */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0082ca] via-[#0066a0] to-[#004b75]" />
+      
+      {/* Overlay suave para garantir contraste dos cards */}
+      <div className="absolute inset-0 bg-black/20" />
+      
+      {/* Elementos decorativos com tons complementares */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 right-10 h-72 w-72 rounded-full bg-blue-500/12 blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
+        <div className="absolute top-10 right-10 h-72 w-72 rounded-full bg-amber-400/10 blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-amber-500/10 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/5 blur-3xl" />
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Header */}
         <motion.div
           className="relative text-center max-w-3xl mx-auto mb-12"
@@ -72,14 +64,14 @@ export default function ProductLines() {
           viewport={inViewViewport}
           variants={fadeUp}
         >
-          <span className="inline-block text-orange-200 text-sm font-semibold tracking-widest uppercase mb-3 px-4 py-1.5 bg-white/8 border border-white/12 rounded-full">
-            Portfólio
+          <span className="inline-block text-white/90 text-sm font-semibold tracking-widest uppercase mb-3 px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+            Linha de soluções
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
-            Linha de Produtos
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 text-shadow-lg">
+            Soluções para diferentes portes e aplicações
           </h2>
-          <p className="text-slate-200/85 text-lg">
-            Soluções completas para sua operação industrial, do projeto à entrega.
+          <p className="text-white/80 text-lg">
+            Escolha a solução ideal para sua necessidade, com tecnologia e eficiência Kronox.
           </p>
         </motion.div>
 
@@ -92,13 +84,13 @@ export default function ProductLines() {
           variants={fadeUp}
         >
           {/* Setas personalizadas */}
-          <button className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 border border-white/15 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-slate-100 hover:text-orange-300 transition-all duration-300 hover:scale-110 -ml-6 product-prev">
+          <button className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl flex items-center justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -ml-6 product-prev">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
-          <button className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 border border-white/15 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-slate-100 hover:text-orange-300 transition-all duration-300 hover:scale-110 -mr-6 product-next">
+          <button className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl flex items-center justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -mr-6 product-next">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
             </svg>
@@ -132,18 +124,18 @@ export default function ProductLines() {
           >
             {products.map((product, index) => (
               <SwiperSlide key={index}>
-                <div className="group rounded-2xl border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.04))] shadow-[0_24px_70px_rgba(2,6,23,0.45)] hover:shadow-[0_30px_90px_rgba(249,115,22,0.18)] hover:border-orange-300/25 transition-all duration-300 overflow-hidden h-full flex flex-col">
+                <div className="group rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm shadow-[0_24px_50px_rgba(0,0,0,0.3)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.4)] hover:border-[#a52727]/40 transition-all duration-300 overflow-hidden h-full flex flex-col">
                   
                   {/* Imagem do produto */}
-                  <div className="relative h-56 bg-slate-900/60 overflow-hidden">
+                  <div className="relative h-56 bg-slate-800/60 overflow-hidden">
                     <img
                       src={product.image}
                       alt={product.alt}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
                     />
-                    {/* Badge sobreposto */}
-                    <span className="absolute top-4 right-4 text-xs font-semibold bg-orange-500/90 text-white px-3 py-1.5 rounded-full shadow-lg">
+                    {/* Badge com tema vermelho */}
+                    <span className="absolute top-4 right-4 text-xs font-semibold bg-[#a52727] text-white px-3 py-1.5 rounded-full shadow-lg">
                       {product.badge}
                     </span>
                   </div>
@@ -153,12 +145,12 @@ export default function ProductLines() {
                     <h3 className="text-xl font-bold text-white mb-3">
                       {product.name}
                     </h3>
-                    <p className="text-slate-200/82 leading-relaxed mb-4 flex-1">
+                    <p className="text-white/80 leading-relaxed mb-4 flex-1">
                       {product.description}
                     </p>
                     <a
                       href="#contato"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-orange-300 hover:text-orange-200 transition-colors group/link"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-[#a52727] hover:text-[#c03c3c] transition-colors group/link"
                     >
                       Solicitar cotação
                       <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

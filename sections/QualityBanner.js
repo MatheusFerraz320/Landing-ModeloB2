@@ -1,121 +1,149 @@
-import {useState} from "react"
-import ModalForm from "@/components/ModalForm";
 import { motion } from "framer-motion";
 import { fadeUp, fadeUpFast, inViewViewport, staggerContainer } from "@/utils/motion";
-export default function QualityBanner() {
-  const [isModalOpen , setisModalOpen] = useState(false)
-  const openModal = () => setisModalOpen(true)
-  const closeModal = () => setisModalOpen(false)
-  
-  return (
-    <>
-    <section
-      id="quality-section"
-      className="py-20 bg-slate-900 relative overflow-hidden"
-    >
-      {/* Decorative accent */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 via-orange-400 to-transparent" />
-      <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-orange-500 via-orange-400 to-transparent" />
 
-      <div className="max-w-6xl mx-auto px-4">
+const benefits = [
+  {
+    title: "Bombeamento em linha",
+    description:
+      "Instalação simplificada sem necessidade de obras civis complexas, reduzindo tempo e custo de implantação.",
+    icon: (
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+    gradient: "from-[#0082ca] to-[#0066a0]",
+  },
+  {
+    title: "Baixíssima manutenção",
+    description:
+      "Tecnologia anti‑entupimento e materiais resistentes que reduzem drasticamente a necessidade de intervenções.",
+    icon: (
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+      </svg>
+    ),
+    gradient: "from-[#0082ca] to-[#0070b0]",
+  },
+  {
+    title: "Menos extravasamentos",
+    description:
+      "Sensores inteligentes e sistema de detecção de entupimento que previnem transbordamentos e paralisações.",
+    icon: (
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+      </svg>
+    ),
+    gradient: "from-[#0082ca] to-[#0077b3]",
+  },
+  {
+    title: "Menos odores e gases",
+    description:
+      "Sistema fechado e vedado que minimiza a emissão de odores e gases, melhorando o ambiente de trabalho.",
+    icon: (
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2M3 18l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2" />
+      </svg>
+    ),
+    gradient: "from-[#0082ca] to-[#005f94]",
+  },
+  {
+    title: "Estrutura em aço inox",
+    description:
+      "Fabricação em aço inoxidável de alta resistência, garantindo durabilidade e proteção contra corrosão.",
+    icon: (
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
+    gradient: "from-[#0082ca] to-[#004b75]",
+  },
+  {
+    title: "Expansão conforme demanda",
+    description:
+      "Sistema modular que permite ampliação progressiva da capacidade, adequando‑se ao crescimento da operação.",
+    icon: (
+      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+      </svg>
+    ),
+    gradient: "from-[#0082ca] to-[#003b5c]",
+  },
+];
+
+export default function PorQueEscolherKronox() {
+  return (
+    <section className="relative overflow-hidden py-20 md:py-28 bg-white">
+      {/* Elementos decorativos de fundo com tons premium */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 max-w-7xl mx-auto">
+          <div className="absolute top-20 right-8 h-72 w-72 rounded-full bg-[#0082ca]/5 blur-3xl" />
+          <div className="absolute bottom-10 left-0 h-80 w-80 rounded-full bg-amber-400/10 blur-3xl" />
+          <div className="absolute inset-x-6 top-8 h-px bg-gradient-to-r from-transparent via-slate-300/50 to-transparent" />
+        </div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Cabeçalho da seção com tema refinado */}
         <motion.div
-          className="text-center mb-14"
+          className="text-center max-w-3xl mx-auto mb-16"
           initial="hidden"
           whileInView="show"
           viewport={inViewViewport}
           variants={fadeUp}
         >
-          <span className="inline-block text-orange-400 text-sm font-semibold tracking-widest uppercase mb-3">
-            Qualidade
-          </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
-            Qualidade certificada em cada entrega
+          <div className="inline-flex items-center gap-3 rounded-full border border-[#0082ca]/20 bg-[#0082ca]/5 px-5 py-2 mb-6 shadow-sm backdrop-blur-sm">
+            <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
+            <span className="text-sm font-semibold text-[#0082ca] tracking-[0.24em]">
+              VANTAGENS EXCLUSIVAS
+            </span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-800 mb-6 tracking-tight">
+            Por que escolher{" "}
+            <span className="font-bold text-[#0082ca]">Kronox?</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Nossos processos seguem rigorosos padrões internacionais para garantir a excelência dos nossos produtos.
+
+          <p className="text-slate-600 text-lg md:text-xl leading-relaxed">
+            Soluções projetadas para máxima eficiência, durabilidade e baixa manutenção.
           </p>
         </motion.div>
 
-        {/* Pillars grid */}
+        {/* Grid de cards com estilo premium */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
           initial="hidden"
           whileInView="show"
           viewport={inViewViewport}
           variants={staggerContainer}
         >
-          {/* ISO 9001 */}
-          <motion.div className="bg-white/5 
-          border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 
-          hover:scale-105" variants={fadeUpFast}>
-            <div className="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 mx-auto mb-4">
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              </svg>
-            </div>
-            <h3 className="text-white font-bold text-lg mb-2">ISO 9001</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">Certificação internacional de qualidade</p>
-          </motion.div>
+          {benefits.map((benefit, index) => (
+            <motion.div
+              key={index}
+              className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,130,202,0.08)] hover:border-[#0082ca]/20 group"
+              variants={fadeUpFast}
+            >
+              {/* Detalhe sutil no canto */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#0082ca]/5 to-transparent rounded-bl-[100px]" />
 
-          {/* Rastreabilidade */}
-          <motion.div className="bg-white/5 
-          border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 hover:scale-105" variants={fadeUpFast}>
-            <div className="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 mx-auto mb-4">
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-              </svg>
-            </div>
-            <h3 className="text-white font-bold text-lg mb-2">Rastreabilidade</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">Controle total do processo produtivo</p>
-          </motion.div>
+              <div className="relative">
+                <div
+                  className={`w-16 h-16 bg-gradient-to-br ${benefit.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-[#0082ca]/20 ring-1 ring-white/30 group-hover:scale-110 transition-transform duration-300`}
+                >
+                  {benefit.icon}
+                </div>
 
-          {/* Prazo Garantido */}
-                    <motion.div className="bg-white/5 
-          border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 
-          hover:scale-105" variants={fadeUpFast}>
-            <div className="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 mx-auto mb-4">
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 className="text-white font-bold text-lg mb-2">Prazo Garantido</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">Cumprimos rigorosamente os prazos acordados</p>
-          </motion.div>
+                <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-[#0082ca] transition-colors">
+                  {benefit.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">{benefit.description}</p>
+              </div>
 
-          {/* Equipe Especializada */}
-          <motion.div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 hover:scale-105" variants={fadeUpFast}>
-            <div className="w-14 h-14 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 mx-auto mb-4">
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <h3 className="text-white font-bold text-lg mb-2">Equipe Especializada</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">Profissionais altamente qualificados</p>
-          </motion.div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          className="text-center"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={fadeUp}
-        >
-          <button
-            onClick={openModal}
-            className="inline-block bg-orange-500 hover:bg-orange-400 text-white font-bold text-lg px-10 py-4 
-            rounded-full shadow-lg shadow-orange-500/20 transition-all duration-300 hover:scale-105"
-          >
-            Solicite uma Cotação
-          </button>
+              {/* Linha decorativa inferior */}
+              <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0082ca]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
-        <ModalForm
-          isOpen={isModalOpen}
-          onClose={closeModal} 
-            />
-      </>
   );
 }
