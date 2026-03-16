@@ -64,7 +64,8 @@ export default function ProductLines() {
           viewport={inViewViewport}
           variants={fadeUp}
         >
-          <span className="inline-block text-white/90 text-sm font-semibold tracking-widest uppercase mb-3 px-4 py-1.5 bg-white/10 backdrop-blur-sm 
+          <span className="inline-block text-white/90 text-sm 
+          font-semibold tracking-widest uppercase mb-3 px-4 py-1.5 bg-white/10 backdrop-blur-sm 
           border border-white/20 rounded-full">
             Linha de soluções
           </span>
