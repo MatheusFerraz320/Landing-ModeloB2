@@ -64,7 +64,8 @@ export default function ProductLines() {
           viewport={inViewViewport}
           variants={fadeUp}
         >
-          <span className="inline-block text-white/90 text-sm font-semibold tracking-widest uppercase mb-3 px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+          <span className="inline-block text-white/90 text-sm font-semibold tracking-widest uppercase mb-3 px-4 py-1.5 bg-white/10 backdrop-blur-sm 
+          border border-white/20 rounded-full">
             Linha de soluções
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 text-shadow-lg">
@@ -84,13 +85,17 @@ export default function ProductLines() {
           variants={fadeUp}
         >
           {/* Setas personalizadas */}
-          <button className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl flex items-center justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -ml-6 product-prev">
+          <button className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 
+          bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl 
+          flex items-center justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -ml-6 product-prev">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
-          <button className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl flex items-center justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -mr-6 product-next">
+          <button className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 
+          backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl flex items-center 
+          justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -mr-6 product-next">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
             </svg>

@@ -84,8 +84,8 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center">
               <button
                 onClick={openModal}
-                className="bg-red-500 hover:bg-orange-400 text-white font-bold text-lg px-10 py-4 rounded-full shadow-2xl 
-                shadow-red-500/50 hover:shadow-orange-400/60 hover:scale-105 transition-all duration-300"
+                className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-2xl 
+                shadow-red-500/50  hover:scale-105 transition-all duration-300"
               >
                 Solicitar Cotação
               </button>

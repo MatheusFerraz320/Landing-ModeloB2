@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { fadeUp, inViewViewport, staggerContainer } from "@/utils/motion";
 
 const inputClass =
-  "w-full rounded-xl border border-slate-200/90 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition";
+  "w-full rounded-xl border border-slate-200/90 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0082ca] focus:border-transparent transition";
 
 export default function ContactForm() {
   // PEGA AS UTMs DO HOOK
@@ -78,11 +78,13 @@ export default function ContactForm() {
 
   return (
     <section id="contato" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-white/5">
+      {/* Elementos decorativos com as cores do tema */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-8 h-72 w-72 rounded-full bg-blue-500/12 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-orange-500/12 blur-3xl" />
+        <div className="absolute top-20 left-8 h-72 w-72 rounded-full bg-[#0082ca]/10 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#a52727]/10 blur-3xl" />
         <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-slate-300/70 to-transparent" />
       </div>
+
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           className="text-center mb-10 sm:mb-14 relative"
@@ -91,18 +93,17 @@ export default function ContactForm() {
           viewport={inViewViewport}
           variants={fadeUp}
         >
-          <div className="inline-flex items-center gap-3 rounded-full border border-white/12 
-          bg-white/40 px-5 py-2 mb-6 shadow-[0_18px_60px_rgba(8,15,30,0.12)] backdrop-blur-md">
-            <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+          <div className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/40 px-5 py-2 mb-6 shadow-[0_18px_60px_rgba(8,15,30,0.12)] backdrop-blur-md">
+            <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
             <span className="text-sm font-semibold text-slate-900 tracking-[0.24em]">
-              Contato
+              FALE COM UM ESPECIALISTA
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">
-            Fale com um especialista
+            Pronto para transformar sua operação?
           </h2>
           <p className="text-slate-700 text-lg max-w-xl mx-auto">
-            Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.
+            Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas para oferecer a solução ideal.
           </p>
         </motion.div>
 
@@ -113,14 +114,14 @@ export default function ContactForm() {
           viewport={inViewViewport}
           variants={staggerContainer}
         >
-          {/* Info sidebar */}
+          {/* Info sidebar - ajustada para o tema */}
           <motion.div className="w-full lg:w-72 flex-shrink-0" variants={fadeUp}>
             <div className="rounded-2xl border border-slate-200 bg-white/75 p-6 sm:p-8 backdrop-blur-md text-slate-900 shadow-[0_18px_55px_rgba(15,23,42,0.12)]">
-              <h3 className="font-bold text-lg mb-6 text-slate-900">Fale conosco</h3>
+              <h3 className="font-bold text-lg mb-6 text-slate-900">Canais de atendimento</h3>
               <ul className="space-y-4 mb-6">
                 {/* Telefone */}
                 <li className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0 text-slate-700">
+                  <div className="w-9 h-9 rounded-lg bg-[#0082ca]/10 flex items-center justify-center flex-shrink-0 text-[#0082ca]">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
@@ -130,17 +131,17 @@ export default function ContactForm() {
 
                 {/* Email */}
                 <li className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0 text-slate-700">
+                  <div className="w-9 h-9 rounded-lg bg-[#0082ca]/10 flex items-center justify-center flex-shrink-0 text-[#0082ca]">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <span className="text-slate-700 text-sm">contato@modelob2.com.br</span>
+                  <span className="text-slate-700 text-sm">contato@kronox.com.br</span>
                 </li>
 
                 {/* Endereço */}
                 <li className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0 text-slate-700">
+                  <div className="w-9 h-9 rounded-lg bg-[#0082ca]/10 flex items-center justify-center flex-shrink-0 text-[#0082ca]">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -152,9 +153,16 @@ export default function ContactForm() {
 
               <hr className="border-slate-200 my-7" />
               <p className="text-slate-600 text-sm leading-relaxed">
-                Atendemos de <strong className="text-slate-900">segunda a sexta</strong>, das 8h às 18h. Respondemos todas as
-                solicitações em até 24 horas úteis.
+                Atendemos de <strong className="text-slate-900">segunda a sexta</strong>, das 8h às 18h. Respondemos todas as solicitações em até 24 horas úteis.
               </p>
+
+              {/* Selo de garantia */}
+              <div className="mt-6 flex items-center gap-2 text-xs text-slate-500">
+                <svg className="w-4 h-4 text-[#0082ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span>Atendimento 100% seguro e confidencial</span>
+              </div>
             </div>
           </motion.div>
 
@@ -162,8 +170,8 @@ export default function ContactForm() {
           <motion.div className="w-full flex-1" variants={fadeUp}>
             {submitted ? (
               <div className="rounded-2xl p-8 sm:p-12 border border-slate-200 bg-white/80 backdrop-blur-md shadow-[0_18px_55px_rgba(15,23,42,0.12)] text-center text-slate-900">
-                <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-5 ring-1 ring-emerald-300/25">
-                  <svg className="w-8 h-8 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-16 h-16 bg-[#0082ca]/20 rounded-full flex items-center justify-center mx-auto mb-5 ring-1 ring-[#0082ca]/30">
+                  <svg className="w-8 h-8 text-[#0082ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
@@ -195,7 +203,7 @@ export default function ContactForm() {
                 
                 <div>
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
-                    Nome completo <span className="text-orange-500">*</span>
+                    Nome completo <span className="text-[#a52727]">*</span>
                   </label>
                   <input
                     type="text"
@@ -209,7 +217,7 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
-                    E-mail <span className="text-orange-500">*</span>
+                    E-mail <span className="text-[#a52727]">*</span>
                   </label>
                   <input
                     type="email"
@@ -249,7 +257,7 @@ export default function ContactForm() {
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
-                    Assunto <span className="text-orange-500">*</span>
+                    Assunto <span className="text-[#a52727]">*</span>
                   </label>
                   <select
                     name="subject"
@@ -269,7 +277,7 @@ export default function ContactForm() {
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
-                    Mensagem <span className="text-orange-500">*</span>
+                    Mensagem <span className="text-[#a52727]">*</span>
                   </label>
                   <textarea
                     name="message"
@@ -277,14 +285,14 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     rows={4}
-                    placeholder="Descreva sua necessidade..."
+                    placeholder="Descreva sua necessidade ou projeto..."
                     className={`${inputClass} resize-none`}
                   />
                 </div>
                 <div className="sm:col-span-2">
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold text-lg py-4 rounded-xl shadow-[0_18px_45px_rgba(249,115,22,0.28)] transition-all duration-300 hover:scale-[1.01]"
+                    className="w-full bg-gradient-to-r from-[#0082ca] to-[#0066a0] hover:from-[#0066a0] hover:to-[#004b75] text-white font-bold text-lg py-4 rounded-xl shadow-[0_18px_45px_rgba(0,130,202,0.28)] transition-all duration-300 hover:scale-[1.01]"
                   >
                     Enviar Solicitação
                   </button>

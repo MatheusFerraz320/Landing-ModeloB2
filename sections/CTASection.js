@@ -34,7 +34,10 @@ export default function CTASection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={openModal}
-            className="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_20px_50px_rgba(249,115,22,0.3)] hover:from-orange-400 hover:to-amber-400 transition-all duration-300 hover:scale-105"
+            className="bg-gradient-to-r 
+            from-orange-500 to-amber-500 text-white 
+            font-bold text-lg px-10 py-4 rounded-full shadow-[0_20px_50px_rgba(249,115,22,0.3)]
+             hover:from-orange-400 hover:to-amber-400 transition-all duration-300 hover:scale-105"
           >
             Solicitar Cotação
           </button>

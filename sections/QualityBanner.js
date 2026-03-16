@@ -70,7 +70,7 @@ const benefits = [
   },
 ];
 
-export default function PorQueEscolherKronox() {
+export default function QualityBanner() {
   return (
     <section className="relative overflow-hidden py-20 md:py-28 bg-white">
       {/* Elementos decorativos de fundo com tons premium */}

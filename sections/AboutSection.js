@@ -2,19 +2,9 @@ import { motion } from "framer-motion";
 import { fadeUp, fadeUpFast, inViewViewport, staggerContainer } from "@/utils/motion";
 
 export default function AboutSection() {
-  // Os arrays benefits e stats foram removidos, pois agora ficarão no componente separado
 
   return (
     <section id="about" className="relative overflow-hidden py-20 md:py-28 bg-white">
-      {/* Elementos decorativos de fundo */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 max-w-7xl mx-auto">
-          <div className="absolute top-20 right-8 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
-          <div className="absolute bottom-10 left-0 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
-          <div className="absolute inset-x-6 top-8 h-px bg-gradient-to-r from-transparent via-slate-300/70 to-transparent" />
-        </div>
-      </div>
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -24,16 +14,16 @@ export default function AboutSection() {
           viewport={inViewViewport}
           variants={fadeUp}
         >
-          <div className="inline-flex items-center gap-3 rounded-full border border-orange-100 bg-orange-50 px-5 py-2 mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-3 rounded-full border border-red-100 bg-red-100 px-5 py-2 mb-6 shadow-sm">
             <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-            <span className="text-sm font-semibold text-orange-700 tracking-[0.24em]">
+            <span className="text-sm font-semibold text-red-700 tracking-[0.24em]">
               EFICIÊNCIA OPERACIONAL
             </span>
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-900 mb-6 tracking-tight">
             Sua elevatória ainda gera
-            <span className="font-bold text-orange-400 block mt-2">mais custo do que deveria?</span>
+            <span className="font-bold text-red-500 block mt-2">mais custo do que deveria?</span>
           </h2>
 
           <p className="text-slate-700 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
@@ -71,7 +61,7 @@ export default function AboutSection() {
                 Instalação simplificada, sem necessidade de obras civis complexas. Menor tempo de parada e rápida ativação.
               </p>
 
-              <div className="flex items-center gap-2 text-orange-400 font-medium">
+              <div className="flex items-center gap-2 text-red-400 font-medium">
                 <span>Eficiência desde o start</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -149,15 +139,13 @@ export default function AboutSection() {
           variants={fadeUp}
         >
           <a
-            href="#contato"
-            className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-4 text-white font-semibold shadow-[0_22px_55px_rgba(249,115,22,0.28)] transition-all duration-300 hover:from-orange-400 hover:to-amber-400"
+          href="#contato"
+          className="inline-flex items-center gap-3 rounded-full bg-red-400 px-8 py-4 
+          text-white font-semibold shadow-lg shadow-[0_20px_50px_rgba(249,115,22,0.3)] 
+          transition-all duration-300 hover:scale-105 relative overflow-hidden group"
           >
-            <span className="text-lg">Quero reduzir custos</span>
-            <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            Entre em contato agora
           </a>
-
           <p className="text-sm text-slate-900 mt-4">
             ✓ Análise gratuita  ✓ Projeto personalizado  ✓ Suporte técnico
           </p>

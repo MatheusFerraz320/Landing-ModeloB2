@@ -1,6 +1,6 @@
 import Head from "next/head";
 import HeroSection from "@/sections/HeroSection";
-import PartnersCarousel from "@/sections/PartnersCarousel";
+import Cases from "@/sections/Cases";
 import QualityBanner from "@/sections/QualityBanner";
 import ProductLines from "@/sections/ProductLines";
 import AboutSection from "@/sections/AboutSection";
@@ -33,7 +33,7 @@ export default function Home() {
         <ProductLines />
         
         {/* 4. Marcas Parceiras — carrossel */}
-        <PartnersCarousel />
+        <Cases />
 
         {/* 5. Tira de qualidade com CTA */}
         <QualityBanner />
