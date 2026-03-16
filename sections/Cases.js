@@ -61,6 +61,13 @@ export default function Cases() {
           viewport={inViewViewport}
           variants={fadeUp}
         >
+          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2 mb-6 backdrop-blur-sm">
+            <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
+            <span className="text-sm font-semibold text-white/80 tracking-[0.24em]">
+              PROVA SOCIAL
+            </span>
+          </div>
+          
           <div className="mb-6 flex flex-col items-center gap-2">
             <Image
               src="/kronoxlogo.png"
@@ -71,13 +78,6 @@ export default function Cases() {
             />
             <span className="text-4xl font-bold text-white">
               Kronox<span className="text-red-500">.</span>
-            </span>
-          </div>
-
-          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2 mb-6 backdrop-blur-sm">
-            <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
-            <span className="text-sm font-semibold text-white/80 tracking-[0.24em]">
-              PROVA SOCIAL
             </span>
           </div>
 

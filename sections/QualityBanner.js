@@ -119,7 +119,9 @@ export default function QualityBanner() {
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,130,202,0.08)] hover:border-[#0082ca]/20 group"
+              className="relative overflow-hidden rounded-3xl bg-white 
+              p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-all 
+              duration-300 hover:shadow-[0_20px_40px_rgba(0,130,202,0.08)] hover:border-[#0082ca]/20 group"
               variants={fadeUpFast}
             >
               {/* Detalhe sutil no canto */}
