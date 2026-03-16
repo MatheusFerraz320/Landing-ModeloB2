@@ -1,238 +1,188 @@
-"use client"
-
-import { useState, useEffect, useRef } from "react"
-import { FiSend, FiMessageCircle, FiUser, FiPhone, FiTarget, FiPackage } from "react-icons/fi"
-import { BsChatDots, BsWhatsapp } from "react-icons/bs"
-import { HiOutlineChatAlt2 } from "react-icons/hi"
+import { useState, useEffect } from "react";
+import { BsChatDots, BsWhatsapp } from "react-icons/bs";
+import { HiOutlineChatAlt2 } from "react-icons/hi";
+import { FiUser } from "react-icons/fi";
 
 export default function Chatbot() {
-  const steps = [
-    { 
-      key: "servico", 
-      question: "Seja bem-vindo! Qual serviço você procura?",
-      icon: <FiPackage className="text-orange-500" />
+  // Definição dos passos (steps)
+  const steps = {
+    inicio: {
+      message: "Olá 👋 Vou te direcionar para o atendimento.",
+      options: [
+        { label: "Atendimento", next: "atendimento" },
+        { label: "Orçamento", next: "orcamento" }
+      ]
     },
-    { 
-      key: "objetivo", 
-      question: " Qual o objetivo do seu projeto?",
-      icon: <FiTarget className="text-orange-500" />
+    atendimento: {
+      message: "Qual tipo de atendimento você precisa?",
+      options: [
+        { label: "Suporte técnico", next: "suporte" },
+        { label: "Financeiro", next: "financeiro" }
+      ]
     },
-    { 
-      key: "nome", 
-      question: " Perfeito! Qual seu nome?",
-      icon: <FiUser className="text-orange-500" />
+    orcamento: {
+      message: "Qual tipo de projeto você deseja?",
+      options: [
+        { label: "Site institucional", next: "site" },
+        { label: "Landing page", next: "landing" }
+      ]
     },
-    { 
-      key: "whatsapp", 
-      question: "Para finalizar, qual seu WhatsApp?",
-      icon: <FiPhone className="text-orange-500" />
+    suporte: {
+      message: "Perfeito! Vamos continuar no WhatsApp.",
+      whatsapp: "5511999999999" // Substitua pelo número real
+    },
+    financeiro: {
+      message: "Ok! Vamos falar no WhatsApp.",
+      whatsapp: "5511999999999"
+    },
+    site: {
+      message: "Ótima escolha! Vamos continuar no WhatsApp.",
+      whatsapp: "5511999999999"
+    },
+    landing: {
+      message: "Perfeito! Vamos falar no WhatsApp.",
+      whatsapp: "5511999999999"
     }
-  ]
+  };
 
-  const [stepIndex, setStepIndex] = useState(0)
-  const [messages, setMessages] = useState([])
-  const [input, setInput] = useState("")
-  const [answers, setAnswers] = useState({})
-  const [isTyping, setIsTyping] = useState(false)
+  const [step, setStep] = useState("inicio");
+  const [messages, setMessages] = useState([]);
+  const [answers, setAnswers] = useState([]); // Guarda as respostas do usuário
+  const [isTyping, setIsTyping] = useState(false);
 
-  const chatRef = useRef(null)
-  const inputRef = useRef(null)
-
+  // Inicializa com a mensagem de boas-vindas
   useEffect(() => {
-    addBotMessage(steps[0].question)
-    // Foca no input automaticamente
-    setTimeout(() => inputRef.current?.focus(), 500)
-  }, [])
+    setMessages([{ type: "bot", text: steps.inicio.message }]);
+  }, []);
 
-  function addBotMessage(text) {
-    setIsTyping(true)
+  const handleOption = (option) => {
+    // Adiciona a resposta do usuário às mensagens e ao histórico
+    setMessages((prev) => [...prev, { type: "user", text: option.label }]);
+    setAnswers((prev) => [...prev, option.label]);
+
+    // Muda para o próximo passo
+    setStep(option.next);
+
+    // Simula o bot "digitando"
+    setIsTyping(true);
     setTimeout(() => {
-      setMessages(prev => [...prev, { type: "bot", text }])
-      setIsTyping(false)
-    }, 800)
-  }
+      setMessages((prev) => [
+        ...prev,
+        { type: "bot", text: steps[option.next].message }
+      ]);
+      setIsTyping(false);
+    }, 800);
+  };
 
-  function handleSend() {
-    if (!input.trim()) return
+  const currentStep = steps[step];
 
-    const currentStep = steps[stepIndex]
+  // Monta a mensagem para o WhatsApp com todas as respostas
+  const getWhatsAppMessage = () => {
+    const baseMessage = "Olá! Vim do chatbot e minhas escolhas foram:";
+    const answersText = answers.join(" → "); // Ex: Atendimento → Suporte técnico
+    return encodeURIComponent(`${baseMessage}\n${answersText}`);
+  };
 
-    // Adiciona mensagem do usuário
-    setMessages(prev => [
-      ...prev,
-      { type: "user", text: input }
-    ])
-
-    const updated = {
-      ...answers,
-      [currentStep.key]: input
-    }
-
-    setAnswers(updated)
-    setInput("")
-
-    const nextStep = stepIndex + 1
-
-    if (nextStep < steps.length) {
-      setStepIndex(nextStep)
-      addBotMessage(steps[nextStep].question)
-    } else {
-      const message = `
-*Atendimento Personalizado - Site*
-
-* Nome:* ${updated.nome}
-* WhatsApp:* ${updated.whatsapp}
-* Serviço:* ${updated.servico}
-* Objetivo:* ${updated.objetivo}
-`
-
-      addBotMessage("✅ Perfeito! Redirecionando para nosso WhatsApp...")
-
-      setTimeout(() => {
-        window.open(
-          `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`,
-          "_blank"
-        )
-      }, 2000)
-    }
-  }
-
-  useEffect(() => {
-    if (chatRef.current) {
-      chatRef.current.scrollTop = chatRef.current.scrollHeight
-    }
-  }, [messages])
+  const whatsappUrl = currentStep.whatsapp
+    ? `https://wa.me/${currentStep.whatsapp}?text=${getWhatsAppMessage()}`
+    : "#";
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden transform transition-all duration-300 hover:shadow-3xl">
-      
-      {/* Header */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-5 flex items-center gap-3">
-        <div className="relative">
-          <div className="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center">
-            <BsChatDots className="w-5 h-5 text-orange-400" />
-          </div>
-          <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-slate-900 animate-pulse" />
+    <div className="w-[380px] h-[560px] bg-white rounded-2xl shadow-2xl border flex flex-col overflow-hidden transition-all duration-300 ease-in-out">
+      {/* HEADER */}
+      <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white p-4 flex items-center gap-3">
+        <div className="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center">
+          <BsChatDots className="text-orange-400 text-xl" />
         </div>
-        
         <div className="flex-1">
-          <h3 className="font-semibold text-base">Atendimento Online</h3>
-          <p className="text-xs text-slate-400 flex items-center gap-1">
-            <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-            Online • Respondemos em minutos
+          <h3 className="font-semibold">Atendimento Virtual</h3>
+          <p className="text-xs text-slate-300 flex items-center gap-1">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            Online • Respondemos em instantes
           </p>
-        </div>
-        
-        <div className="flex gap-1">
-          <div className="w-2 h-2 rounded-full bg-orange-500/50" />
-          <div className="w-2 h-2 rounded-full bg-orange-500/30" />
-          <div className="w-2 h-2 rounded-full bg-orange-500/10" />
         </div>
       </div>
 
-      {/* Chat Area */}
-      <div
-        ref={chatRef}
-        className="flex-1 overflow-y-auto p-5 space-y-4 bg-gradient-to-b from-gray-50 to-white"
-        style={{ minHeight: "320px", maxHeight: "320px" }}
-      >
-        {messages.map((msg, index) => (
+      {/* CHAT AREA */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 scroll-smooth">
+        {messages.map((msg, i) => (
           <div
-            key={index}
-            className={`flex ${msg.type === "user" ? "justify-end" : "justify-start"} animate-slideIn`}
+            key={i}
+            className={`flex items-end gap-2 ${
+              msg.type === "user" ? "justify-end" : "justify-start"
+            }`}
           >
-            {/* Avatar  */}
             {msg.type === "bot" && (
-              <div className="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center mr-2 flex-shrink-0 self-end mb-1">
-                <HiOutlineChatAlt2 className="w-4 h-4 text-orange-500" />
+              <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                <HiOutlineChatAlt2 className="text-orange-500 text-lg" />
               </div>
             )}
-            
             <div
-              className={`px-4 py-3 rounded-2xl text-sm max-w-[85%] shadow-sm ${
+              className={`px-4 py-2 text-sm rounded-2xl max-w-[75%] shadow-sm ${
                 msg.type === "user"
-                  ? "bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-br-none"
-                  : "bg-white border border-gray-100 rounded-bl-none"
+                  ? "bg-slate-800 text-white rounded-br-none"
+                  : "bg-white border border-gray-200 rounded-bl-none"
               }`}
             >
               {msg.text}
-              
-              {/* Horário da mensagem (simulado) */}
-              <span className={`text-[10px] block mt-1 ${
-                msg.type === "user" ? "text-slate-400" : "text-slate-400"
-              }`}>
-                {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </span>
             </div>
-            
-            {/* Avatar para mensagens do usuário */}
             {msg.type === "user" && (
-              <div className="w-7 h-7 rounded-full bg-slate-200 flex items-center justify-center ml-2 flex-shrink-0 self-end mb-1">
-                <FiUser className="w-4 h-4 text-slate-600" />
+              <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center flex-shrink-0">
+                <FiUser className="text-gray-700 text-lg" />
               </div>
             )}
           </div>
         ))}
-        
+
         {/* Indicador de digitação */}
         {isTyping && (
-          <div className="flex justify-start animate-slideIn">
-            <div className="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center mr-2">
-              <HiOutlineChatAlt2 className="w-4 h-4 text-orange-500" />
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center">
+              <HiOutlineChatAlt2 className="text-orange-500 text-lg" />
             </div>
-            <div className="bg-white border border-gray-100 rounded-2xl rounded-bl-none px-4 py-3">
+            <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-none px-4 py-2 shadow-sm">
               <div className="flex gap-1">
-                <span className="w-2 h-2 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                <span className="w-2 h-2 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                <span className="w-2 h-2 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></span>
+                <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></span>
+                <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></span>
               </div>
             </div>
           </div>
         )}
-      </div>
 
-      {/* Input User */}
-      <div className="p-4 border-t border-gray-100 bg-white">
-        <div className="flex items-center gap-2 bg-gray-50 rounded-xl border border-gray-200 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-500/20 transition-all duration-200">
-          <input
-            ref={inputRef}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
-            placeholder="Digite sua resposta..."
-            className="flex-1 bg-transparent px-4 py-3 text-sm outline-none"
-          />
-          
-          <button
-            onClick={handleSend}
-            disabled={!input.trim()}
-            className={`mr-2 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 ${
-              input.trim()
-                ? "bg-orange-500 text-white hover:bg-orange-600 shadow-md shadow-orange-500/25"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
-            }`}
+        {/* OPÇÕES - exibe apenas se houver opções e não estiver em um passo final */}
+        {currentStep.options && !currentStep.whatsapp && (
+          <div className="flex flex-col gap-2 mt-4">
+            {currentStep.options.map((option) => (
+              <button
+                key={option.label}
+                onClick={() => handleOption(option)}
+                className="text-left px-4 py-3 rounded-xl bg-white border border-gray-200 hover:border-orange-300 hover:bg-orange-50 transition-all duration-200 text-sm font-medium shadow-sm hover:shadow"
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* BOTÃO WHATSAPP - exibe quando o passo tem número */}
+        {currentStep.whatsapp && (
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 mt-4 bg-green-500 text-white py-3 rounded-xl hover:bg-green-600 transition-all duration-200 font-medium shadow-md hover:shadow-lg"
           >
-            <FiSend className="w-4 h-4" />
-          </button>
-        </div>
+            <BsWhatsapp size={20} />
+            Continuar no WhatsApp
+          </a>
+        )}
       </div>
 
-      <style jsx>{`
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-slideIn {
-          animation: slideIn 0.3s ease-out;
-        }
-      `}</style>
+      {/* FOOTER OPCIONAL - créditos ou informação */}
+      <div className="bg-gray-100 p-2 text-center text-xs text-gray-500 border-t">
+        Atendimento 24h • Escolha uma opção para começar
+      </div>
     </div>
-  )
+  );
 }

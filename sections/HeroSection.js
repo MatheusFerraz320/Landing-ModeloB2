@@ -26,18 +26,18 @@ return (
 
 <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
 
-<div className="flex flex-col lg:flex-row items-center gap-16">
+<div className="flex flex-col items-center gap-16">
 
 {/* TEXTO HERO */}
 <motion.div
-className="flex-1 text-center lg:text-left"
+className="w-full max-w-3xl mx-auto text-center"
 initial="hidden"
 whileInView="show"
 viewport={inViewViewport}
 variants={fadeUp}
 >
 
-<div className="mx-auto lg:mx-0 mb-6 w-20 h-20 rounded-2xl 
+<div className="mx-auto mb-6 w-20 h-20 rounded-2xl 
 bg-white/20 border-2 border-white/40 flex items-center justify-center backdrop-blur">
 
 <span className="text-white font-black text-2xl tracking-widest">
@@ -49,12 +49,12 @@ MB
 Soluções industriais de alta performance
 </h1>
 
-<p className="text-lg md:text-xl text-blue-100/80 max-w-xl mb-10">
+<p className="text-lg md:text-xl text-blue-100/80 max-w-xl mx-auto mb-10">
 Há mais de 15 anos fornecendo produtos e serviços de qualidade para os maiores players do mercado.
 </p>
 
 {/* ✅ BOTÕES */}
-<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center sm:justify-center lg:justify-start">
+<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center">
   <button
     onClick={openModal}
     className="bg-orange-500 hover:bg-orange-400 text-white font-bold text-lg px-10 py-4 rounded-full 
@@ -88,19 +88,8 @@ Há mais de 15 anos fornecendo produtos e serviços de qualidade para os maiores
     </svg>
   </a>
 </div>
-
 </motion.div> {/* Fim da div do texto */}
 
-{/* CHATBOT */}
-<motion.div
-className="flex-1 w-full max-w-md"
-initial="hidden"
-whileInView="show"
-viewport={inViewViewport}
-variants={fadeUp}
->
-<ChatBot />
-</motion.div>
 
 </div> {/* Fim da flex row */}
 

@@ -65,7 +65,7 @@ export default function Footer() {
               <li><a href="#hero" className="text-sm hover:text-orange-400 transition-colors">Início</a></li>
               <li><a href="#parceiros" className="text-sm hover:text-orange-400 transition-colors">Parceiros</a></li>
               <li><a href="#produtos" className="text-sm hover:text-orange-400 transition-colors">Produtos</a></li>
-              <li><a href="#qualidade" className="text-sm hover:text-orange-400 transition-colors">Qualidade</a></li>
+              <li><a href="#quality-section" className="text-sm hover:text-orange-400 transition-colors">Qualidade</a></li>
               <li><a href="#contato" className="text-sm hover:text-orange-400 transition-colors">Contato</a></li>
             </ul>
           </motion.div>
@@ -76,11 +76,11 @@ export default function Footer() {
               Produtos
             </div>
             <ul className="space-y-3">
-              <li><p className="text-sm hover:text-orange-400 transition-colors">Componentes CNC</p></li>
-              <li><p className="text-sm hover:text-orange-400 transition-colors">Tubulações</p></li>
-              <li><p className="text-sm hover:text-orange-400 transition-colors">Painéis Elétricos</p></li>
-              <li><p className="text-sm hover:text-orange-400 transition-colors">Reservatórios</p></li>
-              <li><p className="text-sm hover:text-orange-400 transition-colors">Estruturas Metálicas</p></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Componentes</p></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Componentes</p></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Componentes</p></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Componentes</p></li>
+              <li><p className="text-sm hover:text-orange-400 transition-colors">Componentes</p></li>
             </ul>
           </motion.div>
 
