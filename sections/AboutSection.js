@@ -14,9 +14,9 @@ export default function AboutSection() {
           viewport={inViewViewport}
           variants={fadeUp}
         >
-          <div className="inline-flex items-center gap-3 rounded-full border border-red-100 bg-red-100 px-5 py-2 mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-3 rounded-full border border-red-100 bg-red-400 px-5 py-2 mb-6 shadow-sm">
             <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-            <span className="text-sm font-semibold text-red-700 tracking-[0.24em]">
+            <span className="text-sm font-semibold text-white ">
               EFICIÊNCIA OPERACIONAL
             </span>
           </div>
