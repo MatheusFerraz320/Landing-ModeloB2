@@ -30,10 +30,6 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/58 via-slate-950/48 to-slate-950/62" />
         </div>
 
-        {/* Elementos decorativos (ajustados com opacidade menor) */}
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-600/20 blur-3xl" />
-        <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-orange-500/20 blur-3xl" />
-
         {/* Conteúdo principal (acima do overlay) */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
           {/* HEADER com logo e CTA */}
