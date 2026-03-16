@@ -23,11 +23,11 @@ export default function HeroSection() {
             alt="Fundo industrial"
             fill
             priority
-            className="object-cover"
+            className="object-cover scale-[1.03] blur-[2px] brightness-[0.82] saturate-[0.88]"
             sizes="100vw"
           />
-          {/* Overlay escuro para contraste */}
-          <div className="absolute inset-0 bg-black/50" />
+          {/* Overlay em gradiente para suavizar o fundo sem pesar o bloco inteiro */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/58 via-slate-950/48 to-slate-950/62" />
         </div>
 
         {/* Elementos decorativos (ajustados com opacidade menor) */}
