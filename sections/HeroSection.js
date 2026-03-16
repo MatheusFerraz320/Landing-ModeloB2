@@ -49,35 +49,24 @@ export default function HeroSection() {
               priority
             />
             </div>
-
-            {/* CTA do header */}
-            <button
-              onClick={openModal}
-              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm 
-              px-6 py-2.5 text-sm font-semibold text-white border border-white/20 hover:scale-105 transition-all duration-300"
-            >
-              Fale com especialista
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
           </div>
 
           {/* TEXTO HERO */}
           <motion.div
-            className="w-full max-w-3xl mx-auto text-center"
+            className="w-full max-w-4xl mx-auto text-center"
             initial="hidden"
             whileInView="show"
             viewport={inViewViewport}
             variants={fadeUp}
           >
-            <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
-              Soluções industriais de alta performance
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-50 leading-[1.05] tracking-tight mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)]">
+              Soluções industriais
+              <span className="block text-red-500">de alta performance</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-white/90 max-w-xl mx-auto mb-10">
-              Soluções Kronox para companhias de saneamento , concessionárias. SAAEs e empreendimentos que precisam reduzir
-              manutenção evitar bloqueios e simplificar a operação
+            <p className="text-lg md:text-2xl font-medium text-slate-100/95 max-w-3xl mx-auto mb-10 leading-relaxed drop-shadow-[0_3px_12px_rgba(2,6,23,0.8)]">
+              Soluções Kronox para companhias de saneamento, concessionárias, SAAEs e empreendimentos que precisam reduzir manutenção,
+              evitar bloqueios e simplificar a operação.
             </p>
 
             {/* BOTÕES PRINCIPAIS */}
