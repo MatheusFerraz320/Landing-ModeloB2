@@ -100,7 +100,7 @@ export default function QualityBanner() {
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-800 mb-6 tracking-tight">
             Por que escolher{" "}
-            <span className="font-bold text-[#0082ca]">Kronox?</span>
+            <span className="font-bold text-red-500">Kronox?</span>
           </h2>
 
           <p className="text-slate-600 text-lg md:text-xl leading-relaxed">

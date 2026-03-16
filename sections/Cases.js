@@ -61,10 +61,16 @@ export default function Cases() {
           viewport={inViewViewport}
           variants={fadeUp}
         >
-          {/* Espaço para o logotipo da Kronox (simulado com texto, substituir por imagem) */}
-          <div className="mb-6">
+          <div className="mb-6 flex flex-col items-center gap-2">
+            <Image
+              src="/kronoxlogo.png"
+              alt="Kronox"
+              width={160}
+              height={52}
+              className="object-contain w-28 h-auto sm:w-36 md:w-40"
+            />
             <span className="text-4xl font-bold text-white">
-              Kronox<span className="text-[#0082ca]">.</span>
+              Kronox<span className="text-red-500">.</span>
             </span>
           </div>
 

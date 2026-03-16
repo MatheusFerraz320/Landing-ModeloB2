@@ -155,7 +155,10 @@ export default function ProductLines() {
                     </p>
                     <a
                       href="#contato"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-[#a52727] hover:text-[#c03c3c] transition-colors group/link"
+                      className="inline-flex 
+                      items-center gap-2 text-sm md:text-base font-semibold 
+                      text-red-500 hover:text-red-700 transition-colors
+                       group/link"
                     >
                       Solicitar cotação
                       <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -84,15 +84,14 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center">
               <button
                 onClick={openModal}
-                className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-2xl 
-                shadow-red-500/50  hover:scale-105 transition-all duration-300"
+                className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300"
               >
                 Solicitar Cotação
               </button>
 
               <a
                 href="#about"
-                className="group bg-red-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-2xl shadow-red-500/50  transition-all duration-300 hover:scale-105 inline-flex items-center gap-4"
+                className="group bg-red-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] transition-all duration-300 hover:scale-105 inline-flex items-center gap-4"
               >
                 <span>Saber mais</span>
                 <svg

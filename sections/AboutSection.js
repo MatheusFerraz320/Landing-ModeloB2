@@ -140,8 +140,8 @@ export default function AboutSection() {
         >
           <a
           href="#contato"
-          className="inline-flex items-center gap-3 rounded-full bg-red-400 px-8 py-4 
-          text-white font-semibold shadow-lg shadow-[0_20px_50px_rgba(249,115,22,0.3)] 
+          className="inline-flex items-center gap-3 rounded-full bg-red-500 px-8 py-4 
+          text-white font-semibold shadow-[0_0_25px_rgba(239,68,68,0.7)] 
           transition-all duration-300 hover:scale-105 relative overflow-hidden group"
           >
             Entre em contato agora
