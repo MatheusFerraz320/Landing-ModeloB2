@@ -191,8 +191,11 @@ export default function ContactForm() {
               </div>
             ) : (
               <form
+                name="[b2] Form kronox"
                 onSubmit={handleSubmit}
-                className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-md p-6 sm:p-8 shadow-[0_18px_55px_rgba(15,23,42,0.12)] grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
+                className="rounded-2xl border border-slate-200 
+                bg-white/80 backdrop-blur-md p-6 sm:p-8 
+                shadow-[0_18px_55px_rgba(15,23,42,0.12)] grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
               >
                 {/*  HIDDEN PARA UTMs */}
                 <input type="hidden" name="utm_source" value={form.utm_source} />
@@ -234,6 +237,7 @@ export default function ContactForm() {
                     Telefone / WhatsApp
                   </label>
                   <input
+                    required
                     type="tel"
                     name="phone"
                     value={form.phone}
@@ -247,6 +251,7 @@ export default function ContactForm() {
                     Empresa
                   </label>
                   <input
+                    required
                     type="text"
                     name="company"
                     value={form.company}
@@ -257,31 +262,29 @@ export default function ContactForm() {
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
-                    Assunto <span className="text-[#a52727]">*</span>
+                    Finalidade <span className="text-[#a52727]">*</span>
                   </label>
                   <select
-                    name="subject"
-                    value={form.subject}
+                    name="finality"
+                    value={form.finality}
                     onChange={handleChange}
                     required
                     className={inputClass}
                   >
                     <option value="" disabled>
-                      Selecione um assunto
+                      Selecione uma finalidade
                     </option>
-                    <option>Cotação de produto</option>
-                    <option>Parceria comercial</option>
-                    <option>Suporte técnico</option>
-                    <option>Outros</option>
+                    <option>Para consumo</option>
+                    <option>Para revenda</option>
                   </select>
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
-                    Mensagem <span className="text-[#a52727]">*</span>
+                    Produto/serviço de interesse <span className="text-[#a52727]">*</span>
                   </label>
                   <textarea
-                    name="message"
-                    value={form.message}
+                    name="product"
+                    value={form.product}
                     onChange={handleChange}
                     required
                     rows={4}

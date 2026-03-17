@@ -6,7 +6,6 @@ export default function Document() {
   return (
     <Html lang="pt-BR">
       <Head>
-
       </Head>
       <body className="antialiased">
         {/* Google Tag Manager (noscript) */}
