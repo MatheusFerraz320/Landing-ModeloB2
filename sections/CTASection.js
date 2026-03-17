@@ -24,10 +24,12 @@ export default function CTASection() {
         variants={fadeUp}
       >
         <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
-          Pronto para elevar sua operação?
+         Fale com a Vazão e entenda qual solução {" "}
+         <span className="text-red-500 block mt-1">Kronox</span>
+         {" "}faz sentido para sua operação
         </h2>
         <p className="text-slate-200 text-xl mb-10 max-w-2xl mx-auto">
-          Entre em contato agora e descubra como nossas soluções podem transformar seus resultados.
+          Receba uma avaliação técnica da sua necessidade com foco em eficiência, confiabilidade e viabilidade de implantação.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
@@ -35,16 +37,10 @@ export default function CTASection() {
             className="bg-red-500 
              text-white 
             font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)]
-            transition-all duration-300 hover:scale-105"
+            transition-all duration-300 hover:scale-105 "
           >
-            Solicitar Cotação
+            Quero falar com um especialista
           </button>
-          <a
-            href="#produtos"
-            className="border-2 border-white/45 text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-white hover:text-slate-900 transition-all duration-300"
-          >
-            Conhecer Produtos
-          </a>
         </div>
       </motion.div>
     </section>

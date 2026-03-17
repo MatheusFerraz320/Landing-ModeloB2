@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { fadeUp, inViewViewport } from '@/utils/motion';
+import { useState } from 'react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -13,35 +14,44 @@ export default function ProductLines() {
     {
       name: "Baby Booster",
       badge: "Compacto",
-      description: "Compacto e econômico para aplicações pontuais.",
-      image: "/images/produtos/baby-booster.jpg",
+      description: "Compacto e econômico para aplicações pontuais .",
+      image: "/babyBooster.webp",
       alt: "Baby Booster - solução compacta"
     },
     {
       name: "Booster Z",
       badge: "Flexível",
       description: "Flexível para operação e manutenção.",
-      image: "/images/produtos/booster-z.jpg",
+      image: "/boosterZ.webp",
       alt: "Booster Z - flexível para operação e manutenção"
     },
     {
       name: "Booster W",
       badge: "Alta vazão",
       description: "Indicado para maiores vazões e variações de demanda.",
-      image: "/images/produtos/booster-w.jpg",
+      image: "/boosterW.webp",
       alt: "Booster W - para altas vazões"
     },
     {
       name: "Booster Hércules",
       badge: "Expansível",
       description: "Preparado para expansão gradual do sistema.",
-      image: "/images/produtos/booster-hercules.jpg",
+      image: "/boosterHercules.webp",
       alt: "Booster Hércules - preparado para expansão"
     }
   ];
 
+  const productChange = (product) => {
+  const whatsMsg = `Olá Kronox, estou interessado em saber mais sobre ${product.name}. 
+  Poderiam me fornecer mais informações?`;
+
+  const encodedMsg = encodeURIComponent(whatsMsg);
+
+  window.open(`https://wa.me/55991999999?text=${encodedMsg}`, '_blank');
+};
+
   return (
-    <section id="solucoes" className="relative overflow-hidden py-24">
+    <section id="products" className="relative overflow-hidden py-24">
       {/* Fundo principal com gradiente elegante na cor #0082ca */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0082ca] via-[#0066a0] to-[#004b75]" />
       
@@ -129,19 +139,29 @@ export default function ProductLines() {
             className="pb-14"
           >
             {products.map((product, index) => (
-              <SwiperSlide key={index}>
-                <div className="group rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm shadow-[0_24px_50px_rgba(0,0,0,0.3)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.4)] hover:border-[#a52727]/40 transition-all duration-300 overflow-hidden h-full flex flex-col">
+              <SwiperSlide key={index} className="h-auto">
+                <div className="group rounded-2xl 
+                border border-white/20 bg-white/10 backdrop-blur-sm 
+                shadow-[0_24px_50px_rgba(0,0,0,0.3)] 
+                hover:shadow-[0_30px_60px_rgba(0,0,0,0.4)] 
+                hover:border-[#a52727]/40 transition-all duration-300 
+                overflow-hidden h-[470px] flex flex-col">
                   
                   {/* Imagem do produto */}
-                  <div className="relative h-56 bg-slate-800/60 overflow-hidden">
+                  <div className="relative h-60 bg-slate-800/60 overflow-hidden">
                     <img
                       src={product.image}
                       alt={product.alt}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full 
+                      h-full object-fill
+                      group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
                     />
                     {/* Badge com tema vermelho */}
-                    <span className="absolute top-4 right-4 text-xs font-semibold bg-[#a52727] text-white px-3 py-1.5 rounded-full shadow-lg">
+                    <span className="absolute top-4 
+                    right-4 text-xs 
+                    font-semibold bg-[#a52727] 
+                    text-white px-3 py-1.5 rounded-full shadow-lg">
                       {product.badge}
                     </span>
                   </div>
@@ -151,21 +171,22 @@ export default function ProductLines() {
                     <h3 className="text-xl font-bold text-white mb-3">
                       {product.name}
                     </h3>
-                    <p className="text-white/80 leading-relaxed mb-4 flex-1">
+                    <p className="text-white/80 leading-relaxed mb-4 min-h-[72px]">
                       {product.description}
                     </p>
-                    <a
-                      href="#contato"
+                    <button
+                      onClick={() => productChange(product)}
                       className="inline-flex 
-                      items-center gap-2 text-sm md:text-base font-semibold 
-                      text-red-500 hover:text-red-700 transition-colors
+                      items-center gap-2 text-sm md:text-base font-extrabold 
+                      text-white hover:text-red-700 transition-colors
                        group/link"
                     >
                       Solicitar cotação
                       <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </a>
+                    </button>
+
                   </div>
                 </div>
               </SwiperSlide>

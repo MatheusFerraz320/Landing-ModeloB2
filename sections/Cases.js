@@ -17,24 +17,24 @@ const clientLogos = [
 // Cases extraídos dos PDFs (conteúdo simulado, ajustar conforme necessário)
 const cases = [
   {
-    title: 'Iguá Cuiabá',
-    location: 'Cuiabá - MT',
+    title: 'Instalação na Sabesp',
+    location: 'Hortolândia - SP',
     description:
-      'Implementação de soluções de bombeamento em linha que reduziram custos operacionais em 25% e aumentaram a eficiência energética do sistema de abastecimento.',
+      ' Modelo baby booster 2,2Kw/2VV.',
     badge: 'Projeto Premiado',
     image: '/cases/igua-cuiaba.jpg', 
   },
   {
-    title: 'DAEV Valinhos',
-    location: 'Valinhos - SP',
+    title: 'ELEVATÓRIO COM SISTEMA DE BOMBEAMENTO EM LINHA',
+    location: 'IGUÁ-CUIABÁ/MT',
     description:
-      'Modernização de elevatórias com tecnologia Kronox, eliminando extravasamentos e reduzindo intervenções de manutenção em 40%.',
-    badge: 'Eficiência Operacional',
+      'Prêmio Projeto de Excelência EM Resultados com a EEE IN-Line.',
+    badge: 'Premiação',
     image: '/cases/daevalinhos.jpg',
   },
   {
-    title: 'Autarquia Municipal',
-    location: 'Região Sudeste',
+    title: 'Instalação em condomínio ',
+    location: 'SÃO PEDRO/SP',
     description:
       'Fornecimento de sistemas modulares para expansão gradual da capacidade de tratamento, atendendo ao crescimento da demanda.',
     badge: 'Expansão',

@@ -71,7 +71,7 @@ export default function HeroSection() {
                 onClick={openModal}
                 className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300"
               >
-                Solicitar Cotação
+                Solicitar avaliação técnica
               </button>
 
               <a

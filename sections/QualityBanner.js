@@ -119,9 +119,10 @@ export default function QualityBanner() {
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              className="relative overflow-hidden rounded-3xl bg-white 
-              p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 transition-all 
-              duration-300 hover:shadow-[0_20px_40px_rgba(0,130,202,0.08)] hover:border-[#0082ca]/20 group"
+              className="relative overflow-hidden rounded-3xl bg-white/70 backdrop-blur-md
+              p-8 shadow-xl border border-slate-300/70 ring-1 ring-white/60 transition-all
+              duration-300 hover:scale-[1.02] hover:shadow-[0_24px_48px_rgba(0,130,202,0.18)]
+              hover:border-[#0082ca]/40 group"
               variants={fadeUpFast}
             >
               {/* Detalhe sutil no canto */}
@@ -134,10 +135,10 @@ export default function QualityBanner() {
                   {benefit.icon}
                 </div>
 
-                <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-[#0082ca] transition-colors">
+                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#0082ca] transition-colors">
                   {benefit.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">{benefit.description}</p>
+                <p className="text-slate-700 leading-relaxed">{benefit.description}</p>
               </div>
 
               {/* Linha decorativa inferior */}

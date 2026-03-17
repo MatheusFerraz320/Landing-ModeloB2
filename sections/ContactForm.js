@@ -292,7 +292,12 @@ export default function ContactForm() {
                 <div className="sm:col-span-2">
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-[#0082ca] to-[#0066a0] hover:from-[#0066a0] hover:to-[#004b75] text-white font-bold text-lg py-4 rounded-xl shadow-[0_18px_45px_rgba(0,130,202,0.28)] transition-all duration-300 hover:scale-[1.01]"
+                    className="w-full 
+                    bg-gradient-to-r from-[#0082ca] 
+                    to-[#0066a0] hover:from-[#0066a0]
+                     hover:to-[#004b75] text-white font-bold 
+                     text-lg py-4 rounded-xl shadow-[0_18px_45px_rgba(0,130,202,0.28)] 
+                     transition-all duration-300 hover:scale-[1.01]"
                   >
                     Enviar Solicitação
                   </button>

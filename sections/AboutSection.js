@@ -43,8 +43,9 @@ export default function AboutSection() {
         >
           {/* Card 1 - Bombeamento em linha */}
           <motion.div
-            className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-md 
-            transition-transform duration-300 hover:scale-105 border border-slate-300"
+            className="relative overflow-hidden rounded-3xl bg-white/5 p-8 
+          shadow-xl transition-transform duration-300 hover:scale-105 
+          border border-slate-400/80"
             variants={fadeUpFast}
           >
             <div className="relative">
@@ -73,9 +74,9 @@ export default function AboutSection() {
 
           {/* Card 2 - Menos intervenções */}
           <motion.div
-            className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-md 
+            className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
-            hover:scale-105 border border-slate-300"
+            hover:scale-105 border border-slate-400/80"
             variants={fadeUpFast}
           >
             <div className="relative">
@@ -100,9 +101,9 @@ export default function AboutSection() {
 
           {/* Card 3 - Eficiência energética */}
           <motion.div
-            className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-md 
+            className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
-            hover:scale-105 border border-slate-300"
+            hover:scale-105 border border-slate-400/80"
             variants={fadeUpFast}
           >
             <div className="relative">
@@ -140,12 +141,15 @@ export default function AboutSection() {
           variants={fadeUp}
         >
           <a
-          href="#contato"
-          className="inline-flex items-center gap-3 rounded-full bg-red-500 px-8 py-4 
-          text-white font-semibold shadow-[0_0_25px_rgba(239,68,68,0.7)] 
-          transition-all duration-300 hover:scale-105 relative overflow-hidden group"
+          href="#products"
+          className="inline-flex items-center gap-3 rounded-full px-8 py-4 
+            bg-gradient-to-r from-[#0082ca] 
+            to-[#0066a0] hover:from-[#0066a0]
+            hover:to-[#004b75] text-white font-bold 
+            text-lg py-4 rounded-xl shadow-[0_18px_45px_rgba(0,130,202,0.28)] 
+            transition-all duration-300 hover:scale-[1.01] animate-bounce"
           >
-            Entre em contato agora
+            Conheça nossas soluções
           </a>
           <p className="text-sm text-slate-900 mt-4">
             ✓ Análise gratuita  ✓ Projeto personalizado  ✓ Suporte técnico
