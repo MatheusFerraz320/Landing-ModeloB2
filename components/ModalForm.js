@@ -119,7 +119,7 @@ UTM Content: ${formData.utm_content || 'não definido'}`;
           
           {/* Header */}
           <div className="relative bg-gradient-to-r from-blue-900 to-slate-800 rounded-t-2xl p-6">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-2xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-400/10 rounded-full blur-xl" />
             
             <div className="relative flex items-center justify-between">
@@ -290,7 +290,7 @@ UTM Content: ${formData.utm_content || 'não definido'}`;
                   />
                   <label htmlFor="consent" className="text-sm text-slate-500">
                     Concordo em receber comunicações e estou ciente da{' '}
-                    <a href="#" className="text-orange-500 hover:text-orange-600 underline">
+                    <a href="#" className="text-red-500">
                       Política de Privacidade
                     </a>
                   </label>
