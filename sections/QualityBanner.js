@@ -1,6 +1,3 @@
-import { motion } from "framer-motion";
-import { fadeUp, fadeUpFast, inViewViewport, staggerContainer } from "@/utils/motion";
-
 const benefits = [
   {
     title: "Bombeamento em linha",
@@ -84,13 +81,7 @@ export default function QualityBanner() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho da seção com tema refinado */}
-        <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={fadeUp}
-        >
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-3 rounded-full border border-[#0082ca]/20 bg-[#0082ca]/5 px-5 py-2 mb-6 shadow-sm backdrop-blur-sm">
             <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
             <span className="text-sm font-semibold text-[#0082ca] tracking-[0.24em]">
@@ -106,24 +97,17 @@ export default function QualityBanner() {
           <p className="text-slate-600 text-lg md:text-xl leading-relaxed">
             Soluções projetadas para máxima eficiência, durabilidade e baixa manutenção.
           </p>
-        </motion.div>
+        </div>
 
         {/* Grid de cards com estilo premium */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={staggerContainer}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {benefits.map((benefit, index) => (
-            <motion.div
+            <div
               key={index}
               className="relative overflow-hidden rounded-3xl bg-white/70 backdrop-blur-md
               p-8 shadow-xl border border-slate-300/70 ring-1 ring-white/60 transition-all
               duration-300 hover:scale-[1.02] hover:shadow-[0_24px_48px_rgba(0,130,202,0.18)]
               hover:border-[#0082ca]/40 group"
-              variants={fadeUpFast}
             >
               {/* Detalhe sutil no canto */}
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#0082ca]/5 to-transparent rounded-bl-[100px]" />
@@ -143,9 +127,9 @@ export default function QualityBanner() {
 
               {/* Linha decorativa inferior */}
               <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0082ca]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

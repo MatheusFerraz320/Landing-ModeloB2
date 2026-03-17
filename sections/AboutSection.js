@@ -1,19 +1,10 @@
-import { motion } from "framer-motion";
-import { fadeUp, fadeUpFast, inViewViewport, staggerContainer } from "@/utils/motion";
-
 export default function AboutSection() {
 
   return (
     <section id="about" className="relative overflow-hidden py-20 md:py-28 bg-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          className="text-center max-w-4xl mx-auto mb-16"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={fadeUp}
-        >
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/70 backdrop-blur-md 
           px-6 py-2.5 mb-6 shadow-[0_10px_30px_rgba(15,23,42,0.12)]">
             <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.7)]" />
@@ -31,22 +22,15 @@ export default function AboutSection() {
             Sistemas convencionais exigem mais limpeza, mais intervenção, mais obra civil e mais atenção operacional. 
             As soluções Kronox foram desenvolvidas para reduzir esses gargalos com bombeamento em linha e operação mais eficiente.
           </p>
-        </motion.div>
+        </div>
 
         {/* Grid de cards */}
-        <motion.div
-          className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={staggerContainer}
-        >
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
           {/* Card 1 - Bombeamento em linha */}
-          <motion.div
+          <div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 
           shadow-xl transition-transform duration-300 hover:scale-105 
           border border-slate-400/80"
-            variants={fadeUpFast}
           >
             <div className="relative">
               <div className="w-16 h-16 
@@ -70,14 +54,13 @@ export default function AboutSection() {
                 </svg>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Card 2 - Baixíssima manutenção */}
-          <motion.div
+          <div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
             hover:scale-105 border border-slate-400/80"
-            variants={fadeUpFast}
           >
             <div className="relative">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-950/20 ring-1 ring-white/10">
@@ -98,14 +81,13 @@ export default function AboutSection() {
                 <span className="rounded-full border border-blue-300/20 bg-blue-400/10 px-3 py-1.5 text-xs font-semibold text-blue-700">longa vida</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Card 3 - Estrutura em aço inox */}
-          <motion.div
+          <div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
             hover:scale-105 border border-slate-400/80"
-            variants={fadeUpFast}
           >
             <div className="relative">
               <div className="w-16 h-16 bg-gradient-to-br from-zinc-300 via-slate-400 to-zinc-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-slate-900/20 ring-1 ring-white/30">
@@ -130,17 +112,11 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* CTA final */}
-        <motion.div
-          className="text-center"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={fadeUp}
-        >
+        <div className="text-center">
           <a
           href="#products"
           className="inline-flex items-center gap-3 rounded-full px-8 py-4 
@@ -155,7 +131,7 @@ export default function AboutSection() {
           <p className="text-sm text-slate-900 mt-4">
             ✓ Análise gratuita  ✓ Projeto personalizado  ✓ Suporte técnico
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

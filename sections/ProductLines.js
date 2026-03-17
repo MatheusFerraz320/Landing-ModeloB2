@@ -1,8 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { motion } from 'framer-motion';
-import { fadeUp, inViewViewport } from '@/utils/motion';
-import { useState } from 'react';
 import Image from 'next/image';
 
 // Import Swiper styles
@@ -68,13 +65,7 @@ export default function ProductLines() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Header */}
-        <motion.div
-          className="relative text-center max-w-3xl mx-auto mb-12"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={fadeUp}
-        >
+        <div className="relative text-center max-w-3xl mx-auto mb-12">
           <span className="inline-block text-white/90 text-sm 
           font-semibold tracking-widest uppercase mb-3 px-4 py-1.5 bg-white/10 backdrop-blur-sm 
           border border-white/20 rounded-full">
@@ -86,16 +77,10 @@ export default function ProductLines() {
           <p className="text-white/80 text-lg">
             Escolha a solução ideal para sua necessidade, com tecnologia e eficiência Kronox.
           </p>
-        </motion.div>
+        </div>
 
         {/* Carrossel */}
-        <motion.div
-          className="relative"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={fadeUp}
-        >
+        <div className="relative">
           {/* Setas personalizadas */}
           <button className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 
           bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl 
@@ -197,7 +182,7 @@ export default function ProductLines() {
 
           {/* Paginação */}
           <div className="product-pagination flex justify-center gap-2 mt-6" />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -11,15 +11,13 @@ export default function HeroSection() {
         {/* Imagem de fundo com Next.js Image */}
         <div className="absolute inset-0">
           <Image
-            src="/hero.webp"
+            src="/Hero.webp"
             alt="Fundo industrial"
             fill
             priority
             className="object-cover scale-[1.02] brightness-[0.82] saturate-[0.9]"
             sizes="100vw"
           />
-          {/* Overlay em gradiente para suavizar o fundo sem pesar o bloco inteiro */}
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/58 via-slate-950/48 to-slate-950/62" />
         </div>
 
         {/* Conteúdo principal (acima do overlay) */}

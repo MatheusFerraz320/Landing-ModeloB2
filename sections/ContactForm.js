@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { UtmHook } from "../hooks/UtmHook"; 
-import { motion } from "framer-motion";
-import { fadeUp, inViewViewport, staggerContainer } from "@/utils/motion";
 
 const inputClass =
   "w-full rounded-xl border border-slate-200/90 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0082ca] focus:border-transparent transition";
@@ -83,13 +81,7 @@ export default function ContactForm() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4">
-        <motion.div
-          className="text-center mb-10 sm:mb-14 relative"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={fadeUp}
-        >
+        <div className="text-center mb-10 sm:mb-14 relative">
           <div className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/40 px-5 py-2 mb-6 shadow-[0_18px_60px_rgba(8,15,30,0.12)] backdrop-blur-md">
             <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
             <span className="text-sm font-semibold text-slate-900 tracking-[0.24em]">
@@ -102,17 +94,11 @@ export default function ContactForm() {
           <p className="text-slate-700 text-lg max-w-xl mx-auto">
             Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas para oferecer a solução ideal.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="relative flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12 items-start"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={staggerContainer}
-        >
+        <div className="relative flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12 items-start">
          
-          <motion.div className="w-full lg:w-72 flex-shrink-0" variants={fadeUp}>
+          <div className="w-full lg:w-72 flex-shrink-0">
             <div className="rounded-2xl border border-slate-200 bg-white/75 p-6 sm:p-8 backdrop-blur-md text-slate-900 shadow-[0_18px_55px_rgba(15,23,42,0.12)]">
               <h3 className="font-bold text-lg mb-6 text-slate-900">Canais de atendimento</h3>
               <ul className="space-y-4 mb-6">
@@ -153,10 +139,10 @@ export default function ContactForm() {
                 <span>Atendimento 100% seguro e confidencial</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           
-          <motion.div className="w-full flex-1" variants={fadeUp}>
+          <div className="w-full flex-1">
             {submitted ? (
               <div className="rounded-2xl p-8 sm:p-12 border border-slate-200 bg-white/80 backdrop-blur-md shadow-[0_18px_55px_rgba(15,23,42,0.12)] text-center text-slate-900">
                 <div className="w-16 h-16 bg-[#0082ca]/20 rounded-full flex items-center justify-center mx-auto mb-5 ring-1 ring-[#0082ca]/30">
@@ -309,8 +295,8 @@ export default function ContactForm() {
                 </div>
               </form>
             )}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

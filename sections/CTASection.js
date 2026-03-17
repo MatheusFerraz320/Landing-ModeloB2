@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { fadeUp, inViewViewport } from "@/utils/motion";
 import { handleRDClick } from "@/hooks/UtmHook";
 
 export default function CTASection() {
@@ -9,13 +7,7 @@ export default function CTASection() {
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-blue-500/14 blur-3xl pointer-events-none" />
       <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
 
-      <motion.div
-        className="relative max-w-4xl mx-auto px-4 text-center"
-        initial="hidden"
-        whileInView="show"
-        viewport={inViewViewport}
-        variants={fadeUp}
-      >
+      <div className="relative max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
          Fale com a Vazão e entenda qual solução {" "}
          <span className="text-red-500 block mt-1">Kronox</span>
@@ -31,7 +23,7 @@ export default function CTASection() {
                 Quero falar com especialista
               </button>
         </div>
-      </motion.div>
+      </div>
     </section>
 
   );

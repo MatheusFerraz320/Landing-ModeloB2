@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-import { fadeUp, fadeUpFast, inViewViewport, staggerContainer } from '@/utils/motion';
 import Image from 'next/image';
 
 // Logos de clientes (simuladas, substitua pelos paths reais)
@@ -51,13 +49,7 @@ export default function Cases() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header com logo e título */}
-        <motion.div
-          className="flex flex-col items-center text-center mb-16"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={fadeUp}
-        >
+        <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2 mb-6 backdrop-blur-sm">
             <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
             <span className="text-sm font-semibold text-white/80 tracking-[0.24em]">
@@ -87,22 +79,15 @@ export default function Cases() {
             Casos em concessionárias, autarquias e empreendimentos, com instalações em operações como Iguá Cuiabá e DAEV Valinhos. 
             Nosso portfólio inclui soluções premiadas que comprovam a eficiência da Kronox.
           </p>
-        </motion.div>
+        </div>
 
         {/* Grid de cases */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={staggerContainer}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20">
           {cases.map((caseItem, index) => (
-            <motion.div
+            <div
               key={index}
               className="group relative rounded-2xl overflow-hidden 
               bg-white/5 border border-white/10 hover:border-[#0082ca]/30 transition-all duration-500"
-              variants={fadeUpFast}
             >
               {/* Imagem de fundo do case */}
               <div className="relative h-48 overflow-hidden">
@@ -124,18 +109,12 @@ export default function Cases() {
                 <p className="text-[#0082ca] text-sm font-medium mb-3">{caseItem.location}</p>
                 <p className="text-white/70 text-sm leading-relaxed">{caseItem.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Módulo "Nossos Clientes" */}
-        <motion.div
-          className="text-center"
-          initial="hidden"
-          whileInView="show"
-          viewport={inViewViewport}
-          variants={fadeUp}
-        >
+        <div className="text-center">
           <h3 className="text-2xl md:text-3xl font-light text-white mb-4">
             <span className="font-bold text-[#0082ca]">Nossos clientes</span> confiam na Kronox
           </h3>
@@ -143,16 +122,11 @@ export default function Cases() {
             Empresas líderes em diversos setores utilizam nossas soluções para potencializar suas operações
           </p>
 
-          <motion.div 
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 items-center justify-items-center"
-            variants={staggerContainer}
-          >
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 items-center justify-items-center">
             {clientLogos.map((logo, idx) => (
-              <motion.div
+              <div
                 key={idx}
                 className="w-full h-28 group relative overflow-hidden rounded-xl transition-all duration-500"
-                variants={fadeUpFast}
-                whileHover={{ y: -8 }}
               >
                 {/* Card background com gradiente sutil */}
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/10 via-white/5 to-white/0 border border-white/20 group-hover:border-[#0082ca]/60 group-hover:from-white/15 transition-all duration-500" />
@@ -183,14 +157,14 @@ export default function Cases() {
 
                 {/* Bottom accent line que aparece no hover */}
                 <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0082ca] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           <p className="text-white/40 text-sm mt-16">
             E muitas outras empresas que já transformaram sua operação com a Kronox.
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
