@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { UtmHook } from '../hooks/UtmHook'; 
+import { useUtmFromStorage } from '../hooks/UtmHook'; 
 
 export default function ModalForm({ isOpen, onClose }) {
   // PEGA AS UTMs DO HOOK
-  const utmParams = UtmHook();
+  const utmParams = useUtmFromStorage();
   
   const [formData, setFormData] = useState({
     name: '',

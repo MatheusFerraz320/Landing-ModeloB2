@@ -1,5 +1,30 @@
 import { useState, useEffect } from 'react';
 
+const EMPTY_UTM = {
+  ad_id: '',
+  utm_source: '',
+  utm_medium: '',
+  utm_campaign: '',
+  utm_term: '',
+  utm_content: '',
+};
+
+function getUtmFromStorage() {
+  if (typeof window === 'undefined') return EMPTY_UTM;
+
+  try {
+    const saved = sessionStorage.getItem('utm_params');
+    if (!saved) return EMPTY_UTM;
+    const parsed = JSON.parse(saved);
+    return {
+      ...EMPTY_UTM,
+      ...parsed,
+    };
+  } catch {
+    return EMPTY_UTM;
+  }
+}
+
 export function UtmHook() {
   const [utmParams, setUtmParams] = useState({});
 
@@ -25,17 +50,54 @@ export function UtmHook() {
   return utmParams;
 }
 
-// hooks/useUtmFromStorage.js (para modais)
 export function useUtmFromStorage() {
-  const [utmParams, setUtmParams] = useState({});
+  const [utmParams, setUtmParams] = useState(EMPTY_UTM);
 
   useEffect(() => {
-    const saved = sessionStorage.getItem('utm_params');
-    if (saved) {
-      setUtmParams(JSON.parse(saved));
-    }
+    setUtmParams(getUtmFromStorage());
   }, []);
 
   return utmParams;
 }
 
+export function pushLeadModalOpenEvent(source = 'lead_modal') {
+  if (typeof window === 'undefined') return;
+
+  const utmParams = getUtmFromStorage();
+
+  if (window.dataLayer) {
+    window.dataLayer.push({
+      event: 'lead_modal_opened',
+      form_type: 'site_modal',
+      source,
+      utm_source: utmParams.utm_source,
+      utm_medium: utmParams.utm_medium,
+      utm_campaign: utmParams.utm_campaign,
+      utm_term: utmParams.utm_term,
+      utm_content: utmParams.utm_content,
+      ad_id: utmParams.ad_id,
+    });
+  }
+}
+
+export function handleRDClick(source = 'site_cta') {
+  if (typeof window === 'undefined') return;
+
+  const utmParams = getUtmFromStorage();
+
+  if (window.dataLayer) {
+    window.dataLayer.push({
+      event: 'rd_form_opened',
+      form_type: 'rd_station',
+      source,
+      utm_source: utmParams.utm_source,
+      utm_medium: utmParams.utm_medium,
+      utm_campaign: utmParams.utm_campaign,
+      utm_term: utmParams.utm_term,
+      utm_content: utmParams.utm_content,
+      ad_id: utmParams.ad_id,
+    });
+  }
+
+  document.getElementById('rd-floating_button-ly4393ic')?.click();
+}

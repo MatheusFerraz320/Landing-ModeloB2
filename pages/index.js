@@ -7,8 +7,11 @@ import AboutSection from "@/sections/AboutSection";
 import ContactForm from "@/sections/ContactForm";
 import CTASection from "@/sections/CTASection";
 import Footer from "@/components/Footer";
+import { UtmHook } from "@/hooks/UtmHook";
 
 export default function Home() {
+  UtmHook();
+
   return (
     <>
       <Head>
