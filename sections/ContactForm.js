@@ -2,6 +2,7 @@ import { useState } from "react";
 import { UtmHook } from "../hooks/UtmHook"; 
 import { motion } from "framer-motion";
 import { fadeUpFast, inViewViewport } from "@/utils/motion";
+import { sendToRd } from "@/lib/rdStation";
 
 const inputClass =
   "w-full rounded-xl border border-slate-200/90 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0082ca] focus:border-transparent transition";
@@ -27,21 +28,40 @@ export default function ContactForm() {
   }));
   
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log("Formulário enviado com UTMs:", {
-      ...form,
-      utm_source: form.utm_source,
-      ad_id: form.ad_id,
-      utm_campaign: form.utm_campaign
-    });
-    
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+
+    try {
+      await sendToRd({
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        company: form.company,
+        product: form.product,
+        finality: form.finality,
+        utmParams: {
+          utm_source: form.utm_source,
+          utm_medium: form.utm_medium,
+          utm_campaign: form.utm_campaign,
+          utm_term: form.utm_term,
+          utm_content: form.utm_content,
+          ad_id: form.ad_id,
+        },
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError("Erro ao enviar. Tente novamente ou ligue para (19) 3450-7396.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -265,17 +285,24 @@ export default function ContactForm() {
                     className={`${inputClass} resize-none`}
                   />
                 </div>
+                {error && (
+                  <div className="sm:col-span-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                    {error}
+                  </div>
+                )}
                 <div className="sm:col-span-2">
                   <button
                     type="submit"
+                    disabled={loading}
                     className="w-full 
                     bg-gradient-to-r from-[#0082ca] 
                     to-[#0066a0] hover:from-[#0066a0]
                      hover:to-[#004b75] text-white font-bold 
                      text-lg py-4 rounded-xl shadow-[0_18px_45px_rgba(0,130,202,0.28)] 
-                     transition-all duration-300 hover:scale-[1.01]"
+                     transition-all duration-300 hover:scale-[1.01]
+                     disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    Enviar Solicitação
+                    {loading ? "Enviando..." : "Enviar Solicitação"}
                   </button>
                 </div>
               </form>

@@ -41,7 +41,7 @@ const cases = [
 
 export default function Cases() {
   return (
-    <section id="cases" className="relative overflow-hidden py-20 md:py-28 bg-black">
+    <section id="cases" className="relative overflow-hidden py-20 md:py-20 bg-black">
       {/* Elementos decorativos sutis */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-8 h-72 w-72 rounded-full bg-[#0082ca]/10 blur-3xl" />
@@ -57,15 +57,8 @@ export default function Cases() {
         variants={fadeUpFast}
       >
         {/* Header com logo e título */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2 mb-6 backdrop-blur-sm">
-            <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
-            <span className="text-sm font-semibold text-white/80 tracking-[0.24em]">
-              PROVA SOCIAL
-            </span>
-          </div>
-          
-          <div className="mb-6 flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center text-center mb-15">       
+          <div className="mb-2 flex flex-col items-center gap-2">
             <Image
               src="/kronoxlogo.png"
               alt="Kronox"
