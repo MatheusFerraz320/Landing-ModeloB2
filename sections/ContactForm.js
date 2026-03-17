@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { UtmHook } from "../hooks/UtmHook"; 
+import { useState , useEffect} from "react";
 import { motion } from "framer-motion";
 import { fadeUpFast, inViewViewport } from "@/utils/motion";
 import { sendToRd } from "@/lib/rdStation";
@@ -7,9 +6,7 @@ import { sendToRd } from "@/lib/rdStation";
 const inputClass =
   "w-full rounded-xl border border-slate-200/90 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0082ca] focus:border-transparent transition";
 
-export default function ContactForm() {
-  const utmParams = UtmHook();
-  
+export default function ContactForm() {  
   const [form, setForm] = useState(() => ({
     name: "",
     email: "",
@@ -19,14 +16,29 @@ export default function ContactForm() {
     message: "",
     finality: "",   
     product: "",
-    utm_source: utmParams.utm_source || "",
-    utm_medium: utmParams.utm_medium || "",
-    ad_id: utmParams.ad_id || "",
-    utm_campaign: utmParams.utm_campaign || "",
-    utm_term: utmParams.utm_term || "",
-    utm_content: utmParams.utm_content || ""
+    utm_source: "",
+    utm_medium: "",
+    ad_id: "",
+    utm_campaign: "",
+    utm_term: "",
+    utm_content: ""
   }));
   
+  useEffect(() => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const params = {
+    utm_source: urlParams.get('utm_source') || localStorage.getItem('utm_source') || '',
+    utm_medium: urlParams.get('utm_medium') || localStorage.getItem('utm_medium') || '',
+    utm_campaign: urlParams.get('utm_campaign') || localStorage.getItem('utm_campaign') || '',
+    utm_term: urlParams.get('utm_term') || localStorage.getItem('utm_term') || '',
+    utm_content: urlParams.get('utm_content') || localStorage.getItem('utm_content') || '',
+    ad_id: urlParams.get('ad_id') || localStorage.getItem('ad_id') || ''
+  };
+  localStorage.setItem('utm_params', JSON.stringify(params));
+  console.log("UTM parameters captured:", params);
+  setForm(prev => ({ ...prev, ...params }));
+}, []);
+
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -58,7 +70,7 @@ export default function ContactForm() {
       });
       setSubmitted(true);
     } catch (err) {
-      setError("Erro ao enviar. Tente novamente ou ligue para (19) 3450-7396.");
+      setError("Erro ao enviar. Tente novamente ou entre em contato via whatsapp.");
     } finally {
       setLoading(false);
     }

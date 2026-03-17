@@ -117,6 +117,20 @@ export default function Cases() {
             </div>
           ))}
         </div>
+          
+          <div className="flex justify-center mb-20">
+          <a
+          href="#products"
+          className="inline-flex items-center gap-3 rounded-full px-20 py-4
+            bg-gradient-to-r from-[#0082ca] 
+            to-[#0066a0] hover:from-[#0066a0]
+            hover:to-[#004b75] text-white font-bold 
+            text-lg py-4 rounded-xl shadow-[0_18px_45px_rgba(0,130,202,0.28)] 
+            transition-all duration-300 hover:scale-[1.01] animate-bounce"
+          >
+            Entrar em contato
+          </a>
+          </div>
 
         {/* Módulo "Nossos Clientes" */}
         <div className="text-center">
