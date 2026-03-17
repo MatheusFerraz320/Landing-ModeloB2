@@ -19,7 +19,7 @@ export default function HeroSection() {
         {/* Imagem de fundo com Next.js Image */}
         <div className="absolute inset-0">
           <Image
-            src="/hero.png"
+            src="/hero2.webp"
             alt="Fundo industrial"
             fill
             priority
