@@ -72,7 +72,7 @@ const benefits = [
 
 export default function QualityBanner() {
   return (
-    <section className="relative overflow-hidden py-20 md:py-28 bg-white">
+    <section id="quality" className="relative overflow-hidden py-20 md:py-28 bg-white">
       {/* Elementos decorativos de fundo com tons premium */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 max-w-7xl mx-auto">

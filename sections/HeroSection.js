@@ -15,11 +15,11 @@ export default function HeroSection() {
 
   return (
     <>
-      <header className="relative min-h-screen flex items-center overflow-hidden">
+      <header id="hero" className="relative min-h-screen flex items-center overflow-hidden">
         {/* Imagem de fundo com Next.js Image */}
         <div className="absolute inset-0">
           <Image
-            src="/hero2.webp"
+            src="/hero.webp"
             alt="Fundo industrial"
             fill
             priority

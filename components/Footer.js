@@ -16,9 +16,9 @@ export default function Footer() {
         >
           {/* Brand */}
           <motion.div className="lg:col-span-1" variants={fadeUp}>
-            <div className="text-2xl font-black text-white mb-3">ModeloB2</div>
+            <div className="text-2xl font-black text-white mb-3">Kronox</div>
             <p className="text-sm leading-relaxed mb-6">
-              Soluções industriais de alta performance para empresas que exigem o melhor.
+              Soluções de alta performance.
             </p>
             <div className="flex gap-3">
               {/* LinkedIn */}
@@ -70,24 +70,9 @@ export default function Footer() {
             </div>
             <ul className="space-y-3">
               <li><a href="#hero" className="text-sm hover:text-red-500 transition-colors">Início</a></li>
-              <li><a href="#parceiros" className="text-sm hover:text-red-500 transition-colors">Parceiros</a></li>
-              <li><a href="#produtos" className="text-sm hover:text-red-500 transition-colors">Produtos</a></li>
-              <li><a href="#quality-section" className="text-sm hover:text-red-500 transition-colors">Qualidade</a></li>
-              <li><a href="#contato" className="text-sm hover:text-red-500 transition-colors">Contato</a></li>
-            </ul>
-          </motion.div>
-
-          {/* Produtos */}
-          <motion.div variants={fadeUp}>
-            <div className="text-white font-bold mb-4 text-sm tracking-wider uppercase">
-              Produtos
-            </div>
-            <ul className="space-y-3">
-              <li><p className="text-sm hover:text-red-500 transition-colors">Componentes</p></li>
-              <li><p className="text-sm hover:text-red-500 transition-colors">Componentes</p></li>
-              <li><p className="text-sm hover:text-red-500 transition-colors">Componentes</p></li>
-              <li><p className="text-sm hover:text-red-500 transition-colors">Componentes</p></li>
-              <li><p className="text-sm hover:text-red-500 transition-colors">Componentes</p></li>
+              <li><a href="#about" className="text-sm hover:text-red-500 transition-colors">Eficiencia</a></li>
+              <li><a href="#products" className="text-sm hover:text-red-500 transition-colors">Produtos</a></li>
+              <li><a href="#quality" className="text-sm hover:text-red-500 transition-colors">Qualidade</a></li>
             </ul>
           </motion.div>
 
@@ -98,17 +83,17 @@ export default function Footer() {
             </div>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+5511999998888" className="text-sm hover:text-orange-400 transition-colors">
+                <a href="tel:+5511999998888" className="text-sm hover:text-red-500 transition-colors">
                   +55 (11) 9 9999-8888
                 </a>
               </li>
               <li>
-                <a href="mailto:contato@modelob2.com.br" className="text-sm hover:text-orange-400 transition-colors">
+                <a href="mailto:contato@modelob2.com.br" className="text-sm hover:text-red-500 transition-colors">
                   contato@modelob2.com.br
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-orange-400 transition-colors">
+                <a href="#" className="text-sm hover:text-red-500 transition-colors">
                   São Paulo, SP — Brasil
                 </a>
               </li>
