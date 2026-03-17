@@ -14,7 +14,7 @@ export default function Footer() {
         variants={fadeUp}
       >
         <p className="text-sm">
-          &copy; {year} Vazão Engenharia e Montagem. Todos os direitos reservados.
+          &copy; {year} Vazão Engenharia. Todos os direitos reservados.
         </p>
         <p className="text-sm">
           Desenvolvido por{" "}
