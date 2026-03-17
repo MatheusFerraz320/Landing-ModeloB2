@@ -4,14 +4,11 @@ import Image from 'next/image';
 
 // Logos de clientes (simuladas, substitua pelos paths reais)
 const clientLogos = [
-  { src: '/logos/cliente1.png', alt: 'Cliente 1' },
-  { src: '/logos/cliente2.png', alt: 'Cliente 2' },
-  { src: '/logos/cliente3.png', alt: 'Cliente 3' },
-  { src: '/logos/cliente4.png', alt: 'Cliente 4' },
-  { src: '/logos/cliente5.png', alt: 'Cliente 5' },
-  { src: '/logos/cliente6.png', alt: 'Cliente 6' },
-  { src: '/logos/cliente7.png', alt: 'Cliente 7' },
-  { src: '/logos/cliente8.png', alt: 'Cliente 8' },
+  { src: '/cases/compesaLogo.webp', alt: 'Compensa Empresa' },
+  { src: '/cases/embasaLogo.webp', alt: 'Embasa Empresa' },
+  { src: '/cases/brk-ambiental.webp', alt: 'BRK Ambiental' },
+  { src: '/cases/verde-alagoas.webp', alt: 'Verde Alagoas' },
+  { src: '/cases/cagepa.webp', alt: 'Cagepa' },
 ];
 
 // Cases OBJ
@@ -26,19 +23,19 @@ const cases = [
   },
   {
     title: 'Premiação Projeto de Excelência EM Resultados',
-    location: 'IGUÁ-CUIABÁ/MT',
+    location: 'Iguá - CUIABÁ/MT',
     description:
       'Prêmio Projeto de Excelência EM Resultados com a EEE IN-Line.',
     badge: 'Premiação',
     image: '/cases/premio.webp',
   },
   {
-    title: 'Instalação em condomínio ',
-    location: 'SÃO PEDRO/SP',
+    title: 'Instalação em condomínios ',
+    location: 'Campinas/SP',
     description:
       'Fornecimento de sistemas modulares para expansão gradual da capacidade de tratamento, atendendo ao crescimento da demanda.',
     badge: 'Expansão',
-    image: '/cases/InstalacaoSanasa.webp',
+    image: '/cases/instalacaoCampinas.webp',
   },
 ];
 
@@ -139,28 +136,58 @@ export default function Cases() {
           viewport={inViewViewport}
           variants={fadeUp}
         >
-          <h3 className="text-2xl md:text-3xl font-light text-white mb-10">
+          <h3 className="text-2xl md:text-3xl font-light text-white mb-4">
             <span className="font-bold text-[#0082ca]">Nossos clientes</span> confiam na Kronox
           </h3>
+          <p className="text-white/50 text-sm mb-12 max-w-2xl mx-auto">
+            Empresas líderes em diversos setores utilizam nossas soluções para potencializar suas operações
+          </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-items-center">
+          <motion.div 
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 items-center justify-items-center"
+            variants={staggerContainer}
+          >
             {clientLogos.map((logo, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="w-32 h-20 bg-white/5 rounded-lg border border-white/10 p-4 flex items-center justify-center grayscale hover:grayscale-0 hover:bg-white/10 transition-all duration-300"
+                className="w-full h-28 group relative overflow-hidden rounded-xl transition-all duration-500"
+                variants={fadeUpFast}
+                whileHover={{ y: -8 }}
               >
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={100}
-                  height={50}
-                  className="object-contain max-h-full"
+                {/* Card background com gradiente sutil */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/10 via-white/5 to-white/0 border border-white/20 group-hover:border-[#0082ca]/60 group-hover:from-white/15 transition-all duration-500" />
+                
+                {/* Efeito glow no hover */}
+                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                  style={{
+                    boxShadow: 'inset 0 0 30px rgba(0, 130, 202, 0.15), 0 0 30px rgba(0, 130, 202, 0.2)'
+                  }}
                 />
-              </div>
-            ))}
-          </div>
 
-          <p className="text-white/50 text-sm mt-10">
+                {/* Container da imagem com padding */}
+                <div className="relative w-full h-full flex items-center justify-center px-4 py-5">
+                  {/* Backdrop mais claro no hover para melhor contraste */}
+                  <div className="absolute inset-0 rounded-xl bg-white/0 group-hover:bg-white/8 transition-all duration-500 pointer-events-none" />
+                  
+                  {/* Imagem do logo */}
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={120}
+                    height={60}
+                    className="object-fill 
+                    max-h-16 max-w-[90%] relative z-10 filter 
+                    brightness-110 saturate-110 group-hover:brightness-125 group-hover:saturate-125 transition-all duration-500"
+                  />
+                </div>
+
+                {/* Bottom accent line que aparece no hover */}
+                <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0082ca] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <p className="text-white/40 text-sm mt-16">
             E muitas outras empresas que já transformaram sua operação com a Kronox.
           </p>
         </motion.div>

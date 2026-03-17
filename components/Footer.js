@@ -83,13 +83,13 @@ export default function Footer() {
             </div>
             <ul className="space-y-3">
               <li>
-                <a href="tel:+5511999998888" className="text-sm hover:text-red-500 transition-colors">
-                  +55 (11) 9 9999-8888
-                </a>
+                <p className="text-sm hover:text-red-500 transition-colors">
+                  (19) 3450-7396
+                </p>
               </li>
               <li>
-                <a href="mailto:contato@modelob2.com.br" className="text-sm hover:text-red-500 transition-colors">
-                  contato@modelob2.com.br
+                <a href="mailto:contato@kronox.com.br" className="text-sm hover:text-red-500 transition-colors">
+                  contato@kronox.com.br
                 </a>
               </li>
               <li>
