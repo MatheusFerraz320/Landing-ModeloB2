@@ -47,18 +47,19 @@ export default function ModalForm({ isOpen, onClose }) {
 
     // 3️INCLUI AS UTMs NA MENSAGEM DO WHATSAPP(CONFIRMAR NECESSIDADE)
     const whatsMessage = `Cotação Personalizada -
-Nome: ${formData.name}
-Email: ${formData.email}
-Empresa: ${formData.company}
-Mensagem: ${formData.message}
+      Nome: ${formData.name}
+      Email: ${formData.email}
+      Empresa: ${formData.company}
+      Telefone: ${formData.phone}
+      Interesse: ${formData.interest}
+      Mensagem: ${formData.message}
 
-📊 *DADOS DE ORIGEM*:
-UTM Source: ${formData.utm_source || 'direto'}
-UTM Medium: ${formData.utm_medium || 'direto'}
-UTM Campaign: ${formData.utm_campaign || 'não definida'}
-UTM Term: ${formData.utm_term || 'não definido'}
-UTM Content: ${formData.utm_content || 'não definido'}`;
-
+ *DADOS DE ORIGEM*:
+    UTM Source: ${formData.utm_source || 'direto'}
+    UTM Medium: ${formData.utm_medium || 'direto'}
+    UTM Campaign: ${formData.utm_campaign || 'não definida'}
+    UTM Term: ${formData.utm_term || 'não definido'}
+    UTM Content: ${formData.utm_content || 'não definido'}`;
     const whatsNumber = '5513991621955';
     const whatsUrl = `https://wa.me/${whatsNumber}?text=${encodeURIComponent(whatsMessage)}`;
     
@@ -300,7 +301,10 @@ UTM Content: ${formData.utm_content || 'não definido'}`;
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <button
                     type="submit"
-                    className="flex-1 bg-orange-500 hover:bg-orange-400 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-orange-400/40"
+                    className="flex-1 bg-red-500  
+                    text-white font-bold text-lg py-4 
+                    rounded-xl
+                    transition-all duration-300 hover:scale-[1.02]"
                   >
                     Enviar Solicitação
                   </button>

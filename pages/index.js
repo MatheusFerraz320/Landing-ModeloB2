@@ -7,7 +7,6 @@ import AboutSection from "@/sections/AboutSection";
 import ContactForm from "@/sections/ContactForm";
 import CTASection from "@/sections/CTASection";
 import Footer from "@/components/Footer";
-import WhatsButton from "@/components/WhatsButton";
 
 export default function Home() {
   return (
@@ -23,31 +22,30 @@ export default function Home() {
       </Head>
 
       <main>
-        {/* 1. Hero / Header */}
+        {/* 1. Hero */}
         <HeroSection />
  
-        {/* 2. Sobre / conheça mais */}
+        {/* 2. About */}
         <AboutSection />
 
-        {/* 3. Linha de Produtos */}
+        {/* 3. Product Lines */}
         <ProductLines />
         
-        {/* 4. Marcas Parceiras — carrossel */}
+        {/* 4. Cases */}
         <Cases />
 
-        {/* 5. Tira de qualidade com CTA */}
+        {/* 5. Quality Banner with CTA */}
         <QualityBanner />
 
-        {/* 6. Formulário de Contato / Cotação */}
+        {/* 6. Contact Form / Quote */}
         <ContactForm />
 
-        {/* 7. CTA Final */}
+        {/* 7. Final CTA */}
         <CTASection />
       </main>
 
       {/* 8. Footer */}
       <Footer />
-      <WhatsButton />
     </>
   );
 }
