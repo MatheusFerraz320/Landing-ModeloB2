@@ -19,7 +19,7 @@ export default function ContactForm() {
     finality: "",   
     product: "",    
     utm_source: "",
-    utm_medium: "",
+    ad_id: "",
     utm_campaign: "",
     utm_term: "",
     utm_content: ""
@@ -32,7 +32,7 @@ export default function ContactForm() {
       setForm(prev => ({
         ...prev,
         utm_source: utmParams.utm_source || '',
-        utm_medium: utmParams.utm_medium || '',
+        ad_id: utmParams.ad_id || '',
         utm_campaign: utmParams.utm_campaign || '',
         utm_term: utmParams.utm_term || '',
         utm_content: utmParams.utm_content || ''
@@ -49,7 +49,7 @@ export default function ContactForm() {
     console.log("Formulário enviado com UTMs:", {
       ...form,
       utm_source: form.utm_source,
-      utm_medium: form.utm_medium,
+      ad_id: form.ad_id,
       utm_campaign: form.utm_campaign
     });
     
@@ -186,7 +186,7 @@ export default function ContactForm() {
                 shadow-[0_18px_55px_rgba(15,23,42,0.12)] grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
               >
                 <input type="hidden" name="utm_source" value={form.utm_source} />
-                <input type="hidden" name="utm_medium" value={form.utm_medium} />
+                <input type="hidden" name="utm_medium" value={form.ad_id} />
                 <input type="hidden" name="utm_campaign" value={form.utm_campaign} />
                 <input type="hidden" name="utm_term" value={form.utm_term} />
                 <input type="hidden" name="utm_content" value={form.utm_content} />
