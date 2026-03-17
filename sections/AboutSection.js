@@ -72,7 +72,7 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Card 2 - Menos intervenções */}
+          {/* Card 2 - Baixíssima manutenção */}
           <motion.div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
@@ -80,15 +80,16 @@ export default function AboutSection() {
             variants={fadeUpFast}
           >
             <div className="relative">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-950/20 ring-1 ring-white/10">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-950/20 ring-1 ring-white/10">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 19.5h16M6.5 16.5v-4m5 4v-7m5 7v-2" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M6.5 9.5l4.5-3 3.5 2 3-2" />
                 </svg>
               </div>
 
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Menos manutenção</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Economia e eficiência</h3>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Tecnologia anti-entupimento e materiais resistentes reduzem a necessidade de limpeza e intervenções corretivas.
+                Redução de extravasamento de bloqueio. Redução de custos operacionais e de manutenção.
               </p>
 
               <div className="flex flex-wrap gap-2">
@@ -99,7 +100,7 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Card 3 - Eficiência energética */}
+          {/* Card 3 - Estrutura em aço inox */}
           <motion.div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
@@ -107,25 +108,25 @@ export default function AboutSection() {
             variants={fadeUpFast}
           >
             <div className="relative">
-              <div className="w-16 h-16 bg-gradient-to-br from-slate-600 to-slate-900 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-slate-950/20 ring-1 ring-white/10">
+              <div className="w-16 h-16 bg-gradient-to-br from-zinc-300 via-slate-400 to-zinc-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-slate-900/20 ring-1 ring-white/30">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.7} d="M3 6.75h18M3 12h18M3 17.25h18" />
                 </svg>
               </div>
 
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Eficiência energética</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Estrutura em aço inox</h3>
               <p className="text-slate-700 leading-relaxed mb-6">
-                Motores de alto rendimento e design hidráulico otimizado reduzem o consumo de energia em até 25%.
+                Construção em aço inoxidável para maior resistência à corrosão, durabilidade em ambiente agressivo e operação confiável por mais tempo.
               </p>
 
               <div className="grid grid-cols-2 gap-3">
-                <div className="text-center p-3 rounded-2xl border border-slate-200 bg-slate-50">
-                  <p className="text-xl font-bold text-slate-900">-25%</p>
-                  <p className="text-xs text-slate-500">consumo</p>
+                <div className="text-center p-3 rounded-2xl border border-slate-300/80 bg-gradient-to-b from-white to-slate-100">
+                  <p className="text-xl font-bold text-slate-800">INOX</p>
+                  <p className="text-xs text-slate-600">estrutura</p>
                 </div>
-                <div className="text-center p-3 rounded-2xl border border-slate-200 bg-slate-50">
-                  <p className="text-xl font-bold text-slate-900">A+</p>
-                  <p className="text-xs text-slate-500">eficiência</p>
+                <div className="text-center p-3 rounded-2xl border border-slate-300/80 bg-gradient-to-b from-white to-slate-100">
+                  <p className="text-xl font-bold text-slate-800">+ vida</p>
+                  <p className="text-xs text-slate-600">útil</p>
                 </div>
               </div>
             </div>
