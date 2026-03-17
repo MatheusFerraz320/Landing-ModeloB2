@@ -1,16 +1,9 @@
-import ModalForm from "@/components/ModalForm";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeUp, inViewViewport } from "@/utils/motion";
 
 export default function CTASection() {
-  const [isModalOpen,setisModalOpen] = useState(false)
-  const openModal = () => setisModalOpen(true)
-  const closeModal = () => setisModalOpen(false)
-
 
   return (
-    <>
     <section className="py-24 relative overflow-hidden bg-[linear-gradient(135deg,_#0f172a_0%,_#1e293b_58%,_#111827_100%)]">
       {/* Decorative shapes */}
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-blue-500/14 blur-3xl pointer-events-none" />
@@ -33,7 +26,11 @@ export default function CTASection() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={openModal}
+            onClick={() => {
+              document
+                .getElementById('rd-floating_button-ly4393ic')
+                ?.click()
+            }}
             className="bg-red-500 
              text-white 
             font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)]
@@ -44,11 +41,6 @@ export default function CTASection() {
         </div>
       </motion.div>
     </section>
-    <ModalForm 
-        isOpen={isModalOpen}
-        onClose={closeModal} 
-        />
-    </>
 
   );
 }

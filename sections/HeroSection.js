@@ -1,20 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import ModalForm from "@/components/ModalForm";
-import ChatBot from "@/components/ChatBot";
 import { motion } from "framer-motion";
 import { fadeUp, inViewViewport } from "@/utils/motion";
 
 export default function HeroSection() {
-  const [isModalOpen, setisModalOpen] = useState(false);
 
-  const openModal = () => setisModalOpen(true);
-  const closeModal = () => setisModalOpen(false);
 
   return (
-    <>
       <header id="hero" className="relative min-h-screen flex items-center overflow-hidden">
         {/* Imagem de fundo com Next.js Image */}
         <div className="absolute inset-0">
@@ -65,10 +58,14 @@ export default function HeroSection() {
               evitar bloqueios e simplificar a operação.
             </p>
 
-            {/* BOTÕES PRINCIPAIS */}
+            {/* Botão RD */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center">
-              <button
-                onClick={openModal}
+              <button 
+                onClick={() => {
+                  document
+                    .getElementById('rd-floating_button-ly4393ic')
+                    ?.click()
+                }}
                 className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300"
               >
                 Solicitar avaliação técnica
@@ -98,7 +95,5 @@ export default function HeroSection() {
         </div>
       </header>
 
-      <ModalForm isOpen={isModalOpen} onClose={closeModal} />
-    </>
   );
 }
