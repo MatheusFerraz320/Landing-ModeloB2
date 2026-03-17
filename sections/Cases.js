@@ -14,23 +14,23 @@ const clientLogos = [
   { src: '/logos/cliente8.png', alt: 'Cliente 8' },
 ];
 
-// Cases extraídos dos PDFs (conteúdo simulado, ajustar conforme necessário)
+// Cases OBJ
 const cases = [
   {
     title: 'Instalação na Sabesp',
     location: 'Hortolândia - SP',
     description:
       ' Modelo baby booster 2,2Kw/2VV.',
-    badge: 'Projeto Premiado',
-    image: '/cases/igua-cuiaba.jpg', 
+    badge: 'Sabesp',
+    image: '/cases/instalacaoCampinas.webp',
   },
   {
-    title: 'ELEVATÓRIO COM SISTEMA DE BOMBEAMENTO EM LINHA',
+    title: 'Premiação Projeto de Excelência EM Resultados',
     location: 'IGUÁ-CUIABÁ/MT',
     description:
       'Prêmio Projeto de Excelência EM Resultados com a EEE IN-Line.',
     badge: 'Premiação',
-    image: '/cases/daevalinhos.jpg',
+    image: '/cases/premio.webp',
   },
   {
     title: 'Instalação em condomínio ',
@@ -38,7 +38,7 @@ const cases = [
     description:
       'Fornecimento de sistemas modulares para expansão gradual da capacidade de tratamento, atendendo ao crescimento da demanda.',
     badge: 'Expansão',
-    image: '/cases/autarquia.jpg',
+    image: '/cases/InstalacaoSanasa.webp',
   },
 ];
 
@@ -103,7 +103,8 @@ export default function Cases() {
           {cases.map((caseItem, index) => (
             <motion.div
               key={index}
-              className="group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-[#0082ca]/30 transition-all duration-500"
+              className="group relative rounded-2xl overflow-hidden 
+              bg-white/5 border border-white/10 hover:border-[#0082ca]/30 transition-all duration-500"
               variants={fadeUpFast}
             >
               {/* Imagem de fundo do case */}
