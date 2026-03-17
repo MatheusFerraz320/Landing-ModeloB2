@@ -2,6 +2,24 @@ import { motion } from "framer-motion";
 import { fadeUp, inViewViewport } from "@/utils/motion";
 
 export default function CTASection() {
+  const utmParams = useUtmFromStorage();
+  const handleRDClick = () => {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: 'rd_form_opened',
+        form_type: '[b2] Kronox',
+        utm_source: utmParams.utm_source || '',
+        utm_medium: utmParams.utm_medium || '',
+        utm_campaign: utmParams.utm_campaign || '',
+        utm_term: utmParams.utm_term || '',
+        utm_content: utmParams.utm_content || '',
+        ad_id: utmParams.ad_id || ''
+      });
+    }
+    document
+      .getElementById('rd-floating_button-ly4393ic')
+      ?.click();
+  };
 
   return (
     <section className="py-24 relative overflow-hidden bg-[linear-gradient(135deg,_#0f172a_0%,_#1e293b_58%,_#111827_100%)]">
@@ -25,19 +43,12 @@ export default function CTASection() {
           Receba uma avaliação técnica da sua necessidade com foco em eficiência, confiabilidade e viabilidade de implantação.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={() => {
-              document
-                .getElementById('rd-floating_button-ly4393ic')
-                ?.click()
-            }}
-            className="bg-red-500 
-             text-white 
-            font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)]
-            transition-all duration-300 hover:scale-105 "
-          >
+              <button onClick={handleRDClick} className="bg-red-500 
+              text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] 
+              hover:scale-105 transition-all duration-300">
+                Solicitar avaliação técnica
+              </button>
             Quero falar com um especialista
-          </button>
         </div>
       </motion.div>
     </section>

@@ -3,9 +3,27 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, inViewViewport } from "@/utils/motion";
+import { useUtmFromStorage } from "@/hooks/UtmHook"; 
 
 export default function HeroSection() {
-
+  const utmParams = useUtmFromStorage();
+  const handleRDClick = () => {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: 'rd_form_opened',
+        form_type: 'rd_station',
+        utm_source: utmParams.utm_source || '',
+        utm_medium: utmParams.utm_medium || '',
+        utm_campaign: utmParams.utm_campaign || '',
+        utm_term: utmParams.utm_term || '',
+        utm_content: utmParams.utm_content || '',
+        ad_id: utmParams.ad_id || ''
+      });
+    }
+    document
+      .getElementById('rd-floating_button-ly4393ic')
+      ?.click();
+  };
 
   return (
       <header id="hero" className="relative min-h-screen flex items-center overflow-hidden">
@@ -58,16 +76,9 @@ export default function HeroSection() {
               evitar bloqueios e simplificar a operação.
             </p>
 
-            {/* Botão RD */}
+            {/* Botão redieciona para o RD */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center">
-              <button 
-                onClick={() => {
-                  document
-                    .getElementById('rd-floating_button-ly4393ic')
-                    ?.click()
-                }}
-                className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300"
-              >
+              <button onClick={handleRDClick} className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300">
                 Solicitar avaliação técnica
               </button>
 
