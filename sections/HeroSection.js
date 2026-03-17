@@ -15,7 +15,7 @@ export default function HeroSection() {
             alt="Fundo industrial"
             fill
             priority
-            className="object-cover scale-[1.03] blur-[2px] brightness-[0.82] saturate-[0.88]"
+            className="object-cover scale-[1.02] brightness-[0.82] saturate-[0.9]"
             sizes="100vw"
           />
           {/* Overlay em gradiente para suavizar o fundo sem pesar o bloco inteiro */}
@@ -29,12 +29,11 @@ export default function HeroSection() {
             {/* Logo */}
             <div className="flex items-center gap-2">
             <Image 
-              src="/logo.webp" 
+              src="/Logo-Vazão-White.webp" 
               alt="Kronox" 
               width={180} 
               height={60} 
               className="object-contain"
-              priority
             />
             </div>
           </div>

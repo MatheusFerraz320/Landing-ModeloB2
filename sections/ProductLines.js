@@ -3,6 +3,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { fadeUp, inViewViewport } from '@/utils/motion';
 import { useState } from 'react';
+import Image from 'next/image';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -149,11 +150,12 @@ export default function ProductLines() {
                   
                   {/* Imagem do produto */}
                   <div className="relative h-60 bg-slate-800/60 overflow-hidden">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.alt}
-                      className="w-full 
-                      h-full object-fill
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="w-full h-full object-cover
                       group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
                     />
