@@ -7,7 +7,6 @@ const inputClass =
   "w-full rounded-xl border border-slate-200/90 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0082ca] focus:border-transparent transition";
 
 export default function ContactForm() {
-  // PEGA AS UTMs DO HOOK
   const utmParams = UtmHook();
   
   const [form, setForm] = useState({
@@ -17,7 +16,8 @@ export default function ContactForm() {
     company: "",
     subject: "",
     message: "",
-    // Campos UTM
+    finality: "",   
+    product: "",    
     utm_source: "",
     utm_medium: "",
     utm_campaign: "",
@@ -27,7 +27,6 @@ export default function ContactForm() {
   
   const [submitted, setSubmitted] = useState(false);
 
-  // ATUALIZA O FORM COM AS UTMs QUANDO O COMPONENTE MONTAR
   useEffect(() => {
     if (utmParams && Object.keys(utmParams).length > 0) {
       setForm(prev => ({
@@ -47,7 +46,6 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    //  LOG PARA VER AS UTMs (opcional)
     console.log("Formulário enviado com UTMs:", {
       ...form,
       utm_source: form.utm_source,
@@ -55,7 +53,6 @@ export default function ContactForm() {
       utm_campaign: form.utm_campaign
     });
     
-    //  ENVIA PARA O GTM (opcional)
     if (typeof window !== 'undefined' && window.dataLayer) {
       window.dataLayer.push({
         event: 'form_submit',
@@ -65,6 +62,7 @@ export default function ContactForm() {
           email: form.email,
           phone: form.phone,
           company: form.company,
+          finality: form.finality,  
           subject: form.subject,
           utm_source: form.utm_source,
           utm_medium: form.utm_medium,
@@ -78,7 +76,6 @@ export default function ContactForm() {
 
   return (
     <section id="contato" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-white/5">
-      {/* Elementos decorativos com as cores do tema */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-8 h-72 w-72 rounded-full bg-[#0082ca]/10 blur-3xl" />
         <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#a52727]/10 blur-3xl" />
@@ -114,12 +111,11 @@ export default function ContactForm() {
           viewport={inViewViewport}
           variants={staggerContainer}
         >
-          {/* Info sidebar - ajustada para o tema */}
+         
           <motion.div className="w-full lg:w-72 flex-shrink-0" variants={fadeUp}>
             <div className="rounded-2xl border border-slate-200 bg-white/75 p-6 sm:p-8 backdrop-blur-md text-slate-900 shadow-[0_18px_55px_rgba(15,23,42,0.12)]">
               <h3 className="font-bold text-lg mb-6 text-slate-900">Canais de atendimento</h3>
               <ul className="space-y-4 mb-6">
-                {/* Telefone */}
                 <li className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-[#0082ca]/10 flex items-center justify-center flex-shrink-0 text-[#0082ca]">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,8 +124,6 @@ export default function ContactForm() {
                   </div>
                   <span className="text-slate-700 text-sm">+55 (19) 3450-7396</span>
                 </li>
-
-                {/* Email */}
                 <li className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-[#0082ca]/10 flex items-center justify-center flex-shrink-0 text-[#0082ca]">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,8 +132,6 @@ export default function ContactForm() {
                   </div>
                   <span className="text-slate-700 text-sm">contato@kronox.com.br</span>
                 </li>
-
-                {/* Endereço */}
                 <li className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-[#0082ca]/10 flex items-center justify-center flex-shrink-0 text-[#0082ca]">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,13 +142,10 @@ export default function ContactForm() {
                   <span className="text-slate-700 text-sm">São Paulo, SP — Brasil</span>
                 </li>
               </ul>
-
               <hr className="border-slate-200 my-7" />
               <p className="text-slate-600 text-sm leading-relaxed">
                 Atendemos de <strong className="text-slate-900">segunda a sexta</strong>, das 8h às 18h. Respondemos todas as solicitações em até 24 horas úteis.
               </p>
-
-              {/* Selo de garantia */}
               <div className="mt-6 flex items-center gap-2 text-xs text-slate-500">
                 <svg className="w-4 h-4 text-[#0082ca]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -166,7 +155,7 @@ export default function ContactForm() {
             </div>
           </motion.div>
 
-          {/* Form */}
+          
           <motion.div className="w-full flex-1" variants={fadeUp}>
             {submitted ? (
               <div className="rounded-2xl p-8 sm:p-12 border border-slate-200 bg-white/80 backdrop-blur-md shadow-[0_18px_55px_rgba(15,23,42,0.12)] text-center text-slate-900">
@@ -179,7 +168,6 @@ export default function ContactForm() {
                 <p className="text-slate-700">
                   Obrigado pelo contato, <strong>{form.name}</strong>. Nossa equipe retornará em breve.
                 </p>
-                {/* UTM TESTE */}
                 {process.env.NODE_ENV === 'development' && (
                   <div className="mt-4 p-3 bg-slate-50 border border-slate-200 rounded-lg text-left text-xs">
                     <p className="font-semibold text-slate-900">UTMs capturadas:</p>
@@ -197,7 +185,6 @@ export default function ContactForm() {
                 bg-white/80 backdrop-blur-md p-6 sm:p-8 
                 shadow-[0_18px_55px_rgba(15,23,42,0.12)] grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
               >
-                {/*  HIDDEN PARA UTMs */}
                 <input type="hidden" name="utm_source" value={form.utm_source} />
                 <input type="hidden" name="utm_medium" value={form.utm_medium} />
                 <input type="hidden" name="utm_campaign" value={form.utm_campaign} />
@@ -260,24 +247,39 @@ export default function ContactForm() {
                     className={inputClass}
                   />
                 </div>
+
+                
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
                     Finalidade <span className="text-[#a52727]">*</span>
                   </label>
-                  <select
-                    name="finality"
-                    value={form.finality}
-                    onChange={handleChange}
-                    required
-                    className={inputClass}
-                  >
-                    <option value="" disabled>
-                      Selecione uma finalidade
-                    </option>
-                    <option>Para consumo</option>
-                    <option>Para revenda</option>
-                  </select>
-                </div>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <label className="inline-flex items-center gap-2 text-slate-800">
+                      <input
+                        type="radio"
+                        name="finality"
+                        value="consumo"
+                        checked={form.finality === "consumo"}
+                        onChange={handleChange}
+                        required
+                        className="h-4 w-4 accent-[#0082ca]"
+                      />
+                      <span>Para consumo</span>
+                    </label>
+                    <label className="inline-flex items-center gap-2 text-slate-800">
+                      <input
+                        type="radio"
+                        name="finality"
+                        value="revenda"
+                        checked={form.finality === "revenda"}
+                        onChange={handleChange}
+                        className="h-4 w-4 accent-[#0082ca]"
+                      />
+                      <span>Para revenda</span>
+                    </label>
+                  </div>
+                </div> 
+
                 <div className="sm:col-span-2">
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
                     Produto/serviço de interesse <span className="text-[#a52727]">*</span>
