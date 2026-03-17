@@ -1,6 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeUpFast, inViewViewport } from '@/utils/motion';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -63,7 +65,13 @@ export default function ProductLines() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/5 blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <motion.div
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10"
+        initial="hidden"
+        whileInView="show"
+        viewport={inViewViewport}
+        variants={fadeUpFast}
+      >
         {/* Header */}
         <div className="relative text-center max-w-3xl mx-auto mb-12">
           <span className="inline-block text-white/90 text-sm 
@@ -140,6 +148,7 @@ export default function ProductLines() {
                       alt={product.alt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      quality={65}
                       className="w-full h-full object-cover
                       group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
@@ -183,7 +192,7 @@ export default function ProductLines() {
           {/* Paginação */}
           <div className="product-pagination flex justify-center gap-2 mt-6" />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

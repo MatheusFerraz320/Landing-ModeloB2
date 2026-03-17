@@ -1,3 +1,6 @@
+import { motion } from 'framer-motion';
+import { fadeUpFast, inViewViewport } from '@/utils/motion';
+
 const benefits = [
   {
     title: "Bombeamento em linha",
@@ -79,7 +82,13 @@ export default function QualityBanner() {
         </div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        initial="hidden"
+        whileInView="show"
+        viewport={inViewViewport}
+        variants={fadeUpFast}
+      >
         {/* Cabeçalho da seção com tema refinado */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-3 rounded-full border border-[#0082ca]/20 bg-[#0082ca]/5 px-5 py-2 mb-6 shadow-sm backdrop-blur-sm">
@@ -130,7 +139,7 @@ export default function QualityBanner() {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

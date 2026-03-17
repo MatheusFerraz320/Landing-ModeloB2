@@ -1,39 +1,29 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useUtmFromStorage } from '../hooks/UtmHook'; 
 
-export default function ModalForm({ isOpen, onClose }) {
-  // PEGA AS UTMs DO HOOK
-  const utmParams = useUtmFromStorage();
-  
-  const [formData, setFormData] = useState({
+function buildInitialFormData(utmParams = {}) {
+  return {
     name: '',
     email: '',
     phone: '',
     company: '',
     interest: '',
     message: '',
-    utm_source: '',
-    utm_medium: '',
-    utm_campaign: '',
-    utm_term: '',
-    utm_content: ''
-  });
+    utm_source: utmParams.utm_source || '',
+    utm_medium: utmParams.utm_medium || '',
+    utm_campaign: utmParams.utm_campaign || '',
+    utm_term: utmParams.utm_term || '',
+    utm_content: utmParams.utm_content || ''
+  };
+}
+
+export default function ModalForm({ isOpen, onClose }) {
+  // PEGA AS UTMs DO HOOK
+  const utmParams = useUtmFromStorage();
+  
+  const [formData, setFormData] = useState(() => buildInitialFormData(utmParams));
   
   const [submitted, setSubmitted] = useState(false);
-
-  //ATUALIZA O FORM QUANDO O MODAL ABRIR COM AS UTMs
-  useEffect(() => {
-    if (isOpen && utmParams) {
-      setFormData(prev => ({
-        ...prev,
-        utm_source: utmParams.utm_source || '',
-        utm_medium: utmParams.utm_medium || '',
-        utm_campaign: utmParams.utm_campaign || '',
-        utm_term: utmParams.utm_term || '',
-        utm_content: utmParams.utm_content || ''
-      }));
-    }
-  }, [isOpen, utmParams]);
 
   const handleChange = (e) => {
     setFormData({
@@ -63,23 +53,6 @@ export default function ModalForm({ isOpen, onClose }) {
     const whatsNumber = '5513991621955';
     const whatsUrl = `https://wa.me/${whatsNumber}?text=${encodeURIComponent(whatsMessage)}`;
     
-    // APLICAR O GTM 
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push({
-        event: 'form_submit',
-        form_type: 'cotacao',
-        form_data: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.company,
-          utm_source: formData.utm_source,
-          utm_medium: formData.utm_medium,
-          utm_campaign: formData.utm_campaign
-        }
-      });
-    }
-    
     window.open(whatsUrl, '_blank');
     console.log('Form enviado com UTMs:', formData);
     setSubmitted(true);
@@ -87,19 +60,7 @@ export default function ModalForm({ isOpen, onClose }) {
     // Fechar modal
     setTimeout(() => {
       setSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        interest: '',
-        message: '',
-        utm_source: '',
-        utm_medium: '',
-        utm_campaign: '',
-        utm_term: '',
-        utm_content: ''
-      });
+      setFormData(buildInitialFormData(utmParams));
       onClose();
     }, 3000);
   };

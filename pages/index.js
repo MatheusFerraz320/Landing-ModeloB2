@@ -1,25 +1,22 @@
 import Head from "next/head";
-import dynamic from "next/dynamic";
 import HeroSection from "@/sections/HeroSection";
-const AboutSection = dynamic(() => import("@/sections/AboutSection"));
-const ProductLines = dynamic(() => import("@/sections/ProductLines"));
-const Cases = dynamic(() => import("@/sections/Cases"));
-const QualityBanner = dynamic(() => import("@/sections/QualityBanner"));
-const ContactForm = dynamic(() => import("@/sections/ContactForm"));
-const CTASection = dynamic(() => import("@/sections/CTASection"));
+import AboutSection from "@/sections/AboutSection";
+import ProductLines from "@/sections/ProductLines";
+import Cases from "@/sections/Cases";
+import QualityBanner from "@/sections/QualityBanner";
+import ContactForm from "@/sections/ContactForm";
+import CTASection from "@/sections/CTASection";
 import Footer from "@/components/Footer";
-import { UtmHook } from "@/hooks/UtmHook";
 
 export default function Home() {
-  UtmHook();
-
   return (
     <>
       <Head>
         <title>ModeloB2 — Soluções Industriais de Alta Performance</title>
         <meta
           name="description"
-          content="Soluções industriais certificadas. Componentes, tubulações, painéis elétricos e mais. Solicite sua cotação."
+          content="Soluções industriais certificadas. 
+          Componentes, tubulações, painéis elétricos e mais. Solicite sua cotação."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

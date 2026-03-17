@@ -1,4 +1,5 @@
-import { handleRDClick } from "@/hooks/UtmHook";
+import { motion } from 'framer-motion';
+import { fadeUpFast, inViewViewport } from '@/utils/motion';
 
 export default function CTASection() {
   return (
@@ -7,7 +8,13 @@ export default function CTASection() {
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-blue-500/14 blur-3xl pointer-events-none" />
       <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
 
-      <div className="relative max-w-4xl mx-auto px-4 text-center">
+      <motion.div
+        className="relative max-w-4xl mx-auto px-4 text-center"
+        initial="hidden"
+        whileInView="show"
+        viewport={inViewViewport}
+        variants={fadeUpFast}
+      >
         <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
          Fale com a Vazão e entenda qual solução {" "}
          <span className="text-red-500 block mt-1">Kronox</span>
@@ -17,13 +24,13 @@ export default function CTASection() {
           Receba uma avaliação técnica da sua necessidade com foco em eficiência, confiabilidade e viabilidade de implantação.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => handleRDClick('final_cta')} className="bg-red-500 
+            <a href="#contato" className="bg-red-500 
               text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] 
               hover:scale-105 transition-all duration-300">
                 Quero falar com especialista
-              </button>
+              </a>
         </div>
-      </div>
+      </motion.div>
     </section>
 
   );

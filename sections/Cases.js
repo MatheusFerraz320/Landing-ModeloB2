@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeUpFast, inViewViewport } from '@/utils/motion';
 
 // Logos de clientes (simuladas, substitua pelos paths reais)
 const clientLogos = [
@@ -17,7 +19,7 @@ const cases = [
     description:
       ' Modelo baby booster 2,2Kw/2VV.',
     badge: 'Sabesp',
-    image: '/cases/instalacaoCampinas.webp',
+    image: '/cases/instalacaoSabesp.webp',
   },
   {
     title: 'Premiação Projeto de Excelência EM Resultados',
@@ -47,7 +49,13 @@ export default function Cases() {
         <div className="absolute inset-x-6 top-8 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        initial="hidden"
+        whileInView="show"
+        viewport={inViewViewport}
+        variants={fadeUpFast}
+      >
         {/* Header com logo e título */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2 mb-6 backdrop-blur-sm">
@@ -63,6 +71,8 @@ export default function Cases() {
               alt="Kronox"
               width={160}
               height={52}
+              sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 160px"
+              quality={70}
               className="object-contain w-28 h-auto sm:w-36 md:w-40 "
             />
             <span className="text-4xl font-bold text-white">
@@ -95,6 +105,8 @@ export default function Cases() {
                   src={caseItem.image}
                   alt={caseItem.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={65}
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -149,6 +161,8 @@ export default function Cases() {
                     alt={logo.alt}
                     width={120}
                     height={60}
+                    sizes="120px"
+                    quality={70}
                     className="object-fill 
                     max-h-16 max-w-[90%] relative z-10 filter 
                     brightness-110 saturate-110 group-hover:brightness-125 group-hover:saturate-125 transition-all duration-500"
@@ -165,7 +179,7 @@ export default function Cases() {
             E muitas outras empresas que já transformaram sua operação com a Kronox.
           </p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

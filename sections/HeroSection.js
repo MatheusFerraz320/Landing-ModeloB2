@@ -1,9 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, inViewViewport } from "@/utils/motion";
-import { handleRDClick } from "@/hooks/UtmHook";
 
 export default function HeroSection() {
   return (
@@ -54,14 +51,14 @@ export default function HeroSection() {
               evitar bloqueios e simplificar a operação.
             </p>
 
-            {/* Botão redieciona para o RD */}
+            {/* Botões de navegação */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center">
-              <button
-                onClick={() => handleRDClick('hero_cta')}
+              <a
+                href="#contato"
                 className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300"
               >
                 Solicitar avaliação técnica
-              </button>
+              </a>
 
               <a
                 href="#about"

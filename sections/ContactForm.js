@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { UtmHook } from "../hooks/UtmHook"; 
+import { motion } from "framer-motion";
+import { fadeUpFast, inViewViewport } from "@/utils/motion";
 
 const inputClass =
   "w-full rounded-xl border border-slate-200/90 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0082ca] focus:border-transparent transition";
@@ -7,7 +9,7 @@ const inputClass =
 export default function ContactForm() {
   const utmParams = UtmHook();
   
-  const [form, setForm] = useState({
+  const [form, setForm] = useState(() => ({
     name: "",
     email: "",
     phone: "",
@@ -15,28 +17,16 @@ export default function ContactForm() {
     subject: "",
     message: "",
     finality: "",   
-    product: "",    
-    utm_source: "",
-    ad_id: "",
-    utm_campaign: "",
-    utm_term: "",
-    utm_content: ""
-  });
+    product: "",
+    utm_source: utmParams.utm_source || "",
+    utm_medium: utmParams.utm_medium || "",
+    ad_id: utmParams.ad_id || "",
+    utm_campaign: utmParams.utm_campaign || "",
+    utm_term: utmParams.utm_term || "",
+    utm_content: utmParams.utm_content || ""
+  }));
   
   const [submitted, setSubmitted] = useState(false);
-
-  useEffect(() => {
-    if (utmParams && Object.keys(utmParams).length > 0) {
-      setForm(prev => ({
-        ...prev,
-        utm_source: utmParams.utm_source || '',
-        ad_id: utmParams.ad_id || '',
-        utm_campaign: utmParams.utm_campaign || '',
-        utm_term: utmParams.utm_term || '',
-        utm_content: utmParams.utm_content || ''
-      }));
-    }
-  }, [utmParams]);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -51,24 +41,6 @@ export default function ContactForm() {
       utm_campaign: form.utm_campaign
     });
     
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push({
-        event: 'form_submit',
-        form_type: 'contato',
-        form_data: {
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          company: form.company,
-          finality: form.finality,  
-          subject: form.subject,
-          utm_source: form.utm_source,
-          utm_medium: form.utm_medium,
-          utm_campaign: form.utm_campaign
-        }
-      });
-    }
-    
     setSubmitted(true);
   };
 
@@ -81,7 +53,13 @@ export default function ContactForm() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-10 sm:mb-14 relative">
+        <motion.div
+          className="text-center mb-10 sm:mb-14 relative"
+          initial="hidden"
+          whileInView="show"
+          viewport={inViewViewport}
+          variants={fadeUpFast}
+        >
           <div className="inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/40 px-5 py-2 mb-6 shadow-[0_18px_60px_rgba(8,15,30,0.12)] backdrop-blur-md">
             <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
             <span className="text-sm font-semibold text-slate-900 tracking-[0.24em]">
@@ -94,7 +72,7 @@ export default function ContactForm() {
           <p className="text-slate-700 text-lg max-w-xl mx-auto">
             Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas para oferecer a solução ideal.
           </p>
-        </div>
+        </motion.div>
 
         <div className="relative flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12 items-start">
          
@@ -142,7 +120,13 @@ export default function ContactForm() {
           </div>
 
           
-          <div className="w-full flex-1">
+          <motion.div
+            className="w-full flex-1"
+            initial="hidden"
+            whileInView="show"
+            viewport={inViewViewport}
+            variants={fadeUpFast}
+          >
             {submitted ? (
               <div className="rounded-2xl p-8 sm:p-12 border border-slate-200 bg-white/80 backdrop-blur-md shadow-[0_18px_55px_rgba(15,23,42,0.12)] text-center text-slate-900">
                 <div className="w-16 h-16 bg-[#0082ca]/20 rounded-full flex items-center justify-center mx-auto mb-5 ring-1 ring-[#0082ca]/30">
@@ -172,6 +156,7 @@ export default function ContactForm() {
                 shadow-[0_18px_55px_rgba(15,23,42,0.12)] grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
               >
                 <input type="hidden" name="utm_source" value={form.utm_source} />
+                <input type="hidden" name="utm_medium" value={form.utm_medium} />
                 <input type="hidden" name="ad_id" value={form.ad_id} />
                 <input type="hidden" name="utm_campaign" value={form.utm_campaign} />
                 <input type="hidden" name="utm_term" value={form.utm_term} />
@@ -295,7 +280,7 @@ export default function ContactForm() {
                 </div>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

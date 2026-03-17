@@ -1,11 +1,21 @@
+import { motion } from "framer-motion";
+import { fadeUpFast, inViewViewport } from "@/utils/motion";
+
 export default function AboutSection() {
 
   return (
     <section id="about" className="relative overflow-hidden py-20 md:py-28 bg-white">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        initial="hidden"
+        whileInView="show"
+        viewport={inViewViewport}
+        variants={fadeUpFast}
+      >
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/70 backdrop-blur-md 
+          <div className="inline-flex items-center gap-3 rounded-full 
+          border border-white/30 bg-white/70 backdrop-blur-md 
           px-6 py-2.5 mb-6 shadow-[0_10px_30px_rgba(15,23,42,0.12)]">
             <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.7)]" />
             <span className="text-sm tracking-wide font-semibold text-slate-800">
@@ -132,7 +142,7 @@ export default function AboutSection() {
             ✓ Análise gratuita  ✓ Projeto personalizado  ✓ Suporte técnico
           </p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
