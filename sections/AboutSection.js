@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeUpFast, staggerContainer, inViewViewport } from "@/utils/motion";
+import { ST } from "next/dist/shared/lib/utils";
 
 export default function AboutSection() {
 
@@ -7,8 +8,7 @@ export default function AboutSection() {
     <section id="about" className="relative overflow-hidden py-20 md:py-28 bg-white">
       <motion.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="hidden"
-        whileInView="show"
+        initial="visible"
         viewport={inViewViewport}
         variants={staggerContainer}
       >
@@ -35,12 +35,18 @@ export default function AboutSection() {
         </motion.div>
 
         {/* Grid de cards */}
-        <motion.div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16" variants={fadeUpFast}>
+        <motion.div 
+        className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16" 
+        initial="hidden"
+        whileInView="show"
+        viewport={inViewViewport}
+        variants={staggerContainer}>
           {/* Card 1 - Bombeamento em linha */}
-          <div
+          <motion.div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 
           shadow-xl transition-transform duration-300 hover:scale-105 
           border border-slate-400/80"
+            variants={fadeUpFast}
           >
             <div className="relative">
               <div className="w-16 h-16 
@@ -64,13 +70,14 @@ export default function AboutSection() {
                 </svg>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 2 - Baixíssima manutenção */}
-          <div
+          <motion.div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
             hover:scale-105 border border-slate-400/80"
+            variants={fadeUpFast}
           >
             <div className="relative">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-950/20 ring-1 ring-white/10">
@@ -91,13 +98,14 @@ export default function AboutSection() {
                 <span className="rounded-full border border-blue-300/20 bg-blue-400/10 px-3 py-1.5 text-xs font-semibold text-blue-700">longa vida</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 3 - Estrutura em aço inox */}
-          <div
+          <motion.div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
             hover:scale-105 border border-slate-400/80"
+            variants={fadeUpFast}
           >
             <div className="relative">
               <div className="w-16 h-16 bg-gradient-to-br from-zinc-300 via-slate-400 to-zinc-700 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-slate-900/20 ring-1 ring-white/30">
@@ -122,7 +130,7 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* CTA final */}

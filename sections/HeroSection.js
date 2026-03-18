@@ -49,8 +49,8 @@ export default function HeroSection({ loadRdScript }) {
           {/* TEXTO ESQUERDA */}
           <motion.div
             className="text-left"
-            initial="visible" // ⚡ LCP rápido
-            animate="show"
+            initial="hidden" // LCP rápido
+            whileInView="show"
             variants={fadeUp}
           >
             <h1 className="font-extrabold text-slate-50 leading-[1.05] tracking-tight 

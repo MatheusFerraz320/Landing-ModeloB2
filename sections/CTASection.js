@@ -26,12 +26,12 @@ export default function CTASection() {
           {/* Left: Text Content */}
           <motion.div className="text-center lg:text-left space-y-6" variants={fadeUpFast}>
             <h2 className="text-3xl md:text-4xl font-black text-white ">
-              Fale com a Vazão e entenda qual solução{" "}
+              A Vazão ajuda você a encontrar a solução{" "}
               <span className="text-red-500">Kronox</span>
-              {" "}faz sentido para sua operação
+              {" "}ideal para sua operação
             </h2>
             <p className="text-slate-300 text-lg leading-relaxed">
-              Receba uma avaliação técnica da sua necessidade com foco em eficiência, confiabilidade e viabilidade de implantação.
+              Da analise da necessidade à recomendação da melhor solução Kronox , a Vazão apoia sua operação com visão técnica e aplicação pratica.
             </p>
             
             {/* CTA Button */}

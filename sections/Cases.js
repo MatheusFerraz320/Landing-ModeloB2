@@ -120,7 +120,7 @@ export default function Cases() {
           
           <div className="flex justify-center mb-20">
           <a
-          href="#products"
+          href='#rd-form'
           className="inline-flex items-center gap-3 rounded-full px-20 py-4
             bg-gradient-to-r from-[#0082ca] 
             to-[#0066a0] hover:from-[#0066a0]
