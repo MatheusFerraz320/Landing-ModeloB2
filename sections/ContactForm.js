@@ -1,7 +1,7 @@
 import { useState , useEffect} from "react";
 import { motion } from "framer-motion";
 import { fadeUpFast, inViewViewport } from "@/utils/motion";
-import { sendToRd } from "@/lib/rdStation";
+import { sendToRd , emailSend} from "@/lib/rdStation";
 
 const UTM_FIELDS = [
   "utm_source",
@@ -66,35 +66,50 @@ export default function ContactForm() {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError(null);
 
-    try {
-      await sendToRd({
-        name: form.name,
-        phone: form.phone,
-        email: form.email,
-        company: form.company,
-        product: form.product,
-        finality: form.finality,
-        utmParams: {
-          utm_source: utm_source,
-          utm_medium: utm_medium,
-          utm_campaign: utm_campaign,
-          utm_term: utm_term,
-          utm_content: utm_content,
-          ad_id: ad_id,
-        },
-      });
-      setSubmitted(true);
-    } catch (err) {
-      setError("Erro ao enviar. Tente novamente ou entre em contato via whatsapp.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    // Dados do form pra api do RD
+    await sendToRd({
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      company: form.company,
+      product: form.product,
+      finality: form.finality,
+      utmParams: {
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        utm_term,
+        utm_content,
+        ad_id,
+      },
+    });
+    setSubmitted(true);
+  } catch (err) {
+    setError("Erro no Rd Station.");
+    return;
+  } finally {
+    setLoading(false);
+  }
+  try {
+    //EmailSend
+    await emailSend({
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      company: form.company,
+      message: `Produto/serviço de interesse: ${form.product}\nFinalidade: ${form.finality}`,
+      finality: form.finality
+    })
+  } catch (error) {
+    console.error("Erro no envio de email:", error);
+  }
+};
 
   return (
     <section id="contato" className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-white/5">
