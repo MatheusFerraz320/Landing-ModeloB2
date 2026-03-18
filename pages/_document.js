@@ -1,23 +1,27 @@
+// app/document.js
 import { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
+
 export default function Document() {
   return (
     <Html lang="pt-BR">
-<Head>
-  <Script
-    id="gtm-script"
-    strategy="beforeInteractive" //
-    dangerouslySetInnerHTML={{
-      __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      <Head>
+        {/* GTM: script principal */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive" // ⚡ não bloqueia LCP
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WZPD6JC');`,
-    }}
-  />
-</Head>
+          }}
+        />
+      </Head>
+
       <body className="antialiased">
-        {/* Google Tag Manager (noscript) */}
+        {/* GTM: iframe noscript */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WZPD6JC"
@@ -26,9 +30,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+
         <Main />
         <NextScript />
-        {/* RD Station embed loader */}
       </body>
     </Html>
   );
