@@ -1,12 +1,12 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import script from "next/script";
 
 export default function Document() {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || "GTM-WZPD6JC";
 
   return (
     <Html lang="pt-BR">
-      <Head>
-        
+      <Head>    
       </Head>
       <body className="antialiased">
         {/* Google Tag Manager (noscript) */}

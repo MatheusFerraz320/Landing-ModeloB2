@@ -3,6 +3,15 @@ import { motion } from "framer-motion";
 import { fadeUpFast, inViewViewport } from "@/utils/motion";
 import { sendToRd } from "@/lib/rdStation";
 
+const UTM_FIELDS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "ad_id",
+];
+
 const inputClass =
   "w-full rounded-xl border border-slate-200/90 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0082ca] focus:border-transparent transition";
 
@@ -25,19 +34,23 @@ export default function ContactForm() {
   }));
   
   useEffect(() => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const params = {
-    utm_source: urlParams.get('utm_source') || localStorage.getItem('utm_source') || '',
-    utm_medium: urlParams.get('utm_medium') || localStorage.getItem('utm_medium') || '',
-    utm_campaign: urlParams.get('utm_campaign') || localStorage.getItem('utm_campaign') || '',
-    utm_term: urlParams.get('utm_term') || localStorage.getItem('utm_term') || '',
-    utm_content: urlParams.get('utm_content') || localStorage.getItem('utm_content') || '',
-    ad_id: urlParams.get('ad_id') || localStorage.getItem('ad_id') || ''
-  };
-  localStorage.setItem('utm_params', JSON.stringify(params));
-  console.log("UTM parameters captured:", params);
-  setForm(prev => ({ ...prev, ...params }));
-}, []);
+    const urlParams = new URLSearchParams(window.location.search);
+    const storedParams = JSON.parse(localStorage.getItem("utm_params") || "{}");
+    const params = UTM_FIELDS.reduce((accumulator, field) => {
+      const value = urlParams.get(field) || storedParams[field] || localStorage.getItem(field) || "";
+
+      if (value) {
+        localStorage.setItem(field, value);
+      }
+
+      accumulator[field] = value;
+      return accumulator;
+    }, {});
+
+    localStorage.setItem("utm_params", JSON.stringify(params));
+    console.log("UTM parameters captured:", params);
+    setForm((prev) => ({ ...prev, ...params }));
+  }, []);
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
