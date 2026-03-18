@@ -54,12 +54,13 @@ export default function HeroSection({ loadRdScript }) {
             variants={fadeUp}
           >
             <h1 className="font-extrabold text-slate-50 leading-[1.05] tracking-tight 
-            mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)]" style={{ fontSize: '65px' }}>
+            mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)] text-5xl" >
               Soluções industriais
               <span className="block text-red-500">de alta performance</span>
             </h1>
 
-            <p className="text-lg md:text-xl font-medium text-slate-100/95 max-w-xl mb-10 leading-relaxed drop-shadow-[0_3px_12px_rgba(2,6,23,0.8)]">
+            <p className="text-lg text-xl font-medium text-slate-100/95 
+            max-w-xl mb-10 leading-relaxed drop-shadow-[0_3px_12px_rgba(2,6,23,0.8)]">
               Soluções Kronox para companhias de saneamento, concessionárias, SAAEs e empreendimentos que precisam reduzir manutenção,
               evitar bloqueios e simplificar a operação.
             </p>
@@ -96,7 +97,7 @@ export default function HeroSection({ loadRdScript }) {
           </motion.div>
 
           {/* DIREITA (imagem futura / mockup / vídeo) */}
-          <div className="hidden lg:flex justify-center items-center">
+          <div className="flex justify-center items-center">
             <div className="w-full h-[520px] bg-white/10 rounded-2xl
              backdrop-blur-md flex items-center justify-center border border-white/10">
               <span className="text-white/70 text-sm">
