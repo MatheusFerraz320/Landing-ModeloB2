@@ -2,11 +2,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, inViewViewport } from "@/utils/motion";
 
-const rdButton = () => {
-  const rdForm = document.getElementById("rd-floating_button-ly4393ic");
-  if (rdForm) rdForm.click();
-};
-
 export default function HeroSection() {
   const rdButton = () => { 
     const rdForm = document.getElementById("rd-floating_button-ly4393ic");

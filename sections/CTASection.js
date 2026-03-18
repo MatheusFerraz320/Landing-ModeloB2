@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { fadeUpFast, inViewViewport } from '@/utils/motion';
 
 const rdButton = () => {
@@ -43,17 +44,33 @@ export default function CTASection() {
               </button>
             </div>
           </div>
-
-          {/* Right: Logo */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              {/* Background glow effect */}
-              <div className="absolute inset-0 bg-red-500/10 rounded-2xl blur-2xl -z-10" />
-              <img 
-                src="/Kronox.webp" 
-                alt="Kronox Logo" 
-                className="w-full max-w-sm lg:max-w-md h-auto drop-shadow-2xl object-contain"
-              />
+          <div className="flex justify-center pt-10">
+            {/* Right: Logos Stack */}
+            <div className="flex flex-col items-center gap-8">
+              {/* Primary Logo */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-blue-500/10 rounded-2xl blur-2xl -z-10" />
+                <Image 
+                  src="/Logo-Vazão-White.webp" 
+                  alt="Vazão Logo" 
+                  width={280}
+                  height={120}
+                  className="drop-shadow-2xl object-contain"
+                  priority
+                />
+              </div>
+              
+              {/* Kronox Logo */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-red-500/10 rounded-2xl blur-2xl -z-10" />
+                <Image 
+                  src="/Kronox.webp" 
+                  alt="Kronox Logo" 
+                  width={300}
+                  height={200}
+                  className="drop-shadow-2xl object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>

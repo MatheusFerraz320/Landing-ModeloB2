@@ -44,9 +44,7 @@ export default function FormRD() {
     setLoading(true);
 
     try {
-      // =========================
       //  RD STATION
-      // =========================
       await fetch("https://api.rd.services/platform/conversions", {
         method: "POST",
         headers: {
@@ -74,9 +72,7 @@ export default function FormRD() {
         }),
       });
 
-      // =========================
-      // 🟣 EMAIL
-      // =========================
+      // SEND EMAIL   
       await emailjs.send(
         "service_falje4g",
         "template_6wq37yv",
