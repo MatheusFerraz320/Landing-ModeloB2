@@ -3,7 +3,14 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
   return (
     <Html lang="pt-BR">
-      <Head />
+      <Head>
+        {/* ✅ Preload para LCP image - Hero */}
+        <link rel="preload" as="image" href="/Hero.webp" />
+        
+        {/* ✅ Preconnect para Google Tag Manager */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      </Head>
 
       <body className="antialiased">
         <Main />

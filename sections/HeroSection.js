@@ -22,6 +22,8 @@ export default function HeroSection({ loadRdScript }) {
           alt="Fundo industrial"
           fill
           priority
+          loading="eager"
+          fetchPriority="high"
           quality={75} // otimiza LCP
           className="object-cover scale-[1.02] brightness-[0.82] saturate-[0.9]"
           sizes="100vw"

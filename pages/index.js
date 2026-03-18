@@ -4,11 +4,26 @@ import HeroSection from "@/sections/HeroSection";
 
 const AboutSection = dynamic(() => import("@/sections/AboutSection"));
 const ProductLines = dynamic(() => import("@/sections/ProductLines"));
-const Cases = dynamic(() => import("@/sections/Cases"));
-const QualityBanner = dynamic(() => import("@/sections/QualityBanner"));
-const FormRD = dynamic(() => import("@/sections/newForm"));
-const CTASection = dynamic(() => import("@/sections/CTASection"));
-const Footer = dynamic(() => import("@/components/Footer"));
+const Cases = dynamic(() => import("@/sections/Cases"), {
+  ssr: false,
+  loading: () => <section className="h-[520px] bg-black" aria-hidden="true" />,
+});
+const QualityBanner = dynamic(() => import("@/sections/QualityBanner"), {
+  ssr: false,
+  loading: () => <section className="h-[320px] bg-white" aria-hidden="true" />,
+});
+const FormRD = dynamic(() => import("@/sections/newForm"), {
+  ssr: false,
+  loading: () => <section className="h-[500px] bg-slate-100" aria-hidden="true" />,
+});
+const CTASection = dynamic(() => import("@/sections/CTASection"), {
+  ssr: false,
+  loading: () => <section className="h-[260px] bg-white" aria-hidden="true" />,
+});
+const Footer = dynamic(() => import("@/components/Footer"), {
+  ssr: false,
+  loading: () => <footer className="h-[220px] bg-slate-900" aria-hidden="true" />,
+});
 
 export default function Home() {
   return (

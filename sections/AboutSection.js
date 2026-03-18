@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { fadeUpFast, staggerContainer, inViewViewport } from "@/utils/motion";
-import { ST } from "next/dist/shared/lib/utils";
 
 export default function AboutSection() {
 

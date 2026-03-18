@@ -2,6 +2,17 @@ import "@/styles/globals.css";
 
 import Script from "next/script";
 
+export function reportWebVitals(metric) {
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("event", metric.name, {
+      event_category: "Web Vitals",
+      value: Math.round(metric.value),
+      event_label: metric.id,
+      non_interaction: true,
+    });
+  }
+}
+
 export default function App({ Component, pageProps }) {
   return (
     <>
