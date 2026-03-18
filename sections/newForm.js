@@ -69,13 +69,13 @@ export default function FormRD() {
       // 🟣 EMAIL
       // =========================
       await emailjs.send(
-        "service_xxx",
-        "template_xxx",
+        "service_falje4g",
+        "template_6wq37yv",
         {
           ...form,
           ...utm,
         },
-        "public_key_xxx"
+        "61xYofVMBaMtGRdio"
       );
 
       alert("Enviado com sucesso 🚀");
