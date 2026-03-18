@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -7,18 +6,17 @@ import emailjs from "@emailjs/browser";
 export default function FormRD() {
   const [form, setForm] = useState({
     name: "",
-    email: "",
-    phone: "",
     company: "",
     product: "",
+    email: "",
+    phone: "",
     finality: "",
-    message: "",
   });
 
   const [utm, setUtm] = useState({});
   const [loading, setLoading] = useState(false);
 
-  // Captura UTMs da URL apenas na montagem
+  // Captura UTMs da URL apenas na montagem do form
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
 
@@ -28,9 +26,13 @@ export default function FormRD() {
       utm_campaign: params.get("utm_campaign") || "",
       utm_term: params.get("utm_term") || "",
       utm_content: params.get("utm_content") || "",
+      ad_id: params.get("ad_id") || "",
     });
   }, []);
-  console.log(utm);
+  const whatsMsg = `Olá, gostaria de falar com um especialista da ModeloB2. Meu nome é 
+  ${form.name} e estou interessado no produto ${form.product}. Poderiam me ajudar? vim da campanha 
+  ${utm.utm_campaign || "orgânica"}.`;
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +45,7 @@ export default function FormRD() {
 
     try {
       // =========================
-      // 🔵 RD STATION
+      //  RD STATION
       // =========================
       await fetch("https://api.rd.services/platform/conversions", {
         method: "POST",
@@ -66,7 +68,6 @@ export default function FormRD() {
             //campos personalizados
             cf_product: form.product || "",
             cf_finality: form.finality || "",
-            cf_message: form.message || "",
             
             ...utm,
           },
@@ -85,16 +86,14 @@ export default function FormRD() {
         },
         "61xYofVMBaMtGRdio"
       );
-
       console.log(`Formulário enviado: ${JSON.stringify(form)} com UTMs: ${JSON.stringify(utm)}`);
       setForm({
         name: "",
-        email: "",
-        phone: "",
         company: "",
         product: "",
+        email: "",
+        phone: "",
         finality: "",
-        message: "",
       });
 
     } catch (err) {
@@ -103,6 +102,7 @@ export default function FormRD() {
     } finally {
       setLoading(false);
     }
+    window.open(`https://api.whatsapp.com/send?phone=5599199999999&text=${encodeURIComponent(whatsMsg)}`, "_blank");
   };
 
   return (
@@ -130,10 +130,11 @@ export default function FormRD() {
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600 max-w-xl mx-auto lg:mx-0">
               Conte os detalhes do seu cenario e retornamos com uma avaliacao tecnica, opcoes de produto e recomendacoes para implantacao.
             </p>
-            <div className="mt-8 rounded-2xl border border-slate-200/80 bg-white/70 p-5 backdrop-blur-sm">
-              <p className="text-sm text-slate-700">
-                Tempo medio de resposta: <strong className="text-slate-900">ate 24 horas uteis</strong>
-              </p>
+            <div className="mt-8 rounded-2xl border border-slate-300 bg-white/70 p-5 backdrop-blur-sm space-y-2">
+              <p className="text-sm font-semibold text-slate-900">Vazão Engenharia</p>
+              <p className="text-sm text-slate-700">Email: contato@.com.br</p>
+              <p className="text-sm text-slate-700">Telefone: +55 (19) 3450-7396</p>
+              <p className="text-sm text-slate-700">Sao Paulo, SP - Brasil</p>
             </div>
           </div>
 
@@ -152,6 +153,24 @@ export default function FormRD() {
               />
 
               <input
+                name="company"
+                value={form.company}
+                placeholder="Empresa"
+                required
+                className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
+                onChange={handleChange}
+              />
+
+              <input
+                name="product"
+                value={form.product}
+                placeholder="Qual produto de interesse"
+                required
+                className="sm:col-span-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
+                onChange={handleChange}
+              />
+
+              <input
                 name="email"
                 type="email"
                 value={form.email}
@@ -165,42 +184,40 @@ export default function FormRD() {
                 name="phone"
                 value={form.phone}
                 placeholder="Telefone"
+                required
                 className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
                 onChange={handleChange}
               />
 
-              <input
-                name="company"
-                value={form.company}
-                placeholder="Empresa"
-                className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
-                onChange={handleChange}
-              />
-
-              <input
-                name="product"
-                value={form.product}
-                placeholder="Produto"
-                className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
-                onChange={handleChange}
-              />
-
-              <input
-                name="finality"
-                value={form.finality}
-                placeholder="Finalidade"
-                className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
-                onChange={handleChange}
-              />
-
-              <textarea
-                name="message"
-                value={form.message}
-                placeholder="Mensagem"
-                rows={5}
-                className="sm:col-span-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca] resize-none"
-                onChange={handleChange}
-              />
+              <div className="sm:col-span-2 rounded-xl border border-slate-200 px-4 py-3">
+                <p className="text-sm font-semibold text-slate-800 mb-2">Finalidade</p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <label className="inline-flex items-center gap-2 text-slate-700">
+                    <input
+                      type="radio"
+                      name="finality"
+                      value="consumo"
+                      checked={form.finality === "consumo"}
+                      onChange={handleChange}
+                      required
+                      className="h-4 w-4 accent-[#0082ca]"
+                    />
+                    <span>Para consumo</span>
+                  </label>
+                  <label className="inline-flex items-center gap-2 text-slate-700">
+                    <input
+                      type="radio"
+                      name="finality"
+                      value="revenda"
+                      checked={form.finality === "revenda"}
+                      onChange={handleChange}
+                      required
+                      className="h-4 w-4 accent-[#0082ca]"
+                    />
+                    <span>Para revenda</span>
+                  </label>
+                </div>
+              </div>
             </div>
 
             <button
