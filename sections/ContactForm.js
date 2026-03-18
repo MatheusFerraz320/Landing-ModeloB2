@@ -201,7 +201,7 @@ export default function ContactForm() {
               </div>
             ) : (
               <form
-                name="[b2] Form kronox"
+                name="[B2] Form Kronox"
                 onSubmit={handleSubmit}
                 className="rounded-2xl border border-slate-200 
                 bg-white/80 backdrop-blur-md p-6 sm:p-8 
