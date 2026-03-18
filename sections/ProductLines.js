@@ -88,7 +88,8 @@ export default function ProductLines() {
           {/* Setas personalizadas */}
           <button className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 
           bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl 
-          flex items-center justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -ml-6 product-prev">
+            flex items-center justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -ml-6 product-prev"
+            aria-label="Produto anterior">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
@@ -96,7 +97,8 @@ export default function ProductLines() {
 
           <button className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/20 
           backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl flex items-center 
-          justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -mr-6 product-next">
+            justify-center text-white hover:text-[#a52727] transition-all duration-300 hover:scale-110 -mr-6 product-next"
+            aria-label="Próximo produto">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
             </svg>

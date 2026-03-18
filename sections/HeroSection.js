@@ -21,7 +21,7 @@ export default function HeroSection() {
           fill
           priority
           className="object-cover scale-[1.02] brightness-[0.82] saturate-[0.9]"
-          sizes="80vw"
+            sizes="100vw"
         />
       </div>
 
@@ -35,6 +35,7 @@ export default function HeroSection() {
             alt="Kronox" 
             width={180} 
             height={60} 
+            priority
             className="object-contain"
           />
         </div>
@@ -45,10 +46,9 @@ export default function HeroSection() {
           {/* TEXTO ESQUERDA */}
           <motion.div
             className="text-left"
-            initial="hidden"
-            whileInView="show"
-            viewport={inViewViewport}
-            variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              variants={fadeUp}
           >
             <h1 className="font-extrabold text-slate-50 leading-[1.05] tracking-tight 
             mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)]" style={{ fontSize: '65px' }}>

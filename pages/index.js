@@ -1,12 +1,14 @@
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import HeroSection from "@/sections/HeroSection";
-import AboutSection from "@/sections/AboutSection";
-import ProductLines from "@/sections/ProductLines";
-import Cases from "@/sections/Cases";
-import QualityBanner from "@/sections/QualityBanner";
-import CTASection from "@/sections/CTASection";
-import Footer from "@/components/Footer";
-import FormRD from "@/sections/newForm";
+
+const AboutSection = dynamic(() => import("@/sections/AboutSection"));
+const ProductLines = dynamic(() => import("@/sections/ProductLines"));
+const Cases = dynamic(() => import("@/sections/Cases"));
+const QualityBanner = dynamic(() => import("@/sections/QualityBanner"));
+const FormRD = dynamic(() => import("@/sections/newForm"));
+const CTASection = dynamic(() => import("@/sections/CTASection"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (
