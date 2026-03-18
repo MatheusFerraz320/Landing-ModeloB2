@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { fadeUpFast, inViewViewport } from "@/utils/motion";
+import { fadeUpFast, staggerContainer, inViewViewport } from "@/utils/motion";
 
 export default function AboutSection() {
 
@@ -7,13 +7,13 @@ export default function AboutSection() {
     <section id="about" className="relative overflow-hidden py-20 md:py-28 bg-white">
       <motion.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="show"
+        initial="hidden"
         whileInView="show"
         viewport={inViewViewport}
-        variants={fadeUpFast}
+        variants={staggerContainer}
       >
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <motion.div className="text-center max-w-4xl mx-auto mb-16" variants={fadeUpFast}>
           <div className="inline-flex items-center gap-3 rounded-full 
           border border-white/30 bg-white/70 backdrop-blur-md 
           px-6 py-2.5 mb-6 shadow-[0_10px_30px_rgba(15,23,42,0.12)]">
@@ -32,10 +32,10 @@ export default function AboutSection() {
             Sistemas convencionais exigem mais limpeza, mais intervenção, mais obra civil e mais atenção operacional. 
             As soluções Kronox foram desenvolvidas para reduzir esses gargalos com bombeamento em linha e operação mais eficiente.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid de cards */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+        <motion.div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16" variants={fadeUpFast}>
           {/* Card 1 - Bombeamento em linha */}
           <div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 
@@ -123,7 +123,7 @@ export default function AboutSection() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* CTA final */}
         <div className="text-center">

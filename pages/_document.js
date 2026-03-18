@@ -6,7 +6,10 @@ export default function Document() {
       <Head />
 
       <body className="antialiased">
-        {/* GTM: iframe noscript */}
+        <Main />
+        <NextScript />
+
+        {/* GTM: iframe noscript fallback (apenas para browsers sem JS) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WZPD6JC"
@@ -15,9 +18,6 @@ export default function Document() {
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-
-        <Main />
-        <NextScript />
       </body>
     </Html>
   );

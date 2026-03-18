@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
       {/* GTM principal */}
       <Script
         id="gtm-script"
-        strategy="afterInteractive" 
+        strategy="lazyOnload" 
         dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){
             w[l]=w[l]||[];

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { fadeUpFast, inViewViewport } from '@/utils/motion';
+import { fadeUpFast, staggerContainer, inViewViewport } from '@/utils/motion';
 
 const rdButton = () => {
   const rdForm = document.getElementById("rd-floating_button-ly4393ic");
@@ -16,15 +16,15 @@ export default function CTASection() {
 
       <motion.div
         className="relative max-w-6xl mx-auto px-4"
-        initial="show"
+        initial="hidden"
         whileInView="show"
         viewport={inViewViewport}
-        variants={fadeUpFast}
+        variants={staggerContainer}
       >
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left: Text Content */}
-          <div className="text-center lg:text-left space-y-6">
+          <motion.div className="text-center lg:text-left space-y-6" variants={fadeUpFast}>
             <h2 className="text-3xl md:text-4xl font-black text-white ">
               Fale com a Vazão e entenda qual solução{" "}
               <span className="text-red-500">Kronox</span>
@@ -43,8 +43,8 @@ export default function CTASection() {
                 Quero falar com especialista
               </button>
             </div>
-          </div>
-          <div className="flex justify-center pt-10">
+          </motion.div>
+          <motion.div className="flex justify-center pt-10" variants={fadeUpFast}>
             {/* Right: Logos Stack */}
             <div className="flex flex-col items-center gap-8">
               {/* Primary Logo */}
@@ -72,7 +72,7 @@ export default function CTASection() {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>

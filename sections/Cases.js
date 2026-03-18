@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { fadeUpFast, inViewViewport } from '@/utils/motion';
+import { fadeUpFast, staggerContainer, inViewViewport } from '@/utils/motion';
 
 // Logos de clientes (simuladas, substitua pelos paths reais)
 const clientLogos = [
@@ -51,13 +51,13 @@ export default function Cases() {
 
       <motion.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="show"
+        initial="hidden"
         whileInView="show"
         viewport={inViewViewport}
-        variants={fadeUpFast}
+        variants={staggerContainer}
       >
         {/* Header com logo e título */}
-        <div className="flex flex-col items-center text-center mb-15">       
+        <motion.div className="flex flex-col items-center text-center mb-15" variants={fadeUpFast}>       
           <div className="mb-2 flex flex-col items-center gap-2">
             <Image
               src="/kronoxlogo.png"
@@ -73,7 +73,7 @@ export default function Cases() {
             </span>
           </div>
 
-          <h2 className="text-4xl font-light text-white mb-6 tracking-tight">
+          <h2 className="text-5xl font-light text-white mb-6 tracking-tight">
             Tecnologia já aplicada em
             <span className="font-bold text-[#0082ca] block mt-2">operações reais</span>
           </h2>
@@ -82,10 +82,10 @@ export default function Cases() {
             Casos em concessionárias, autarquias e empreendimentos, com instalações em operações como Iguá Cuiabá e DAEV Valinhos. 
             Nosso portfólio inclui soluções premiadas que comprovam a eficiência da Kronox.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid de cases */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20">
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20" variants={fadeUpFast}>
           {cases.map((caseItem, index) => (
             <div
               key={index}
@@ -116,7 +116,7 @@ export default function Cases() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
           
           <div className="flex justify-center mb-20">
           <a
@@ -133,7 +133,7 @@ export default function Cases() {
           </div>
 
         {/* Módulo "Nossos Clientes" */}
-        <div className="text-center">
+        <motion.div className="text-center" variants={fadeUpFast}>
           <h3 className="text-2xl md:text-3xl font-light text-white mb-4">
             <span className="font-bold text-[#0082ca]">Nossos clientes</span> confiam na Kronox
           </h3>
@@ -185,7 +185,7 @@ export default function Cases() {
           <p className="text-white/40 text-sm mt-16">
             E muitas outras empresas que já transformaram sua operação com a Kronox.
           </p>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
