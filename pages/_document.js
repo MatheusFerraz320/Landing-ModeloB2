@@ -9,7 +9,7 @@ export default function Document() {
         {/* GTM: script principal */}
         <Script
           id="gtm-script"
-          strategy="afterInteractive" // ⚡ não bloqueia LCP
+          strategy="beforeInteractive" // ⚡ não bloqueia LCP
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
