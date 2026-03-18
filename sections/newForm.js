@@ -104,10 +104,10 @@ export default function FormRD() {
   return (
     <m.section
       id="rd-form"
-      initial={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="relative overflow-hidden py-20 sm:py-24"
+      transition={{ duration: 0.7 }}
+      className="relative overflow-hidden py-20 sm:py-24 bg-slate-100/90"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 h-80 w-80 rounded-full bg-[#0082ca]/10 blur-3xl" />
@@ -118,7 +118,8 @@ export default function FormRD() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center rounded-full border 
-            border-[#0082ca]/25 bg-[#0082ca]/10 px-4 py-1.5 text-xs font-semibold tracking-[0.2em] text-[#0082ca]">
+            border-[#0082ca]/25 bg-[#0082ca]/10 px-4 py-1.5 text-xs font-semibold tracking-[0.2em] 
+            text-[#0082ca]">
               CONSULTORIA TECNICA
             </span>
             <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-black leading-tight text-slate-900">
@@ -127,17 +128,19 @@ export default function FormRD() {
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600 max-w-xl mx-auto lg:mx-0">
               Conte os detalhes do seu cenario e retornamos com uma avaliacao tecnica, opcoes de produto e recomendacoes para implantacao.
             </p>
-            <div className="mt-8 rounded-2xl border border-slate-300 bg-white/70 p-5 backdrop-blur-sm space-y-2">
+            <div className="mt-8 rounded-2xl 
+            border border-slate-300 bg-white/90 p-5 shadow-2xl backdrop-blur-sm space-y-2">
               <p className="text-sm font-semibold text-slate-900">Vazão Engenharia</p>
-              <p className="text-sm text-slate-700">Email: solucoes@mkt.vazao.com.br</p>
-              <p className="text-sm text-slate-700">Telefone: TEL: 81992039379</p>
-              <p className="text-sm text-slate-700">Av.Barão de Bonito 880 Brasilit Recife PE</p>
+              <p className="text-sm text-slate-900">Email: vazao@vazao.com.br</p>
+              <p className="text-sm text-slate-900">Telefone: (81) 992039379</p>
+              <p className="text-sm text-slate-900">Av.Barão de Bonito 880 Brasilit Recife/PE</p>
             </div>
           </div>
 
           <form
             onSubmit={handleSubmit}
-            className="rounded-3xl border border-slate-200 bg-white/90 p-5 sm:p-7 shadow-[0_24px_60px_rgba(15,23,42,0.14)] backdrop-blur-md"
+            className="rounded-3xl border border-slate-200 
+            bg-white/90 p-5 sm:p-7 shadow-2xl backdrop-blur-md"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input

@@ -2,14 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   
-  // ✅ Compressão automática (gzip/brotli)
   compress: true,
   
-  // ✅ Otimizações de imagem
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [65, 70, 75],
-    // Cache otimizado para imagens
     minimumCacheTTL: 31536000,
     // Device sizes responsivos
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -27,7 +24,6 @@ const nextConfig = {
           },
         ],
       },
-      // ✅ Preconnect para Google Analytics
       {
         source: "/:path*",
         headers: [
@@ -40,7 +36,6 @@ const nextConfig = {
     ];
   },
   
-  // ✅ Otimizar package imports
   experimental: {
     optimizePackageImports: ["framer-motion", "swiper"],
   },

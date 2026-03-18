@@ -60,17 +60,14 @@ export default function Cases() {
         <m.div className="flex flex-col items-center text-center mb-15" variants={fadeUpFast}>       
           <div className="mb-2 flex flex-col items-center gap-2">
             <Image
-              src="/kronoxlogo.png"
-              alt="Kronox"
+              src="/Kronox.webp"
+              alt="Kronox logo"
               width={160}
-              height={52}
+              height={50}
               sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 160px"
               quality={70}
               className="object-contain w-28 h-auto sm:w-36 md:w-40 "
             />
-            <span className="text-4xl font-bold text-white">
-              Kronox<span className="text-red-500">.</span>
-            </span>
           </div>
 
           <h2 className="text-5xl font-light text-white mb-6 tracking-tight">
