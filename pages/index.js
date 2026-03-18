@@ -6,6 +6,7 @@ import Cases from "@/sections/Cases";
 import QualityBanner from "@/sections/QualityBanner";
 import CTASection from "@/sections/CTASection";
 import Footer from "@/components/Footer";
+import FormRD from "@/sections/newForm";
 
 export default function Home() {
   return (
@@ -36,6 +37,8 @@ export default function Home() {
 
         {/* 5. Quality Banner with CTA */}
         <QualityBanner />
+
+        <FormRD />
 
         {/* 7. Final CTA */}
         <CTASection />
