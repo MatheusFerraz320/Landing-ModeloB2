@@ -129,9 +129,9 @@ export default function FormRD() {
             </p>
             <div className="mt-8 rounded-2xl border border-slate-300 bg-white/70 p-5 backdrop-blur-sm space-y-2">
               <p className="text-sm font-semibold text-slate-900">Vazão Engenharia</p>
-              <p className="text-sm text-slate-700">Email: contato@.com.br</p>
-              <p className="text-sm text-slate-700">Telefone: +55 (19) 3450-7396</p>
-              <p className="text-sm text-slate-700">Sao Paulo, SP - Brasil</p>
+              <p className="text-sm text-slate-700">Email: solucoes@mkt.vazao.com.br</p>
+              <p className="text-sm text-slate-700">Telefone: TEL: 81992039379</p>
+              <p className="text-sm text-slate-700">Av.Barão de Bonito 880 Brasilit Recife PE</p>
             </div>
           </div>
 

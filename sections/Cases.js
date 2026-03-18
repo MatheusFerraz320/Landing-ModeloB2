@@ -73,7 +73,7 @@ export default function Cases() {
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight">
+          <h2 className="text-4xl font-light text-white mb-6 tracking-tight">
             Tecnologia já aplicada em
             <span className="font-bold text-[#0082ca] block mt-2">operações reais</span>
           </h2>
