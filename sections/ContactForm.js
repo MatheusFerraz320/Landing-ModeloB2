@@ -25,13 +25,14 @@ export default function ContactForm() {
     message: "",
     finality: "",   
     product: "",
-    utm_source: "",
-    utm_medium: "",
-    ad_id: "",
-    utm_campaign: "",
-    utm_term: "",
-    utm_content: ""
   }));
+
+  const [utm_source, setUtmSource] = useState("");
+  const [utm_medium, setUtmMedium] = useState("");
+  const [utm_campaign, setUtmCampaign] = useState("");
+  const [utm_term, setUtmTerm] = useState("");
+  const [utm_content, setUtmContent] = useState("");
+  const [ad_id, setAdId] = useState("");
   
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -49,7 +50,13 @@ export default function ContactForm() {
 
     localStorage.setItem("utm_params", JSON.stringify(params));
     console.log("UTM parameters captured:", params);
-    setForm((prev) => ({ ...prev, ...params }));
+    
+    setUtmSource(params.utm_source);
+    setUtmMedium(params.utm_medium);
+    setUtmCampaign(params.utm_campaign);
+    setUtmTerm(params.utm_term);
+    setUtmContent(params.utm_content);
+    setAdId(params.ad_id);
   }, []);
 
   const [submitted, setSubmitted] = useState(false);
@@ -73,12 +80,12 @@ export default function ContactForm() {
         product: form.product,
         finality: form.finality,
         utmParams: {
-          utm_source: form.utm_source,
-          utm_medium: form.utm_medium,
-          utm_campaign: form.utm_campaign,
-          utm_term: form.utm_term,
-          utm_content: form.utm_content,
-          ad_id: form.ad_id,
+          utm_source: utm_source,
+          utm_medium: utm_medium,
+          utm_campaign: utm_campaign,
+          utm_term: utm_term,
+          utm_content: utm_content,
+          ad_id: ad_id,
         },
       });
       setSubmitted(true);
@@ -186,9 +193,9 @@ export default function ContactForm() {
                 {process.env.NODE_ENV === 'development' && (
                   <div className="mt-4 p-3 bg-slate-50 border border-slate-200 rounded-lg text-left text-xs">
                     <p className="font-semibold text-slate-900">UTMs capturadas:</p>
-                    <p>Source: {form.utm_source || 'direto'}</p>
-                    <p>Medium: {form.utm_medium || 'direto'}</p>
-                    <p>Campaign: {form.utm_campaign || 'não definida'}</p>
+                    <p>Source: {utm_source || 'direto'}</p>
+                    <p>Medium: {utm_medium || 'direto'}</p>
+                    <p>Campaign: {utm_campaign || 'não definida'}</p>
                   </div>
                 )}
               </div>
@@ -200,12 +207,12 @@ export default function ContactForm() {
                 bg-white/80 backdrop-blur-md p-6 sm:p-8 
                 shadow-[0_18px_55px_rgba(15,23,42,0.12)] grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
               >
-                <input type="text" name="utm_source" value={form.utm_source} style={{ position: 'absolute', left: '-9999px' }} />
-                <input type="text" name="utm_medium" value={form.utm_medium} style={{ position: 'absolute', left: '-9999px' }} />
-                <input type="text" name="ad_id" value={form.ad_id} style={{ position: 'absolute', left: '-9999px' }} />
-                <input type="text" name="utm_campaign" value={form.utm_campaign} style={{ position: 'absolute', left: '-9999px' }} />
-                <input type="text" name="utm_term" value={form.utm_term} style={{ position: 'absolute', left: '-9999px' }} />
-                <input type="text" name="utm_content" value={form.utm_content} style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="utm_source" value={utm_source} readOnly style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="utm_medium" value={utm_medium} readOnly style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="ad_id" value={ad_id} readOnly style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="utm_campaign" value={utm_campaign} readOnly style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="utm_term" value={utm_term} readOnly style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="utm_content" value={utm_content} readOnly style={{ position: 'absolute', left: '-9999px' }} />
                 
                 <div>
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
