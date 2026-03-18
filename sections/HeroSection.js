@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { fadeUp, inViewViewport } from "@/utils/motion";
+import { fadeUp } from "@/utils/motion";
 
-export default function HeroSection() {
+export default function HeroSection({ loadRdScript }) {
+
   const rdButton = () => { 
+    loadRdScript(); // lazy load RD Station
     const rdForm = document.getElementById("rd-floating_button-ly4393ic");
-    if (rdForm) {
-      rdForm.click();
-    }
-  }
+    if (rdForm) rdForm.click();
+  };
 
   return (
     <header id="hero" className="relative flex items-center overflow-hidden" style={{ minHeight: '70vh' }}>
@@ -20,8 +20,9 @@ export default function HeroSection() {
           alt="Fundo industrial"
           fill
           priority
+          quality={80} // otimiza LCP
           className="object-cover scale-[1.02] brightness-[0.82] saturate-[0.9]"
-            sizes="100vw"
+          sizes="100vw"
         />
       </div>
 
@@ -41,14 +42,14 @@ export default function HeroSection() {
         </div>
 
         {/* HERO SPLIT */}
-        <div className="grid gap-9 items-center" style={{ gridTemplateColumns: '60% 40%' }}>
+        <div className="grid lg:grid-cols-[60%_40%] gap-9 items-center">
 
           {/* TEXTO ESQUERDA */}
           <motion.div
             className="text-left"
-              initial="hidden"
-              animate="show"
-              variants={fadeUp}
+            initial="visible" // ⚡ LCP rápido
+            animate="show"
+            variants={fadeUp}
           >
             <h1 className="font-extrabold text-slate-50 leading-[1.05] tracking-tight 
             mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)]" style={{ fontSize: '65px' }}>
