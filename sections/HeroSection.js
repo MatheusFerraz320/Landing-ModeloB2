@@ -2,7 +2,19 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, inViewViewport } from "@/utils/motion";
 
+const rdButton = () => {
+  const rdForm = document.getElementById("rd-floating_button-ly4393ic");
+  if (rdForm) rdForm.click();
+};
+
 export default function HeroSection() {
+  const rdButton = () => { 
+    const rdForm = document.getElementById("rd-floating_button-ly4393ic");
+    if (rdForm) {
+      rdForm.click();
+    }
+  }
+
   return (
     <header id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       
@@ -55,12 +67,12 @@ export default function HeroSection() {
 
             {/* Botões */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <a
-                href="#contato"
+              <button
+                onClick={rdButton}
                 className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300 text-center"
               >
                 Solicitar avaliação técnica
-              </a>
+              </button>
 
               <a
                 href="#about"

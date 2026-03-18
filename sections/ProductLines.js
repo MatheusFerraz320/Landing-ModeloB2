@@ -4,6 +4,11 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { fadeUpFast, inViewViewport } from '@/utils/motion';
 
+const rdButton = () => {
+  const rdForm = document.getElementById("rd-floating_button-ly4393ic");
+  if (rdForm) rdForm.click();
+};
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -162,9 +167,7 @@ export default function ProductLines() {
                       {product.description}
                     </p>
                     <button
-                      onClick={() => {
-                        document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
-                      }}
+                      onClick={rdButton}
                       className="inline-flex 
                       items-center gap-2 text-sm md:text-base font-extrabold 
                       text-white hover:text-red-700 transition-colors

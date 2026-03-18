@@ -4,7 +4,6 @@ import AboutSection from "@/sections/AboutSection";
 import ProductLines from "@/sections/ProductLines";
 import Cases from "@/sections/Cases";
 import QualityBanner from "@/sections/QualityBanner";
-import ContactForm from "@/sections/ContactForm";
 import CTASection from "@/sections/CTASection";
 import Footer from "@/components/Footer";
 
@@ -37,9 +36,6 @@ export default function Home() {
 
         {/* 5. Quality Banner with CTA */}
         <QualityBanner />
-
-        {/* 6. Contact Form / Quote */}
-        <ContactForm />
 
         {/* 7. Final CTA */}
         <CTASection />

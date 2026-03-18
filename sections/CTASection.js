@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion';
 import { fadeUpFast, inViewViewport } from '@/utils/motion';
 
+const rdButton = () => {
+  const rdForm = document.getElementById("rd-floating_button-ly4393ic");
+  if (rdForm) rdForm.click();
+};
+
 export default function CTASection() {
   return (
     <section className="py-24 relative overflow-hidden bg-[linear-gradient(135deg,_#0f172a_0%,_#1e293b_58%,_#111827_100%)]">
@@ -30,12 +35,12 @@ export default function CTASection() {
             
             {/* CTA Button */}
             <div className="flex justify-center lg:justify-start pt-4">
-              <a 
-                href="#contato" 
+              <button
+                onClick={rdButton}
                 className="bg-red-500 text-white font-bold text-lg px-12 py-4 rounded-full shadow-[0_0_30px_rgba(239,68,68,0.6)] hover:bg-red-600 hover:shadow-[0_0_40px_rgba(239,68,68,0.8)] transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
               >
                 Quero falar com especialista
-              </a>
+              </button>
             </div>
           </div>
 

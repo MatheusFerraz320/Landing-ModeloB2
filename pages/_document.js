@@ -14,12 +14,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-WZPD6JC');`,
           }}
         />
-        {/* RD Station embed loader */}
-        <script
-          type="text/javascript"
-          async
-          src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/f89894fe-0a6a-4d2b-bd89-d8508a3284d8-loader.js"
-        />
       </Head>
 
       <body className="antialiased">
@@ -34,6 +28,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <Main />
         <NextScript />
+        {/* RD Station embed loader */}
+        <script
+          type="text/javascript"
+          async
+          src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/f89894fe-0a6a-4d2b-bd89-d8508a3284d8-loader.js"
+        />
       </body>
     </Html>
   );
