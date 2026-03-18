@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { fadeUpFast, staggerContainer, inViewViewport } from '@/utils/motion';
 
 // Logos de clientes (simuladas, substitua pelos paths reais)
@@ -49,7 +49,7 @@ export default function Cases() {
         <div className="absolute inset-x-6 top-8 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
 
-      <motion.div
+      <m.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         initial="hidden"
         whileInView="show"
@@ -57,7 +57,7 @@ export default function Cases() {
         variants={staggerContainer}
       >
         {/* Header com logo e título */}
-        <motion.div className="flex flex-col items-center text-center mb-15" variants={fadeUpFast}>       
+        <m.div className="flex flex-col items-center text-center mb-15" variants={fadeUpFast}>       
           <div className="mb-2 flex flex-col items-center gap-2">
             <Image
               src="/kronoxlogo.png"
@@ -82,10 +82,10 @@ export default function Cases() {
             Casos em concessionárias, autarquias e empreendimentos, com instalações em operações como Iguá Cuiabá e DAEV Valinhos. 
             Nosso portfólio inclui soluções premiadas que comprovam a eficiência da Kronox.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Grid de cases */}
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20" variants={fadeUpFast}>
+        <m.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20" variants={fadeUpFast}>
           {cases.map((caseItem, index) => (
             <div
               key={index}
@@ -117,7 +117,7 @@ export default function Cases() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </m.div>
           
           <div className="flex justify-center mb-20">
           <a
@@ -127,14 +127,14 @@ export default function Cases() {
             to-[#0066a0] hover:from-[#0066a0]
             hover:to-[#004b75] text-white font-bold 
             text-lg py-4 rounded-xl shadow-[0_18px_45px_rgba(0,130,202,0.28)] 
-            transition-all duration-300 hover:scale-[1.01] animate-bounce"
+            transition-all duration-300 hover:scale-[1.03]"
           >
             Entrar em contato
           </a>
           </div>
 
         {/* Módulo "Nossos Clientes" */}
-        <motion.div className="text-center" variants={fadeUpFast}>
+        <m.div className="text-center" variants={fadeUpFast}>
           <h3 className="text-2xl md:text-3xl font-light text-white mb-4">
             <span className="font-bold text-[#0082ca]">Nossos clientes</span> confiam na Kronox
           </h3>
@@ -187,8 +187,8 @@ export default function Cases() {
           <p className="text-white/40 text-sm mt-16">
             E muitas outras empresas que já transformaram sua operação com a Kronox.
           </p>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

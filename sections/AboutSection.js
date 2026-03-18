@@ -1,22 +1,22 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeUpFast, staggerContainer, inViewViewport } from "@/utils/motion";
 
 export default function AboutSection() {
 
   return (
     <section id="about" className="relative overflow-hidden py-20 md:py-28 bg-white">
-      <motion.div
+      <m.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         initial="visible"
         viewport={inViewViewport}
         variants={staggerContainer}
       >
         {/* Header */}
-        <motion.div className="text-center max-w-4xl mx-auto mb-16" variants={fadeUpFast}>
+        <m.div className="text-center max-w-4xl mx-auto mb-16" variants={fadeUpFast}>
           <div className="inline-flex items-center gap-3 rounded-full 
           border border-white/30 bg-white/70 backdrop-blur-md 
           px-6 py-2.5 mb-6 shadow-[0_10px_30px_rgba(15,23,42,0.12)]">
-            <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.7)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-500 opacity-90 shadow-[0_0_10px_rgba(59,130,246,0.7)]" />
             <span className="text-sm tracking-wide font-semibold text-slate-800">
               EFICIÊNCIA OPERACIONAL
             </span>
@@ -31,17 +31,18 @@ export default function AboutSection() {
             Sistemas convencionais exigem mais limpeza, mais intervenção, mais obra civil e mais atenção operacional. 
             As soluções Kronox foram desenvolvidas para reduzir esses gargalos com bombeamento em linha e operação mais eficiente.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Grid de cards */}
-        <motion.div 
+        <m.div 
         className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16" 
         initial="hidden"
         whileInView="show"
         viewport={inViewViewport}
         variants={staggerContainer}>
-          {/* Card 1 - Bombeamento em linha */}
-          <motion.div
+          
+          {/* Card 1 - Bombeamento */}
+          <m.div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 
           shadow-xl transition-transform duration-300 hover:scale-105 
           border border-slate-400/80"
@@ -69,10 +70,10 @@ export default function AboutSection() {
                 </svg>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
-          {/* Card 2 - Baixíssima manutenção */}
-          <motion.div
+          {/* Card 2 -  manutenção */}
+          <m.div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
             hover:scale-105 border border-slate-400/80"
@@ -97,10 +98,10 @@ export default function AboutSection() {
                 <span className="rounded-full border border-blue-300/20 bg-blue-400/10 px-3 py-1.5 text-xs font-semibold text-blue-700">longa vida</span>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
-          {/* Card 3 - Estrutura em aço inox */}
-          <motion.div
+          {/* Card 3 -  aço inox */}
+          <m.div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 shadow-xl 
             transition-transform duration-300 
             hover:scale-105 border border-slate-400/80"
@@ -129,8 +130,8 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
         {/* CTA final */}
         <div className="text-center">
@@ -141,7 +142,7 @@ export default function AboutSection() {
             to-[#0066a0] hover:from-[#0066a0]
             hover:to-[#004b75] text-white font-bold 
             text-lg py-4 rounded-xl shadow-[0_18px_45px_rgba(0,130,202,0.28)] 
-            transition-all duration-300 hover:scale-[1.01] animate-bounce"
+            transition-all duration-300 hover:scale-[1.03]"
           >
             Conheça nossas soluções
           </a>
@@ -149,7 +150,7 @@ export default function AboutSection() {
             ✓ Análise gratuita  ✓ Projeto personalizado  ✓ Suporte técnico
           </p>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Image from 'next/image';
 import { fadeUpFast, staggerContainer, inViewViewport } from '@/utils/motion';
 
@@ -14,7 +14,7 @@ export default function CTASection() {
       <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-blue-500/14 blur-3xl pointer-events-none" />
       <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
 
-      <motion.div
+      <m.div
         className="relative max-w-6xl mx-auto px-4"
         initial="hidden"
         whileInView="show"
@@ -24,7 +24,7 @@ export default function CTASection() {
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left: Text Content */}
-          <motion.div className="text-center lg:text-left space-y-6" variants={fadeUpFast}>
+          <m.div className="text-center lg:text-left space-y-6" variants={fadeUpFast}>
             <h2 className="text-3xl md:text-4xl font-black text-white ">
               A Vazão ajuda você a encontrar a solução{" "}
               <span className="text-red-500">Kronox</span>
@@ -43,8 +43,8 @@ export default function CTASection() {
                 Quero falar com especialista
               </button>
             </div>
-          </motion.div>
-          <motion.div className="flex justify-center pt-10" variants={fadeUpFast}>
+          </m.div>
+          <m.div className="flex justify-center pt-10" variants={fadeUpFast}>
             {/* Right: Logos Stack */}
             <div className="flex flex-col items-center gap-8">
               {/* Primary Logo */}
@@ -72,9 +72,9 @@ export default function CTASection() {
                 />
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
     </section>
 
   );

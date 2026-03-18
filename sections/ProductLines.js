@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { fadeUpFast, staggerContainer, inViewViewport } from '@/utils/motion';
 
 const rdButton = () => {
@@ -61,7 +61,7 @@ export default function ProductLines() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/5 blur-3xl" />
       </div>
 
-      <motion.div
+      <m.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10"
         initial="hidden"
         whileInView="show"
@@ -69,7 +69,7 @@ export default function ProductLines() {
         variants={staggerContainer}
       >
         {/* Header */}
-        <motion.div className="relative text-center max-w-3xl mx-auto mb-12" variants={fadeUpFast}>
+        <m.div className="relative text-center max-w-3xl mx-auto mb-12" variants={fadeUpFast}>
           <span className="inline-block text-white/90 text-sm 
           font-semibold tracking-widest uppercase mb-3 px-4 py-1.5 bg-white/10 backdrop-blur-sm 
           border border-white/20 rounded-full">
@@ -81,10 +81,10 @@ export default function ProductLines() {
           <p className="text-white/80 text-lg">
             Escolha a solução ideal para sua necessidade, com tecnologia e eficiência Kronox.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Carrossel */}
-        <motion.div className="relative" variants={fadeUpFast}>
+        <m.div className="relative" variants={fadeUpFast}>
           {/* Setas personalizadas */}
           <button className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 
           bg-white/20 backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl 
@@ -189,8 +189,8 @@ export default function ProductLines() {
 
           {/* Paginação */}
           <div className="product-pagination flex justify-center gap-2 mt-6" />
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

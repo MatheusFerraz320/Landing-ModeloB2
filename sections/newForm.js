@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 export default function FormRD() {
@@ -102,7 +102,7 @@ export default function FormRD() {
   };
 
   return (
-    <motion.section
+    <m.section
       id="rd-form"
       initial={{ opacity: 1, y: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -228,6 +228,6 @@ export default function FormRD() {
           </form>
         </div>
       </div>
-    </motion.section>
+    </m.section>
   );
 }

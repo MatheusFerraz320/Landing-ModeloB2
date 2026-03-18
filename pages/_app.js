@@ -2,6 +2,8 @@ import "@/styles/globals.css";
 
 import Script from "next/script";
 
+import { LazyMotion, domAnimation } from "framer-motion";
+
 export function reportWebVitals(metric) {
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
     window.gtag("event", metric.name, {
@@ -15,8 +17,8 @@ export function reportWebVitals(metric) {
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
-      {/* GTM principal */}
+    <LazyMotion features={domAnimation} strict>
+      {/*GTM*/}
       <Script
         id="gtm-script"
         strategy="lazyOnload" 
@@ -34,6 +36,6 @@ export default function App({ Component, pageProps }) {
       />
 
       <Component {...pageProps} />
-    </>
+    </LazyMotion>
   );
 }

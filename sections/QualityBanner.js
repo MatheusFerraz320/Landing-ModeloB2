@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { fadeUpFast, staggerContainer, inViewViewport } from '@/utils/motion';
 
 const benefits = [
@@ -82,7 +82,7 @@ export default function QualityBanner() {
         </div>
       </div>
 
-      <motion.div
+      <m.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         initial="hidden"
         whileInView="show"
@@ -90,9 +90,9 @@ export default function QualityBanner() {
         variants={staggerContainer}
       >
         {/* Cabeçalho da seção com tema refinado */}
-        <motion.div className="text-center max-w-3xl mx-auto mb-16" variants={fadeUpFast}>
+        <m.div className="text-center max-w-3xl mx-auto mb-16" variants={fadeUpFast}>
           <div className="inline-flex items-center gap-3 rounded-full border border-[#0082ca]/20 bg-[#0082ca]/5 px-5 py-2 mb-6 shadow-sm backdrop-blur-sm">
-            <div className="w-2 h-2 rounded-full bg-[#0082ca] animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-[#0082ca] opacity-90" />
             <span className="text-sm font-semibold text-[#0082ca] tracking-[0.24em]">
               VANTAGENS EXCLUSIVAS
             </span>
@@ -106,10 +106,10 @@ export default function QualityBanner() {
           <p className="text-slate-600 text-lg md:text-xl leading-relaxed">
             Soluções projetadas para máxima eficiência, durabilidade e baixa manutenção.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Grid de cards com estilo premium */}
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" variants={fadeUpFast}>
+        <m.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" variants={fadeUpFast}>
           {benefits.map((benefit, index) => (
             <div
               key={index}
@@ -138,8 +138,8 @@ export default function QualityBanner() {
               <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#0082ca]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

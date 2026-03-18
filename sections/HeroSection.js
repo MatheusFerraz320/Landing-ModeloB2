@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeUp } from "@/utils/motion";
 
 export default function HeroSection({ loadRdScript }) {
@@ -49,7 +49,7 @@ export default function HeroSection({ loadRdScript }) {
         <div className="grid lg:grid-cols-[60%_40%] gap-9 items-center">
 
           {/* TEXTO ESQUERDA */}
-          <motion.div
+          <m.div
             className="text-left"
             initial="hidden" // LCP rápido
             whileInView="show"
@@ -82,7 +82,7 @@ export default function HeroSection({ loadRdScript }) {
               >
                 <span>Saber mais</span>
                 <svg
-                  className="w-5 h-5 animate-bounce group-hover:animate-none"
+                  className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -96,7 +96,7 @@ export default function HeroSection({ loadRdScript }) {
                 </svg>
               </a>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* DIREITA (imagem futura / mockup / vídeo) */}
           <div className="flex justify-center items-center">
