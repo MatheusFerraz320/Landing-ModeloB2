@@ -200,12 +200,12 @@ export default function ContactForm() {
                 bg-white/80 backdrop-blur-md p-6 sm:p-8 
                 shadow-[0_18px_55px_rgba(15,23,42,0.12)] grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
               >
-                <input type="hidden" name="utm_source" value={form.utm_source} />
-                <input type="hidden" name="utm_medium" value={form.utm_medium} />
-                <input type="hidden" name="ad_id" value={form.ad_id} />
-                <input type="hidden" name="utm_campaign" value={form.utm_campaign} />
-                <input type="hidden" name="utm_term" value={form.utm_term} />
-                <input type="hidden" name="utm_content" value={form.utm_content} />
+                <input type="text" name="utm_source" value={form.utm_source} style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="utm_medium" value={form.utm_medium} style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="ad_id" value={form.ad_id} style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="utm_campaign" value={form.utm_campaign} style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="utm_term" value={form.utm_term} style={{ position: 'absolute', left: '-9999px' }} />
+                <input type="text" name="utm_content" value={form.utm_content} style={{ position: 'absolute', left: '-9999px' }} />
                 
                 <div>
                   <label className="block text-sm font-semibold text-slate-900 mb-1.5">
