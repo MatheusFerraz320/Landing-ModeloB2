@@ -51,7 +51,7 @@ export default function Cases() {
 
       <motion.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="hidden"
+        initial="show"
         whileInView="show"
         viewport={inViewViewport}
         variants={fadeUpFast}

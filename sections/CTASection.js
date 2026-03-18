@@ -16,7 +16,7 @@ export default function CTASection() {
 
       <motion.div
         className="relative max-w-6xl mx-auto px-4"
-        initial="hidden"
+        initial="show"
         whileInView="show"
         viewport={inViewViewport}
         variants={fadeUpFast}

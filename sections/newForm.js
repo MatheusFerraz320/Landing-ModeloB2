@@ -104,7 +104,7 @@ export default function FormRD() {
   return (
     <motion.section
       id="rd-form"
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 1, y: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className="relative overflow-hidden py-20 sm:py-24"

@@ -5,7 +5,9 @@ import { fadeUp } from "@/utils/motion";
 export default function HeroSection({ loadRdScript }) {
 
   const rdButton = () => { 
-    loadRdScript(); // lazy load RD Station
+    if (typeof loadRdScript === "function") {
+      loadRdScript();
+    }
     const rdForm = document.getElementById("rd-floating_button-ly4393ic");
     if (rdForm) rdForm.click();
   };

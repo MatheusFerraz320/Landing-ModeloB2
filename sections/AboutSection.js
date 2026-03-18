@@ -7,7 +7,7 @@ export default function AboutSection() {
     <section id="about" className="relative overflow-hidden py-20 md:py-28 bg-white">
       <motion.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="hidden"
+        initial="show"
         whileInView="show"
         viewport={inViewViewport}
         variants={fadeUpFast}
