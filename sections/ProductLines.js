@@ -162,7 +162,9 @@ export default function ProductLines() {
                       {product.description}
                     </p>
                     <button
-                      onClick={() => {}} // Modal
+                      onClick={() => {
+                        document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
+                      }}
                       className="inline-flex 
                       items-center gap-2 text-sm md:text-base font-extrabold 
                       text-white hover:text-red-700 transition-colors
