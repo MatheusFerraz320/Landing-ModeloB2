@@ -4,38 +4,40 @@ import { fadeUp, inViewViewport } from "@/utils/motion";
 
 export default function HeroSection() {
   return (
-      <header id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Imagem de fundo com Next.js Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/Hero.webp"
-            alt="Fundo industrial"
-            fill
-            priority
-            className="object-cover scale-[1.02] brightness-[0.82] saturate-[0.9]"
-            sizes="100vw"
+    <header id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+      
+      {/* Imagem de fundo */}
+      <div className="absolute inset-0">
+        <Image
+          src="/Hero.webp"
+          alt="Fundo industrial"
+          fill
+          priority
+          className="object-cover scale-[1.02] brightness-[0.82] saturate-[0.9]"
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Conteúdo */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
+
+        {/* Header com logo */}
+        <div className="flex items-center justify-between mb-12">
+          <Image 
+            src="/Logo-Vazão-White.webp" 
+            alt="Kronox" 
+            width={180} 
+            height={60} 
+            className="object-contain"
           />
         </div>
 
-        {/* Conteúdo principal (acima do overlay) */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
-          {/* HEADER com logo e CTA */}
-          <div className="flex items-center justify-between mb-12">
-            {/* Logo */}
-            <div className="flex items-center gap-2">
-            <Image 
-              src="/Logo-Vazão-White.webp" 
-              alt="Kronox" 
-              width={180} 
-              height={60} 
-              className="object-contain"
-            />
-            </div>
-          </div>
+        {/* HERO SPLIT */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-          {/* TEXTO HERO */}
+          {/* TEXTO ESQUERDA */}
           <motion.div
-            className="w-full max-w-4xl mx-auto text-center"
+            className="text-left"
             initial="hidden"
             whileInView="show"
             viewport={inViewViewport}
@@ -46,23 +48,23 @@ export default function HeroSection() {
               <span className="block text-red-500">de alta performance</span>
             </h1>
 
-            <p className="text-lg md:text-2xl font-medium text-slate-100/95 max-w-3xl mx-auto mb-10 leading-relaxed drop-shadow-[0_3px_12px_rgba(2,6,23,0.8)]">
+            <p className="text-lg md:text-xl font-medium text-slate-100/95 max-w-xl mb-10 leading-relaxed drop-shadow-[0_3px_12px_rgba(2,6,23,0.8)]">
               Soluções Kronox para companhias de saneamento, concessionárias, SAAEs e empreendimentos que precisam reduzir manutenção,
               evitar bloqueios e simplificar a operação.
             </p>
 
-            {/* Botões de navegação */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center">
+            {/* Botões */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
               <a
                 href="#contato"
-                className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300"
+                className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300 text-center"
               >
                 Solicitar avaliação técnica
               </a>
 
               <a
                 href="#about"
-                className="group bg-red-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] transition-all duration-300 hover:scale-105 inline-flex items-center gap-4"
+                className="group bg-white/10 text-white font-bold text-lg px-8 py-4 rounded-full backdrop-blur-md hover:bg-white/20 transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-3"
               >
                 <span>Saber mais</span>
                 <svg
@@ -81,8 +83,18 @@ export default function HeroSection() {
               </a>
             </div>
           </motion.div>
-        </div>
-      </header>
 
+          {/* DIREITA (imagem futura / mockup / vídeo) */}
+          <div className="hidden lg:flex justify-center items-center">
+            <div className="w-full max-w-md h-[400px] bg-white/10 rounded-2xl backdrop-blur-md flex items-center justify-center border border-white/10">
+              <span className="text-white/70 text-sm">
+                IMG
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
   );
 }

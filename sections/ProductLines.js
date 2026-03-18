@@ -41,15 +41,6 @@ export default function ProductLines() {
     }
   ];
 
-  const productChange = (product) => {
-  const whatsMsg = `Olá Kronox, estou interessado em saber mais sobre ${product.name}. 
-  Poderiam me fornecer mais informações?`;
-
-  const encodedMsg = encodeURIComponent(whatsMsg);
-
-  window.open(`https://wa.me/55991999999?text=${encodedMsg}`, '_blank');
-};
-
   return (
     <section id="products" className="relative overflow-hidden py-24">
       {/* Fundo principal com gradiente elegante na cor #0082ca */}
@@ -171,7 +162,7 @@ export default function ProductLines() {
                       {product.description}
                     </p>
                     <button
-                      onClick={() => productChange(product)}
+                      onClick={() => {}} // Modal
                       className="inline-flex 
                       items-center gap-2 text-sm md:text-base font-extrabold 
                       text-white hover:text-red-700 transition-colors
