@@ -11,7 +11,7 @@ export default function HeroSection() {
   }
 
   return (
-    <header id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+    <header id="hero" className="relative flex items-center overflow-hidden" style={{ minHeight: '70vh' }}>
       
       {/* Imagem de fundo */}
       <div className="absolute inset-0">
@@ -21,12 +21,12 @@ export default function HeroSection() {
           fill
           priority
           className="object-cover scale-[1.02] brightness-[0.82] saturate-[0.9]"
-          sizes="100vw"
+          sizes="80vw"
         />
       </div>
 
       {/* Conteúdo */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 w-full">
 
         {/* Header com logo */}
         <div className="flex items-center justify-between mb-12">
@@ -40,7 +40,7 @@ export default function HeroSection() {
         </div>
 
         {/* HERO SPLIT */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid gap-9 items-center" style={{ gridTemplateColumns: '60% 40%' }}>
 
           {/* TEXTO ESQUERDA */}
           <motion.div
@@ -50,7 +50,8 @@ export default function HeroSection() {
             viewport={inViewViewport}
             variants={fadeUp}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-50 leading-[1.05] tracking-tight mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)]">
+            <h1 className="font-extrabold text-slate-50 leading-[1.05] tracking-tight 
+            mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)]" style={{ fontSize: '65px' }}>
               Soluções industriais
               <span className="block text-red-500">de alta performance</span>
             </h1>
@@ -93,7 +94,8 @@ export default function HeroSection() {
 
           {/* DIREITA (imagem futura / mockup / vídeo) */}
           <div className="hidden lg:flex justify-center items-center">
-            <div className="w-full max-w-md h-[400px] bg-white/10 rounded-2xl backdrop-blur-md flex items-center justify-center border border-white/10">
+            <div className="w-full h-[520px] bg-white/10 rounded-2xl
+             backdrop-blur-md flex items-center justify-center border border-white/10">
               <span className="text-white/70 text-sm">
                 IMG
               </span>

@@ -117,7 +117,8 @@ export default function FormRD() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <div className="text-center lg:text-left">
-            <span className="inline-flex items-center rounded-full border border-[#0082ca]/25 bg-[#0082ca]/10 px-4 py-1.5 text-xs font-semibold tracking-[0.2em] text-[#0082ca]">
+            <span className="inline-flex items-center rounded-full border 
+            border-[#0082ca]/25 bg-[#0082ca]/10 px-4 py-1.5 text-xs font-semibold tracking-[0.2em] text-[#0082ca]">
               CONSULTORIA TECNICA
             </span>
             <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-black leading-tight text-slate-900">
@@ -219,7 +220,8 @@ export default function FormRD() {
             <button
               type="submit"
               disabled={loading}
-              className="mt-5 w-full rounded-xl bg-gradient-to-r from-[#0082ca] to-[#0066a0] px-4 py-3 font-bold text-white transition-all duration-300 hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed"
+              className="mt-5 w-full rounded-xl bg-gradient-to-r from-[#0082ca] to-[#0066a0] 
+              px-4 py-3 font-bold text-white transition-all duration-300 hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {loading ? "Enviando..." : "Enviar"}
             </button>
