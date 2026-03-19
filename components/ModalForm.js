@@ -16,6 +16,7 @@ export default function ModalForm({ isOpen, onClose }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const utm = useUtm();
+  const [sucessMsg, setsucessMsg] = useState(false);
 
 
   const handleChange = (e) => {
@@ -63,7 +64,7 @@ export default function ModalForm({ isOpen, onClose }) {
         setError(true);
         return;
       }
-
+      setsucessMsg(true);
       console.log("Lead enviado com sucesso:", result);
 
       const whatsMsg = `Olá, gostaria de falar com um especialista da ModeloB2. Meu nome 
@@ -93,6 +94,32 @@ export default function ModalForm({ isOpen, onClose }) {
       console.error("Erro geral:", err);
     } finally {
       setLoading(false);
+    }
+    //Email JS
+    try {
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        product: formData.product,
+        finality: formData.finality,
+        utm_soruce: utm.utm_source || "",
+        utm_medium: utm.utm_medium || "",
+        utm_campaign: utm.utm_campaign || "LP KRONOX",
+        utm_content: utm.utm_content || "",
+        utm_term: utm.utm_term || "",
+      }
+      const emailResult = await emailjs.send(
+        "service_123456789",
+        "template_123456789",
+        templateParams,
+        "user_123456789",
+        "publicKey"
+      )
+      console.log("Email enviado com sucesso:", emailResult);
+    } catch (error) {
+      console.error("Erro ao enviar email:", error);
     }
   };
 
@@ -230,6 +257,7 @@ export default function ModalForm({ isOpen, onClose }) {
                   <button type="button" onClick={onClose} disabled={loading} className="flex-1 border-2 border-gray-200 hover:border-gray-300 text-slate-600 font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:bg-gray-50 disabled:opacity-60 disabled:cursor-not-allowed">Cancelar</button>
                   <p className="text-xs text-slate-400 text-center flex items-center justify-center gap-1">
                     {error && <span className="text-red-500">Erro ao enviar formulário</span>}
+                    {sucessMsg && <span className="text-green-500">Formulário enviado com sucesso</span>}
                   </p>
                 </div>
               </form>
