@@ -68,11 +68,11 @@ export default function ModalForm({ isOpen, onClose }) {
       setsucessMsg(true);
       console.log("Lead enviado com sucesso:", result);
 
-      const whatsMsg = `Olá, gostaria de falar com um especialista da ModeloB2. Meu nome 
+      const whatsMsg = `Olá, gostaria de falar com um especialista da vazão. Meu nome 
         é ${formData.name} e estou interessado no produto ${formData.product}. 
         Poderiam me ajudar? vim da campanha ${utm.utm_campaign || "vim da lp kronox"}.`;
 
-      const whatsNumber = '5513991621955';
+      const whatsNumber = '558192039379';
 
       window.open(`https://wa.me/${whatsNumber}?text=${encodeURIComponent(whatsMsg)}`, '_blank');
 
@@ -134,9 +134,9 @@ export default function ModalForm({ isOpen, onClose }) {
         <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl transform transition-all">
 
           {/* Header */}
-          <div className="relative bg-slate-100 rounded-t-2xl p-6 shadow-lg">
-            <h2 className="text-2xl md:text-3xl font-bold text-green-600">Entre em contato</h2>
-            <p className="text-black-100 text-sm mt-1">PPreencha os campos abaixo para iniciar a conversa no WhatsApp</p>
+          <div className="relative bg-green-600 rounded-t-2xl p-6 shadow-lg">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Entre em contato</h2>
+            <p className="text-white text-sm mt-1">Preencha os campos abaixo para iniciar a conversa no WhatsApp</p>
             <button
               onClick={onClose}
               className="absolute top-6 right-6 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-xl p-2 transition-all duration-300"
@@ -251,7 +251,7 @@ export default function ModalForm({ isOpen, onClose }) {
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <button type="submit" disabled={loading} className="flex-1 
-                    bg-blue-500 text-white 
+                    bg-green-600 text-white 
                     font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:scale-[1.02]">
                     {loading ? "Enviando..." : "Enviar Solicitação"}
                   </button>

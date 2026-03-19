@@ -32,7 +32,7 @@ export default function CTASection() {
 
           {/* Left: Text Content */}
           <m.div className="text-center lg:text-left space-y-6" variants={fadeUpFast}>
-            <h2 className="text-3xl font-black text-white ">
+            <h2 className="text-4xl md:text-5xl font-black text-white ">
               A Vazão ajuda você a encontrar a solução{" "}
               <span className="text-red-500">Kronox</span>
               {" "}ideal para sua operação
@@ -41,8 +41,8 @@ export default function CTASection() {
               As EEE da Kronox permitem uma implantação mais rápida da infraestrutura de esgoto, ajudando você a
               acelerar a entrega do empreendimento.
             </p>
-            <div className="flex gap-10">
-              <div className="absolute inset-0 bg-blue-500/10 rounded-2xl blur-2xl -z-10" />
+            <div className="flex gap-10 justify-center md:justify-center lg:justify-start">
+              <div className="absolute inset-0 bg-blue-500/10 rounded-2xl blur-2xl -z-10 " />
               <Image
                 src="/Logo-Vazão-White.webp"
                 alt="Vazão Logo"

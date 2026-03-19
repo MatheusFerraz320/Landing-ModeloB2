@@ -135,7 +135,7 @@ export default function FormRD() {
             border border-slate-300 bg-white/90 p-5 shadow-2xl backdrop-blur-sm space-y-2">
                 <p className="text-sm font-semibold text-slate-900">Vazão Engenharia</p>
                 <p className="text-sm text-slate-900">Email: gabriela.leal@vazao.com.br</p>
-                <p className="text-sm text-slate-900">Telefone: (81) 99162-1955 </p>
+                <p className="text-sm text-slate-900">Telefone: (81) 9203-9379 </p>
                 <p className="text-sm text-slate-900">Av.Barão de Bonito 880 Brasilit Recife/PE</p>
               </div>
             </div>
