@@ -39,68 +39,74 @@ export default function FormRD() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      //  RD STATION
-      await fetch("https://api.rd.services/platform/conversions", {
+  try {
+    const payload = {
+      event_type: "CONVERSION",
+      event_family: "CDP",
+      payload: {
+        conversion_identifier: "[B2] Form Kronox",
+
+        name: form.name,
+        email: form.email,
+        mobile_phone: form.phone || "",
+        company_name: form.company || "",
+
+        // campos personalizados (precisam existir no RD)
+        cf_product: form.product || "",
+        cf_finality: form.finality || "",
+
+        ...utm,
+      },
+    };
+
+    let res = await fetch(
+      "https://api.rd.services/platform/conversions?api_key=cGIqhfWDoNoiVBTwLcODqcfkiaYaKXLAJxpP",
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer b49922e23ecdb074ee8c6562d96c06de",
         },
-        body: JSON.stringify({
-          event_type: "CONVERSION",
-          event_family: "CDP",
-          payload: {
-            conversion_identifier: "[B2] Form Kronox",
+        body: JSON.stringify(payload),
+      }
+    );
 
-            // padrão
-            name: form.name,
-            email: form.email,
-            phone: form.phone || "",
-            company_name: form.company || "",
+    const result = await res.json();
 
-            //campos personalizados
-            cf_product: form.product || "",
-            cf_finality: form.finality || "",
-            
-            ...utm,
-          },
-        }),
-      });
-
-      // SEND EMAIL   
-      await emailjs.send(
-        "service_falje4g",
-        "template_6wq37yv",
-        {
-          ...form,
-          ...utm,
-        },
-        "61xYofVMBaMtGRdio"
-      );
-      console.log(`Formulário enviado: ${JSON.stringify(form)} com UTMs: ${JSON.stringify(utm)}`);
-      setForm({
-        name: "",
-        company: "",
-        product: "",
-        email: "",
-        phone: "",
-        finality: "",
-      });
-
-    } catch (err) {
-      console.error(err);
-      alert("Erro ao enviar");
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      console.error("Erro ao enviar para o RD:", result);
+      return;
     }
-    window.open(`https://api.whatsapp.com/send?phone=5599199999999&text=${encodeURIComponent(whatsMsg)}`, "_blank");
-  };
 
+    console.log("Lead enviado com sucesso:", result);
+
+    // limpa form
+    setForm({
+      name: "",
+      company: "",
+      product: "",
+      email: "",
+      phone: "",
+      finality: "",
+    });
+
+    // abre whatsapp só se deu certo
+    window.open(
+      `https://api.whatsapp.com/send?phone=5599199999999&text=${encodeURIComponent(
+        whatsMsg
+      )}`,
+      "_blank"
+    );
+
+  } catch (err) {
+    console.error("Erro geral:", err);
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <m.section
       id="rd-form"

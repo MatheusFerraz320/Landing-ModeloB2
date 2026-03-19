@@ -44,6 +44,13 @@ export default function App({ Component, pageProps }) {
         }}
       />
 
+      {/* Script de Monitoramento do RD Station */}
+      <Script
+        id="rd-station-tracking"
+        strategy="afterInteractive"
+        src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/b49922e23ecdb074ee8c6562d96c06de-loader.js"
+      />
+
       <Component {...pageProps} />
     </LazyMotion>
   );
