@@ -227,7 +227,8 @@ export default function FormRD() {
                 type="submit"
                 disabled={loading}
                 className="mt-5 w-full rounded-xl bg-gradient-to-r from-[#0082ca] to-[#0066a0] 
-              px-4 py-3 font-bold text-white transition-all duration-300 hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed"
+              px-4 py-3 font-bold text-white transition-all duration-300 
+              hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? "Enviando..." : "Enviar"}
               </button>
