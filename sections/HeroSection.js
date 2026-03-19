@@ -58,8 +58,8 @@ export default function HeroSection() {
             variants={fadeUp}
           >
             <h1 className="font-extrabold 
-            text-slate-50 leading-tight lg:leading-[1.15] 
-            tracking-tight mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)] text-3xl lg:text-5xl">
+            text-slate-50  lg:leading-[1.05] 
+            tracking-tight mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)] text-3xl lg:text-[40px]">
               Soluções de poço seco que otimizam o empreendimento e&nbsp;agregam
               <span className="text-red-500"> valor para construtoras.</span>
             </h1>
