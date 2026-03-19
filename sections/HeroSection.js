@@ -59,8 +59,8 @@ export default function HeroSection() {
           >
             <h1 className="font-extrabold text-slate-50 leading-[1.05] tracking-tight 
             mb-6 drop-shadow-[0_6px_24px_rgba(2,6,23,0.85)] text-5xl" >
-              Soluções industriais
-              <span className="block text-red-500">de alta performance</span>
+              Soluções de poço seco que otimizam o empreendimento e
+              <span className="block text-red-500">agregam valor para construtoras.</span>
             </h1>
 
             <p className="text-lg text-xl font-medium text-slate-100/95 
