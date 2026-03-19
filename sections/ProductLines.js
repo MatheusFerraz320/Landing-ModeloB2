@@ -56,10 +56,10 @@ export default function ProductLines() {
     <section id="products" className="relative overflow-hidden py-24">
       {/* Fundo principal com gradiente elegante na cor #0082ca */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0082ca] via-[#0066a0] to-[#004b75]" />
-      
+
       {/* Overlay suave para garantir contraste dos cards */}
       <div className="absolute inset-0 bg-black/20" />
-      
+
       {/* Elementos decorativos com tons complementares */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 right-10 h-72 w-72 rounded-full bg-amber-400/10 blur-3xl" />
@@ -138,30 +138,22 @@ export default function ProductLines() {
           >
             {products.map((product, index) => (
               <SwiperSlide key={index} className="h-auto">
-                <div className="group rounded-2xl 
-                border border-white/20 bg-white/10 backdrop-blur-sm 
-                shadow-[0_24px_50px_rgba(0,0,0,0.3)] 
+                <div className="group rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm shadow-[0_24px_50px_rgba(0,0,0,0.3)] 
                 hover:shadow-[0_30px_60px_rgba(0,0,0,0.4)] 
-                hover:border-[#a52727]/40 transition-all duration-300 
-                overflow-hidden h-[560px] flex flex-col">
-                  
-                  {/* Imagem do produto */}
-                  <div className="relative h-[340px] bg-white/5 flex items-center justify-center overflow-hidden">
+                hover:border-[#a52727]/40 transition-all 
+                duration-300 overflow-hidden h-[500px] flex flex-col">
+                  <div className="relative h-[340px] bg-[#0082ca]/20 flex items-center justify-center overflow-hidden">
                     <Image
                       src={product.image}
                       alt={product.alt}
                       fill
                       sizes="(max-width: 740px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       quality={65}
-                      className="w-full h-full object-contain p-4
-                      group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
                     {/* Badge com tema vermelho */}
-                    <span className="absolute top-4 
-                    right-4 text-xs 
-                    font-semibold bg-[#a52727] 
-                    text-white px-3 py-1.5 rounded-full shadow-lg">
+                    <span className="absolute top-4 right-4 text-xs font-semibold bg-[#a52727] text-white px-3 py-1.5 rounded-full shadow-lg">
                       {product.badge}
                     </span>
                   </div>
