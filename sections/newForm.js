@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { m } from "framer-motion";
-import emailjs from "@emailjs/browser";
+import { useUtm } from "../hooks/useUtm";
+
 
 export default function FormRD() {
   const [form, setForm] = useState({
@@ -13,25 +14,11 @@ export default function FormRD() {
     finality: "",
   });
 
-  const [utm, setUtm] = useState({});
   const [loading, setLoading] = useState(false);
-
-  // Captura UTMs da URL apenas na montagem do form
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-
-    setUtm({
-      utm_source: params.get("utm_source") || "",
-      utm_medium: params.get("utm_medium") || "",
-      utm_campaign: params.get("utm_campaign") || "",
-      utm_term: params.get("utm_term") || "",
-      utm_content: params.get("utm_content") || "",
-      ad_id: params.get("ad_id") || "",
-    });
-  }, []);
+  const utm = useUtm();
   const whatsMsg = `Olá, gostaria de falar com um especialista da ModeloB2. Meu nome é 
   ${form.name} e estou interessado no produto ${form.product}. Poderiam me ajudar? vim da campanha 
-  ${utm.utm_campaign || "orgânica"}.`;
+  ${utm.utm_campaign || "vim da lp kronox"}.`;
 
 
   const handleChange = (e) => {
@@ -39,74 +26,74 @@ export default function FormRD() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  try {
-    const payload = {
-      event_type: "CONVERSION",
-      event_family: "CDP",
-      payload: {
-        conversion_identifier: "[B2] Form Kronox",
+    try {
+      const payload = {
+        event_type: "CONVERSION",
+        event_family: "CDP",
+        payload: {
+          conversion_identifier: "[B2] Form Kronox",
 
-        name: form.name,
-        email: form.email,
-        mobile_phone: form.phone || "",
-        company_name: form.company || "",
+          name: form.name,
+          email: form.email,
+          mobile_phone: form.phone || "",
+          company_name: form.company || "",
 
-        // campos personalizados (precisam existir no RD)
-        cf_product: form.product || "",
-        cf_finality: form.finality || "",
+          // campos personalizados (precisam existir no RD)
+          cf_product: form.product || "",
+          cf_finality: form.finality || "",
 
-        ...utm,
-      },
-    };
-
-    let res = await fetch(
-      "https://api.rd.services/platform/conversions?api_key=cGIqhfWDoNoiVBTwLcODqcfkiaYaKXLAJxpP",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+          ...utm,
         },
-        body: JSON.stringify(payload),
+      };
+
+      let res = await fetch(
+        "https://api.rd.services/platform/conversions?api_key=cGIqhfWDoNoiVBTwLcODqcfkiaYaKXLAJxpP",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        console.error("Erro ao enviar para o RD:", result);
+        return;
       }
-    );
 
-    const result = await res.json();
+      console.log("Lead enviado com sucesso:", result);
 
-    if (!res.ok) {
-      console.error("Erro ao enviar para o RD:", result);
-      return;
+      // limpa form
+      setForm({
+        name: "",
+        company: "",
+        product: "",
+        email: "",
+        phone: "",
+        finality: "",
+      });
+
+      // abre whatsapp só se deu certo
+      window.open(
+        `https://api.whatsapp.com/send?phone=5599199999999&text=${encodeURIComponent(
+          whatsMsg
+        )}`,
+        "_blank"
+      );
+
+    } catch (err) {
+      console.error("Erro geral:", err);
+    } finally {
+      setLoading(false);
     }
-
-    console.log("Lead enviado com sucesso:", result);
-
-    // limpa form
-    setForm({
-      name: "",
-      company: "",
-      product: "",
-      email: "",
-      phone: "",
-      finality: "",
-    });
-
-    // abre whatsapp só se deu certo
-    window.open(
-      `https://api.whatsapp.com/send?phone=5599199999999&text=${encodeURIComponent(
-        whatsMsg
-      )}`,
-      "_blank"
-    );
-
-  } catch (err) {
-    console.error("Erro geral:", err);
-  } finally {
-    setLoading(false);
-  }
-};
+  };
   return (
     <m.section
       id="rd-form"
@@ -128,7 +115,7 @@ export default function FormRD() {
             text-[#0082ca]">
               CONSULTORIA TECNICA
             </span>
-            <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-black leading-tight text-slate-900">
+            <h2 className="mt-5 text-3xl font-black leading-tight text-slate-900">
               Fale com um especialista e receba um plano para sua operacao
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600 max-w-xl mx-auto lg:mx-0">
@@ -138,7 +125,11 @@ export default function FormRD() {
             border border-slate-300 bg-white/90 p-5 shadow-2xl backdrop-blur-sm space-y-2">
               <p className="text-sm font-semibold text-slate-900">Vazão Engenharia</p>
               <p className="text-sm text-slate-900">Email: vazao@vazao.com.br</p>
-              <p className="text-sm text-slate-900">Telefone: (81) 992039379</p>
+              <button className="text-sm text-slate-900" onClick={
+                () => {
+                  document.getElementById("rd-floating_button-ly4393ic").click()
+                }
+              } >Telefone: Clique aqui </button>
               <p className="text-sm text-slate-900">Av.Barão de Bonito 880 Brasilit Recife/PE</p>
             </div>
           </div>

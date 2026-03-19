@@ -1,6 +1,7 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import HeroSection from "@/sections/HeroSection";
+import WhatsAppButton from "@/components/WhatsButton";
 
 const AboutSection = dynamic(() => import("@/sections/AboutSection"));
 const ProductLines = dynamic(() => import("@/sections/ProductLines"));
@@ -42,13 +43,13 @@ export default function Home() {
       <main>
         {/* 1. Hero */}
         <HeroSection />
- 
+
         {/* 2. About */}
         <AboutSection />
 
         {/* 3. Product Lines */}
         <ProductLines />
-        
+
         {/* 4. Cases */}
         <Cases />
 
@@ -59,9 +60,12 @@ export default function Home() {
 
         {/* 7. Final CTA */}
         <CTASection />
+
+        {/* 8. WhatsApp Button -> modal */}
+        <WhatsAppButton />
       </main>
 
-      {/* 8. Footer */}
+      {/* 9. Footer */}
       <Footer />
     </>
   );

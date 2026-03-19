@@ -1,60 +1,99 @@
 import { useState } from 'react';
-import { useUtmFromStorage } from '../hooks/UtmHook';
+import { useUtm } from '../hooks/useUtm';
 
 export default function ModalForm({ isOpen, onClose }) {
-  const utmParams = useUtmFromStorage();
 
   const [formData, setFormData] = useState({
     name: '',
+    company: '',
+    product: '',
     email: '',
     phone: '',
-    company: '',
-    interest: '',
-    message: '',
-    ...utmParams
+    finality: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const utm = useUtm();
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    const whatsMessage = `Cotação Personalizada -
-    Nome: ${formData.name}
-    Email: ${formData.email}
-    Empresa: ${formData.company}
-    Telefone: ${formData.phone}
-    Interesse: ${formData.interest}
-    Mensagem: ${formData.message}
+    try {
+      const payload = {
+        event_type: "CONVERSION",
+        event_family: "CDP",
+        payload: {
+          conversion_identifier: "[B2] Form Kronox",
 
-    *DADOS DE ORIGEM*:
-    UTM Source: ${formData.utm_source || 'direto'}
-    UTM Medium: ${formData.utm_medium || 'direto'}
-    UTM Campaign: ${formData.utm_campaign || 'não definida'}
-    UTM Term: ${formData.utm_term || 'não definido'}
-    UTM Content: ${formData.utm_content || 'não definido'}`;
-    const whatsNumber = '5513991621955';
-    window.open(`https://wa.me/${whatsNumber}?text=${encodeURIComponent(whatsMessage)}`, '_blank');
+          name: formData.name,
+          email: formData.email,
+          mobile_phone: formData.phone || "",
+          company_name: formData.company || "",
 
-    setSubmitted(true);
+          cf_product: formData.product || "",
+          cf_finality: formData.finality || "",
 
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        interest: '',
-        message: '',
-        ...utmParams
-      });
-      onClose();
-    }, 3000);
+          ...utm,
+        },
+      };
+
+      let res = await fetch(
+        "https://api.rd.services/platform/conversions?api_key=cGIqhfWDoNoiVBTwLcODqcfkiaYaKXLAJxpP",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        console.error("Erro ao enviar para o RD:", result);
+        setError(true);
+        return;
+      }
+
+      console.log("Lead enviado com sucesso:", result);
+
+      const whatsMsg = `Olá, gostaria de falar com um especialista da ModeloB2. Meu nome 
+      é ${formData.name} e estou interessado no produto ${formData.product}. 
+      Poderiam me ajudar? vim da campanha ${utm.utm_campaign || "vim da lp kronox"}.`;
+
+      const whatsNumber = '5513991621955';
+
+      window.open(`https://wa.me/${whatsNumber}?text=${encodeURIComponent(whatsMsg)}`, '_blank');
+
+      setSubmitted(true);
+
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          name: '',
+          company: '',
+          product: '',
+          email: '',
+          phone: '',
+          finality: '',
+        });
+        onClose();
+      }, 3000);
+
+    } catch (err) {
+      console.error("Erro geral:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -65,10 +104,10 @@ export default function ModalForm({ isOpen, onClose }) {
 
       <div className="flex min-h-full items-center justify-center p-4">
         <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-auto transform transition-all">
-          
+
           {/* Header */}
           <div className="relative bg-gradient-to-r from-blue-900 to-slate-800 rounded-t-2xl p-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Solicitar Cotação</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Entre em contato</h2>
             <p className="text-blue-100 text-sm mt-1">Preencha os dados abaixo e retornaremos em até 24h</p>
             <button
               onClick={onClose}
@@ -96,47 +135,81 @@ export default function ModalForm({ isOpen, onClose }) {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                {/* UTMs hidden */}
-                {Object.entries(utmParams).map(([key, value]) => (
-                  <input key={key} type="hidden" name={key} value={value} />
-                ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    name="name"
+                    value={formData.name}
+                    placeholder="Nome"
+                    required
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
+                    onChange={handleChange}
+                  />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Nome completo <span className="text-orange-500">*</span></label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Digite seu nome completo" className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-slate-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition" />
-                  </div>
+                  <input
+                    name="company"
+                    value={formData.company}
+                    placeholder="Empresa"
+                    required
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
+                    onChange={handleChange}
+                  />
 
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">E-mail <span className="text-orange-500">*</span></label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="seu@email.com" className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-slate-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition" />
-                  </div>
+                  <input
+                    name="product"
+                    value={formData.product}
+                    placeholder="Qual produto de interesse"
+                    required
+                    className="sm:col-span-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
+                    onChange={handleChange}
+                  />
 
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Telefone / WhatsApp <span className="text-orange-500">*</span></label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="(11) 99999-8888" className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-slate-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition" />
-                  </div>
+                  <input
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    placeholder="Email"
+                    required
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
+                    onChange={handleChange}
+                  />
 
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Empresa</label>
-                    <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Nome da sua empresa" className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-slate-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition" />
-                  </div>
+                  <input
+                    name="phone"
+                    value={formData.phone}
+                    placeholder="Telefone"
+                    required
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0082ca]"
+                    onChange={handleChange}
+                  />
 
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Principal interesse <span className="text-orange-500">*</span></label>
-                    <select name="interest" value={formData.interest} onChange={handleChange} required className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition">
-                      <option value="" disabled>Selecione uma opção</option>
-                      <option>Cotação de produtos</option>
-                      <option>Parceria comercial</option>
-                      <option>Suporte técnico</option>
-                      <option>Projeto personalizado</option>
-                      <option>Outros</option>
-                    </select>
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Mensagem <span className="text-orange-500">*</span></label>
-                    <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} placeholder="Descreva sua necessidade ou projeto..." className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-slate-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition resize-none" />
+                  <div className="sm:col-span-2 rounded-xl border border-slate-200 px-4 py-3">
+                    <p className="text-sm font-semibold text-slate-800 mb-2">Finalidade</p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <label className="inline-flex items-center gap-2 text-slate-700">
+                        <input
+                          type="radio"
+                          name="finality"
+                          value="consumo"
+                          checked={formData.finality === "consumo"}
+                          onChange={handleChange}
+                          required
+                          className="h-4 w-4 accent-[#0082ca]"
+                        />
+                        <span>Para consumo</span>
+                      </label>
+                      <label className="inline-flex items-center gap-2 text-slate-700">
+                        <input
+                          type="radio"
+                          name="finality"
+                          value="revenda"
+                          checked={formData.finality === "revenda"}
+                          onChange={handleChange}
+                          required
+                          className="h-4 w-4 accent-[#0082ca]"
+                        />
+                        <span>Para revenda</span>
+                      </label>
+                    </div>
                   </div>
                 </div>
 
@@ -149,8 +222,15 @@ export default function ModalForm({ isOpen, onClose }) {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                  <button type="submit" className="flex-1 bg-red-500 text-white font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:scale-[1.02]">Enviar Solicitação</button>
-                  <button type="button" onClick={onClose} className="flex-1 border-2 border-gray-200 hover:border-gray-300 text-slate-600 font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:bg-gray-50">Cancelar</button>
+                  <button type="submit" disabled={loading} className="flex-1 
+                  bg-blue-500 text-white 
+                  font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:scale-[1.02]">
+                    {loading ? "Enviando..." : "Enviar Solicitação"}
+                  </button>
+                  <button type="button" onClick={onClose} disabled={loading} className="flex-1 border-2 border-gray-200 hover:border-gray-300 text-slate-600 font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:bg-gray-50 disabled:opacity-60 disabled:cursor-not-allowed">Cancelar</button>
+                  <p className="text-xs text-slate-400 text-center flex items-center justify-center gap-1">
+                    {error && <span className="text-red-500">Erro ao enviar formulário</span>}
+                  </p>
                 </div>
               </form>
             )}

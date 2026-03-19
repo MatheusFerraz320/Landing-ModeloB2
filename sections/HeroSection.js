@@ -1,15 +1,17 @@
+import { useState } from "react";
 import Image from "next/image";
 import { m } from "framer-motion";
 import { fadeUp } from "@/utils/motion";
+import ModalForm from "@/components/ModalForm";
 
 export default function HeroSection({ loadRdScript }) {
+  const [openModal, setOpenModal] = useState(false);
 
-  const rdButton = () => { 
-    if (typeof loadRdScript === "function") {
-      loadRdScript();
-    }
-    const rdForm = document.getElementById("rd-floating_button-ly4393ic");
-    if (rdForm) rdForm.click();
+  const handleClick = () => {
+    setOpenModal(true);
+  };
+  const closeModal = () => {
+    setOpenModal(false);
   };
 
   return (
@@ -70,7 +72,7 @@ export default function HeroSection({ loadRdScript }) {
             {/* Botões */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
               <button
-                onClick={rdButton}
+                onClick={handleClick}
                 className="bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-full shadow-[0_0_25px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300 text-center"
               >
                 Solicitar avaliação técnica
@@ -110,6 +112,7 @@ export default function HeroSection({ loadRdScript }) {
 
         </div>
       </div>
+      <ModalForm isOpen={openModal} onClose={closeModal} />
     </header>
   );
 }

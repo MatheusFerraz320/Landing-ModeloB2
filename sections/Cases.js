@@ -44,8 +44,6 @@ export default function Cases() {
     <section id="cases" className="relative overflow-hidden py-20 md:py-20 bg-black">
       {/* Elementos decorativos sutis */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 right-8 h-72 w-72 rounded-full bg-[#0082ca]/10 blur-3xl" />
-        <div className="absolute bottom-10 left-0 h-80 w-80 rounded-full bg-[#a52727]/10 blur-3xl" />
         <div className="absolute inset-x-6 top-8 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
 
@@ -57,7 +55,7 @@ export default function Cases() {
         variants={staggerContainer}
       >
         {/* Header com logo e título */}
-        <m.div className="flex flex-col items-center text-center mb-15" variants={fadeUpFast}>       
+        <m.div className="flex flex-col items-center text-center mb-15" variants={fadeUpFast}>
           <div className="mb-2 flex flex-col items-center gap-2">
             <Image
               src="/Kronox.webp"
@@ -76,7 +74,7 @@ export default function Cases() {
           </h2>
 
           <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-            Casos em concessionárias, autarquias e empreendimentos, com instalações em operações como Iguá Cuiabá e DAEV Valinhos. 
+            Casos em concessionárias, autarquias e empreendimentos, com instalações em operações como Iguá Cuiabá e DAEV Valinhos.
             Nosso portfólio inclui soluções premiadas que comprovam a eficiência da Kronox.
           </p>
         </m.div>
@@ -100,7 +98,6 @@ export default function Cases() {
                   quality={65}
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 <span className="absolute top-4 right-4 bg-[#a52727] text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
                   {caseItem.badge}
                 </span>
@@ -115,11 +112,11 @@ export default function Cases() {
             </div>
           ))}
         </m.div>
-          
-          <div className="flex justify-center mb-20">
+
+        <div className="flex justify-center mb-20">
           <a
-          href='#rd-form'
-          className="inline-flex items-center gap-3 rounded-full px-20 py-4
+            href='#rd-form'
+            className="inline-flex items-center gap-3 rounded-full px-20 py-4
             bg-gradient-to-r from-[#0082ca] 
             to-[#0066a0] hover:from-[#0066a0]
             hover:to-[#004b75] text-white font-bold 
@@ -128,7 +125,7 @@ export default function Cases() {
           >
             Entrar em contato
           </a>
-          </div>
+        </div>
 
         {/* Módulo "Nossos Clientes" */}
         <m.div className="text-center" variants={fadeUpFast}>
@@ -147,9 +144,9 @@ export default function Cases() {
               >
                 {/* Card background com gradiente sutil */}
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/10 via-white/5 to-white/0 border border-white/20 group-hover:border-[#0082ca]/60 group-hover:from-white/15 transition-all duration-500" />
-                
+
                 {/* Efeito glow no hover */}
-                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
                     boxShadow: 'inset 0 0 30px rgba(0, 130, 202, 0.15), 0 0 30px rgba(0, 130, 202, 0.2)'
                   }}
@@ -159,7 +156,7 @@ export default function Cases() {
                 <div className="relative w-full h-full flex items-center justify-center px-4 py-5">
                   {/* Backdrop mais claro no hover para melhor contraste */}
                   <div className="absolute inset-0 rounded-xl bg-white/0 group-hover:bg-white/8 transition-all duration-500 pointer-events-none" />
-                  
+
                   {/* Imagem do logo */}
                   <Image
                     src={logo.src}

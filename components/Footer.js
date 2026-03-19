@@ -9,8 +9,8 @@ export default function Footer() {
         </p>
         <p className="text-sm">
           Desenvolvido por{" "}
-          <a href="#" className="hover:text-white transition-colors font-semibold">
-            b2 marketing industrial
+          <a href="https://b2marketingindustrial.com.br/" className="hover:text-white transition-colors font-semibold">
+            B2 Marketing Industrial
           </a>
         </p>
       </div>

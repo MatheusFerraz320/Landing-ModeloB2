@@ -1,13 +1,10 @@
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
 import { m } from 'framer-motion';
 import { fadeUpFast, staggerContainer, inViewViewport } from '@/utils/motion';
-
-const rdButton = () => {
-  const rdForm = document.getElementById("rd-floating_button-ly4393ic");
-  if (rdForm) rdForm.click();
-};
+import ModalForm from '@/components/ModalForm';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -15,6 +12,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function ProductLines() {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleClick = () => {
+    setOpenModal(true);
+  };
+  const closeModal = () => {
+    setOpenModal(false);
+  };
+
   const products = [
     {
       name: "Baby Booster",
@@ -169,7 +175,7 @@ export default function ProductLines() {
                       {product.description}
                     </p>
                     <button
-                      onClick={rdButton}
+                      onClick={handleClick}
                       className="inline-flex 
                       items-center gap-2 text-sm md:text-base font-extrabold 
                       text-white hover:text-red-700 transition-colors
@@ -191,6 +197,7 @@ export default function ProductLines() {
           <div className="product-pagination flex justify-center gap-2 mt-6" />
         </m.div>
       </m.div>
+      <ModalForm isOpen={openModal} onClose={closeModal} />
     </section>
   );
 }
