@@ -4,69 +4,62 @@ import { fadeUpFast, staggerContainer, inViewViewport } from "@/utils/motion";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative overflow-hidden py-10  bg-white">
+    <section id="about" className="relative overflow-hidden py-10 bg-white">
       <m.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         initial="visible"
         viewport={inViewViewport}
         variants={staggerContainer}
       >
-        {/* Linha superior com badge */}
-        <m.div className="text-center max-w-4xl mx-auto mb-12" variants={fadeUpFast}>
-          <div className="inline-flex items-center gap-3 rounded-full 
-          border border-white/30 bg-white/70 backdrop-blur-md 
-          px-6 py-2.5 shadow-[0_10px_30px_rgba(15,23,42,0.12)]">
-            <div className="w-2.5 h-2.5 rounded-full bg-blue-500 opacity-90 shadow-[0_0_10px_rgba(59,130,246,0.7)]" />
-            <span className="text-sm tracking-wide font-semibold text-slate-800">
-              EFICIÊNCIA OPERACIONAL
-            </span>
-          </div>
-        </m.div>
-
-        {/* Grid principal: Imagem à esquerda | Texto à direita */}
+        {/* Grid principal: Texto | Imagem (no mobile texto primeiro) */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-10 items-center mb-8">
 
-          {/* Coluna Esquerda - Imagem (invisível, sem card) */}
+          {/* Coluna Esquerda - Imagem (vem depois no mobile) */}
           <m.div
-            className="relative flex justify-center items-center "
+            className="relative flex justify-center items-center order-2 lg:order-1"
             variants={fadeUpFast}
           >
-            <div className="relative w-full h-[500px] md:h-[500px] ">
+            <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px]">
               <Image
                 src="/comparacao.webp"
                 alt="Soluções industriais Kronox"
                 fill
-                className="object-contain drop-shadow-2xl "
+                className="object-contain drop-shadow-2xl"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 loading="lazy"
               />
-
               {/* Elementos decorativos sutis atrás da imagem */}
               <div className="absolute top-4 left-4 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl -z-10" />
               <div className="absolute bottom-4 right-4 w-32 h-32 bg-red-500/5 rounded-full blur-2xl -z-10" />
             </div>
           </m.div>
 
-          {/* Coluna Direita - Texto principal */}
+          {/* Coluna Direita - Texto principal (vem primeiro no mobile) */}
           <m.div
-            className="text-left"
+            className="text-left order-1 lg:order-2"
             variants={fadeUpFast}
           >
-            <h2 className="text-5xl font-light text-slate-900 mb-6 tracking-tight">
+            <div className="inline-flex items-center gap-3 rounded-full 
+              border border-white/30 bg-white/70 backdrop-blur-md 
+              px-6 py-2.5 shadow-[0_10px_30px_rgba(15,23,42,0.12)] mb-5">
+              <div className="w-2.5 h-2.5 rounded-full bg-blue-500 opacity-90 shadow-[0_0_10px_rgba(59,130,246,0.7)]" />
+              <span className="text-sm tracking-wide font-bold text-slate-800">
+                EFICIÊNCIA OPERACIONAL
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-light text-slate-900 mb-6 tracking-tight">
               Sua elevatória ainda gera
-              <span className="font-bold text-red-500 block mt-2">mais custo do que deveria?</span>
+              <span className="font-bold text-red-500 block mt-1">mais custo do que deveria?</span>
             </h2>
 
             <p className="text-slate-700 text-lg md:text-xl leading-relaxed mb-8">
               Sistemas convencionais exigem mais limpeza, mais intervenção, mais obra civil e mais atenção operacional.
               As soluções Kronox foram desenvolvidas para reduzir esses gargalos com bombeamento em linha e operação mais eficiente.
             </p>
-
-
           </m.div>
         </div>
 
-        {/* Grid de cards */}
+        {/* Grid de cards (mantido igual) */}
         <m.div
           className="grid md:grid-cols-3 gap-6 lg:gap-8 mt-8"
           initial="hidden"
