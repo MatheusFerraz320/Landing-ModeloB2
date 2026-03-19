@@ -20,7 +20,7 @@ export default function HeroSection() {
       {/* Imagem de fundo */}
       <div className="absolute inset-0">
         <Image
-          src="/Hero.webp"
+          src="/bgHeroNew.webp"
           alt="Fundo industrial"
           fill
           priority

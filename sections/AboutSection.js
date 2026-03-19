@@ -4,14 +4,14 @@ import { fadeUpFast, staggerContainer, inViewViewport } from "@/utils/motion";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative overflow-hidden py-20 md:py-28 bg-white">
+    <section id="about" className="relative overflow-hidden py-10  bg-white">
       <m.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         initial="visible"
         viewport={inViewViewport}
         variants={staggerContainer}
       >
-        {/* Linha superior com badge (mantido) */}
+        {/* Linha superior com badge */}
         <m.div className="text-center max-w-4xl mx-auto mb-12" variants={fadeUpFast}>
           <div className="inline-flex items-center gap-3 rounded-full 
           border border-white/30 bg-white/70 backdrop-blur-md 
@@ -24,33 +24,26 @@ export default function AboutSection() {
         </m.div>
 
         {/* Grid principal: Imagem à esquerda | Texto à direita */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-10 items-center mb-8">
 
-          {/* Coluna Esquerda - Imagem */}
+          {/* Coluna Esquerda - Imagem (invisível, sem card) */}
           <m.div
-            className="relative"
+            className="relative flex justify-center items-center "
             variants={fadeUpFast}
           >
-            <div className="relative w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden
-                          shadow-[0_30px_60px_rgba(0,0,0,0.2)]
-                          border border-slate-200/60">
-
-              {/* Background gradiente */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-slate-100" />
-
-              {/* Imagem principal - substitua pelo caminho correto */}
+            <div className="relative w-full h-[500px] md:h-[500px] ">
               <Image
-                src="/about-image.webp"
+                src="/comparacao.webp"
                 alt="Soluções industriais Kronox"
                 fill
-                className="object-contain p-8"
+                className="object-contain drop-shadow-2xl "
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
+                loading="lazy"
               />
 
-              {/* Elementos decorativos */}
-              <div className="absolute top-4 left-4 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl" />
-              <div className="absolute bottom-4 right-4 w-32 h-32 bg-red-500/5 rounded-full blur-2xl" />
+              {/* Elementos decorativos sutis atrás da imagem */}
+              <div className="absolute top-4 left-4 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl -z-10" />
+              <div className="absolute bottom-4 right-4 w-32 h-32 bg-red-500/5 rounded-full blur-2xl -z-10" />
             </div>
           </m.div>
 
@@ -59,7 +52,7 @@ export default function AboutSection() {
             className="text-left"
             variants={fadeUpFast}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-900 mb-6 tracking-tight">
+            <h2 className="text-5xl font-light text-slate-900 mb-6 tracking-tight">
               Sua elevatória ainda gera
               <span className="font-bold text-red-500 block mt-2">mais custo do que deveria?</span>
             </h2>
@@ -69,21 +62,11 @@ export default function AboutSection() {
               As soluções Kronox foram desenvolvidas para reduzir esses gargalos com bombeamento em linha e operação mais eficiente.
             </p>
 
-            {/* Mini estatísticas/diferenciais */}
-            <div className="grid grid-cols-2 gap-4 mt-8">
-              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
-                <p className="text-2xl font-bold text-blue-600">+%</p>
-                <p className="text-sm text-slate-600">Qualidade 1</p>
-              </div>
-              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
-                <p className="text-2xl font-bold text-blue-600">%</p>
-                <p className="text-sm text-slate-600">Qualidade 2</p>
-              </div>
-            </div>
+
           </m.div>
         </div>
 
-        {/* Grid de cards (mantido igual, apenas com ajustes de espaçamento) */}
+        {/* Grid de cards */}
         <m.div
           className="grid md:grid-cols-3 gap-6 lg:gap-8 mt-8"
           initial="hidden"
@@ -91,7 +74,6 @@ export default function AboutSection() {
           viewport={inViewViewport}
           variants={staggerContainer}
         >
-
           {/* Card 1 - Bombeamento */}
           <m.div
             className="relative overflow-hidden rounded-3xl bg-white/5 p-8 
