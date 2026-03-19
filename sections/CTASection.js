@@ -40,6 +40,26 @@ export default function CTASection() {
             <p className="text-slate-300 text-lg leading-relaxed">
               Da analise da necessidade à recomendação da melhor solução Kronox , a Vazão apoia sua operação com visão técnica e aplicação pratica.
             </p>
+            <div className="flex gap-10">
+              <div className="absolute inset-0 bg-blue-500/10 rounded-2xl blur-2xl -z-10" />
+              <Image
+                src="/Logo-Vazão-White.webp"
+                alt="Vazão Logo"
+                width={180}
+                height={120}
+                className="drop-shadow-2xl object-contain"
+                loading='lazy'
+              />
+              <Image
+                src="/Kronox.webp"
+                alt="Kronox Logo"
+                width={180}
+                height={120}
+                className="drop-shadow-2xl object-contain"
+                loading='lazy'
+              />
+            </div>
+
 
             {/* CTA Button */}
             <div className="flex justify-center lg:justify-start pt-4">
@@ -52,30 +72,18 @@ export default function CTASection() {
             </div>
           </m.div>
           <m.div className="flex justify-center pt-10" variants={fadeUpFast}>
-            {/* Right: Logos Stack */}
-            <div className="flex flex-col items-center gap-8">
-              {/* Primary Logo */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-blue-500/10 rounded-2xl blur-2xl -z-10" />
-                <Image
-                  src="/Logo-Vazão-White.webp"
-                  alt="Vazão Logo"
-                  width={280}
-                  height={120}
-                  className="drop-shadow-2xl object-contain"
-                  priority
-                />
-              </div>
+            {/* Direita - comp */}
+            <div className="flex flex-col items-center gap-8 mb-15">
 
-              {/* Kronox Logo */}
+              {/* Comparação do lado do texto*/}
               <div className="relative">
-                <div className="absolute inset-0 bg-red-500/10 rounded-2xl blur-2xl -z-10" />
+                <div className="absolute inset-0 bg-red-500/10 rounded-2xl blur-2xl -z-10  " />
                 <Image
-                  src="/Kronox.webp"
-                  alt="Kronox Logo"
-                  width={300}
+                  src="/comparacao.webp"
+                  alt="comparação do serviço"
+                  width={500}
                   height={200}
-                  className="drop-shadow-2xl object-contain"
+                  className="drop-shadow-2xl object-contain rounded-2xl"
                 />
               </div>
             </div>

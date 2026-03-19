@@ -109,7 +109,7 @@ export default function HeroSection() {
                 loading="lazy"
                 fetchPriority="low"
                 quality={75}
-                className="object-contain object-center"
+                className="object-contain object-center h-[520px] md:scale-140"
                 sizes="100vw"
               />
             </div>
