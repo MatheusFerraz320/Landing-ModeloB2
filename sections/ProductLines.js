@@ -26,28 +26,28 @@ export default function ProductLines() {
       name: "Baby Booster",
       badge: "Compacto",
       description: "Compacto e econômico para aplicações pontuais .",
-      image: "/babyBooster.webp",
+      image: "/babyBoosterNew.webp",
       alt: "Baby Booster - solução compacta"
     },
     {
       name: "Booster Z",
       badge: "Flexível",
       description: "Flexível para operação e manutenção.",
-      image: "/boosterZ.webp",
+      image: "/boosterZNew.webp",
       alt: "Booster Z - flexível para operação e manutenção"
     },
     {
       name: "Booster W",
       badge: "Alta vazão",
       description: "Indicado para maiores vazões e variações de demanda.",
-      image: "/boosterW.webp",
+      image: "/boosterWNew.webp",
       alt: "Booster W - para altas vazões"
     },
     {
       name: "Booster Hércules",
       badge: "Expansível",
       description: "Preparado para expansão gradual do sistema.",
-      image: "/boosterHercules.webp",
+      image: "/boosterHerculesNew.webp",
       alt: "Booster Hércules - preparado para expansão"
     }
   ];
@@ -149,7 +149,7 @@ export default function ProductLines() {
                       fill
                       sizes="(max-width: 740px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       quality={65}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
                     {/* Badge com tema vermelho */}

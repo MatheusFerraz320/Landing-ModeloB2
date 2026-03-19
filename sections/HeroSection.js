@@ -4,7 +4,7 @@ import { m } from "framer-motion";
 import { fadeUp } from "@/utils/motion";
 import ModalForm from "@/components/ModalForm";
 
-export default function HeroSection({ loadRdScript }) {
+export default function HeroSection() {
   const [openModal, setOpenModal] = useState(false);
 
   const handleClick = () => {
@@ -16,7 +16,7 @@ export default function HeroSection({ loadRdScript }) {
 
   return (
     <header id="hero" className="relative flex items-center overflow-hidden" style={{ minHeight: '70vh' }}>
-      
+
       {/* Imagem de fundo */}
       <div className="absolute inset-0">
         <Image
@@ -37,11 +37,11 @@ export default function HeroSection({ loadRdScript }) {
 
         {/* Header com logo */}
         <div className="flex items-center justify-between mb-12">
-          <Image 
-            src="/Logo-Vazão-White.webp" 
-            alt="Kronox" 
-            width={180} 
-            height={60} 
+          <Image
+            src="/Logo-Vazão-White.webp"
+            alt="Kronox"
+            width={180}
+            height={60}
             priority
             className="object-contain"
           />
@@ -99,19 +99,28 @@ export default function HeroSection({ loadRdScript }) {
               </a>
             </div>
           </m.div>
-
-          {/* DIREITA (imagem futura / mockup / vídeo) */}
-          <div className="flex justify-center items-center">
-            <div className="w-full h-[520px] bg-white/10 rounded-2xl
-             backdrop-blur-md flex items-center justify-center border border-white/10">
-              <span className="text-white/70 text-sm">
-                IMG
-              </span>
+          {/* DIREITA - Imagem integrada diretamente ao fundo */}
+          <div className="flex justify-center items-end h-full">
+            <div className="relative w-full h-[520px]">
+              <Image
+                src="/comp.webp"
+                alt="Componentes Kronox"
+                fill
+                loading="lazy"
+                fetchPriority="low"
+                quality={75}
+                className="object-contain object-center"
+                sizes="100vw"
+              />
             </div>
           </div>
 
+          {/* Overlay muito sutil */}
         </div>
       </div>
+
+
+
       <ModalForm isOpen={openModal} onClose={closeModal} />
     </header>
   );
