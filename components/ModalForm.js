@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useUtm } from '../hooks/useUtm';
 
+
 export default function ModalForm({ isOpen, onClose }) {
 
   const [formData, setFormData] = useState({
@@ -68,8 +69,8 @@ export default function ModalForm({ isOpen, onClose }) {
       console.log("Lead enviado com sucesso:", result);
 
       const whatsMsg = `Olá, gostaria de falar com um especialista da ModeloB2. Meu nome 
-      é ${formData.name} e estou interessado no produto ${formData.product}. 
-      Poderiam me ajudar? vim da campanha ${utm.utm_campaign || "vim da lp kronox"}.`;
+        é ${formData.name} e estou interessado no produto ${formData.product}. 
+        Poderiam me ajudar? vim da campanha ${utm.utm_campaign || "vim da lp kronox"}.`;
 
       const whatsNumber = '5513991621955';
 
@@ -129,13 +130,13 @@ export default function ModalForm({ isOpen, onClose }) {
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onClick={onClose} />
 
-      <div className="flex min-h-full items-center justify-center p-4">
-        <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-auto transform transition-all">
+      <div className="fixed bottom-0 right-0 p-4 sm:p-6 z-50">
+        <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl transform transition-all">
 
           {/* Header */}
-          <div className="relative bg-gradient-to-r from-blue-900 to-slate-800 rounded-t-2xl p-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Entre em contato</h2>
-            <p className="text-blue-100 text-sm mt-1">Preencha os dados abaixo e retornaremos em até 24h</p>
+          <div className="relative bg-slate-100 rounded-t-2xl p-6 shadow-lg">
+            <h2 className="text-2xl md:text-3xl font-bold text-green-600">Entre em contato</h2>
+            <p className="text-black-100 text-sm mt-1">PPreencha os campos abaixo para iniciar a conversa no WhatsApp</p>
             <button
               onClick={onClose}
               className="absolute top-6 right-6 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-xl p-2 transition-all duration-300"
@@ -244,17 +245,16 @@ export default function ModalForm({ isOpen, onClose }) {
                   <input type="checkbox" id="consent" required className="mt-1 w-4 h-4 text-orange-500 border-gray-300 rounded focus:ring-orange-400" />
                   <label htmlFor="consent" className="text-sm text-slate-500">
                     Concordo em receber comunicações e estou ciente da{' '}
-                    <a href="#" className="text-red-500">Política de Privacidade</a>
+                    <a href="#" className="text-green-600">Política de Privacidade</a>
                   </label>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <button type="submit" disabled={loading} className="flex-1 
-                  bg-blue-500 text-white 
-                  font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:scale-[1.02]">
+                    bg-blue-500 text-white 
+                    font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:scale-[1.02]">
                     {loading ? "Enviando..." : "Enviar Solicitação"}
                   </button>
-                  <button type="button" onClick={onClose} disabled={loading} className="flex-1 border-2 border-gray-200 hover:border-gray-300 text-slate-600 font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:bg-gray-50 disabled:opacity-60 disabled:cursor-not-allowed">Cancelar</button>
                   <p className="text-xs text-slate-400 text-center flex items-center justify-center gap-1">
                     {error && <span className="text-red-500">Erro ao enviar formulário</span>}
                     {sucessMsg && <span className="text-green-500">Formulário enviado com sucesso</span>}

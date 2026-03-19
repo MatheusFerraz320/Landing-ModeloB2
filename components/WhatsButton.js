@@ -22,7 +22,10 @@ export default function WhatsAppButton() {
         aria-label="WhatsApp"
       >
         {/* Botão principal */}
-        <div className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300">
+        <div className="relative flex items-center 
+        justify-center w-14 h-14 md:w-16 md:h-16 
+        bg-gradient-to-br from-green-500 to-green-600 rounded-full 
+        shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300">
           {/* Ícone WhatsApp */}
           <svg
             className="w-7 h-7 md:w-8 md:h-8 text-white"
